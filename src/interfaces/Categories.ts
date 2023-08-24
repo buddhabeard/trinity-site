@@ -8,7 +8,5 @@ export interface Category {
 }
 
 export default interface Categories {
-  categories: {
-    data: Category[];
-  };
+  data: Category[];
 }

@@ -1,12 +1,29 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Layout from "../layouts/Layout.astro";
+import fetchApi from "../lib/strapi";
+import type { HomePage } from "../interfaces/Pages";
+import Hero from "../components/Hero";
+import type { HeroComponent } from "../interfaces/Components";
+
+const page = await fetchApi<HomePage>({
+  endpoint: "home-page",
+  query: { populate: "*" },
+});
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		
-		<h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		
-	</main>
+<Layout title="Trinity Life Ministry">
+  <main>
+    {
+      page.data.attributes?.slices.map((slice: any) => {
+        switch (slice.__component) {
+          case "slices.hero":
+            const comp: HeroComponent = slice;
+            return <Hero title={comp.title} content={comp.content} />;
+
+          default:
+            return null;
+        }
+      })
+    }
+  </main>
 </Layout>

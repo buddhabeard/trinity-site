@@ -1,3 +1,5 @@
+import type Categories from "./Categories";
+
 export interface Post {
   id: number;
   attributes: {
@@ -7,14 +9,7 @@ export interface Post {
     slug: string;
     content: string;
     categories: {
-      data: Array<{
-        id: number;
-        attributes: {
-          name: string;
-          createdAt: string;
-          updatedAt: string;
-        };
-      }>;
+      data: Categories;
     };
     createdAt: string;
     updatedAt: string;
