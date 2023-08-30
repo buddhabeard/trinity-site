@@ -10,7 +10,9 @@ export interface HomePage {
     id: number;
     attributes: {
       hero: HeroComponent;
-      linkCards: LinkCardComponent[];
+      linkCards: {
+        linkCard: LinkCardComponent[];
+      };
       faqs: FAQComponent[];
       cta: CallToActionComponent;
       createdAt: string;
