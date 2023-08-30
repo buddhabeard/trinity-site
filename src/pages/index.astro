@@ -3,21 +3,34 @@ import Hero from "../components/Hero";
 import Layout from "../layouts/Layout.astro";
 import fetchApi from "../lib/strapi";
 import type { HomePage } from "../interfaces/Pages";
-import LinkCards from "../components/LinkCards.astro";
+// import LinkCards from "../components/LinkCards.astro";
+
+const queries = [
+  "populate[hero][populate]=*",
+  "populate[linkCards][populate]=*",
+  "populate[faqs][populate]=*",
+].join("&");
 
 const page = await fetchApi<HomePage>({
-  endpoint: "/home-page",
-  query: { populate: "*" },
+  endpoint: "home-page",
+  query: queries,
 });
 
 const hasHero = (page: HomePage) => page.data.attributes?.hero;
-const hasLinkCards = (page: HomePage) => page.data.attributes?.linkCards;
+// const hasLinkCards = (page: HomePage) => page.data.attributes?.linkCards;
+
+// console.log(page.data.attributes.linkCards);
 ---
 
 <Layout title="Trinity Life Ministry">
   <main>
     {hasHero(page) && <Hero {...page.data.attributes.hero} />}
-    <LinkCards />
-    <!-- {hasLinkCards(page) && <LinkCards />} -->
+    <!-- link cards -->
+    <!-- testimonial -->
+    <!-- faqs -->
+    <!-- events & posts feature -->
+    <!-- social embed -->
+    <!-- cta -->
+    <!-- footer -->
   </main>
 </Layout>

@@ -1,6 +1,6 @@
 interface Props {
   endpoint: string;
-  query?: Record<string, string>;
+  query?: Record<string, string> | string;
   wrappedByKey?: string;
   wrappedByList?: boolean;
 }
@@ -23,14 +23,9 @@ export default async function fetchApi<T>({
     endpoint = endpoint.slice(1);
   }
 
-  const url = new URL(`${import.meta.env.STRAPI_URL}/api/${endpoint}`);
+  let url = `${import.meta.env.STRAPI_URL}/api/${endpoint}?${query}`;
 
-  if (query) {
-    Object.entries(query).forEach(([key, value]) => {
-      url.searchParams.append(key, value);
-    });
-  }
-  const res = await fetch(url.toString());
+  const res = await fetch(url);
   let data = await res.json();
 
   if (wrappedByKey) {

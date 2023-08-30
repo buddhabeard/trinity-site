@@ -1,3 +1,5 @@
+import type { Image } from "./Images";
+
 export interface Component {
   id: string;
   __component?: string;
@@ -24,4 +26,15 @@ export interface CallToActionComponent extends Component {
   type: "donation" | "application";
   heading: string;
   content: string;
+}
+
+export interface LinkCardComponent extends Component {
+  image: Image;
+  heading: string;
+  content: string;
+  url: string;
+}
+
+export interface LinkCardsComponent extends Component {
+  linkCard: LinkCardComponent[];
 }
