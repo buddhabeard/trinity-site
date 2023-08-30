@@ -1,29 +1,23 @@
 ---
+import Hero from "../components/Hero";
 import Layout from "../layouts/Layout.astro";
 import fetchApi from "../lib/strapi";
 import type { HomePage } from "../interfaces/Pages";
-import Hero from "../components/Hero";
-import type { HeroComponent } from "../interfaces/Components";
+import LinkCards from "../components/LinkCards.astro";
 
 const page = await fetchApi<HomePage>({
-  endpoint: "home-page",
+  endpoint: "/home-page",
   query: { populate: "*" },
 });
+
+const hasHero = (page: HomePage) => page.data.attributes?.hero;
+const hasLinkCards = (page: HomePage) => page.data.attributes?.linkCards;
 ---
 
 <Layout title="Trinity Life Ministry">
   <main>
-    {
-      page.data.attributes?.slices.map((slice: any) => {
-        switch (slice.__component) {
-          case "slices.hero":
-            const comp: HeroComponent = slice;
-            return <Hero title={comp.title} content={comp.content} />;
-
-          default:
-            return null;
-        }
-      })
-    }
+    {hasHero(page) && <Hero {...page.data.attributes.hero} />}
+    <LinkCards />
+    <!-- {hasLinkCards(page) && <LinkCards />} -->
   </main>
 </Layout>
