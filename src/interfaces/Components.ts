@@ -38,3 +38,12 @@ export interface LinkCardComponent extends Component {
 export interface LinkCardsComponent extends Component {
   linkCard: LinkCardComponent[];
 }
+
+export interface CalloutComponent extends Component {
+  image: Image;
+  title: string;
+  content: string;
+  url: string;
+  bgColor: "teal" | "dark blue" | "green" | "lime green";
+  buttonText: string;
+}

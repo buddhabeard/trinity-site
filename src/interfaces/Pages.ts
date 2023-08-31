@@ -1,5 +1,6 @@
 import type {
   CallToActionComponent,
+  CalloutComponent,
   FAQComponent,
   HeroComponent,
   LinkCardComponent,
@@ -15,6 +16,7 @@ export interface HomePage {
       };
       faqs: FAQComponent[];
       cta: CallToActionComponent;
+      callout: CalloutComponent;
       createdAt: string;
       updatedAt: string;
       publishedAt: string;

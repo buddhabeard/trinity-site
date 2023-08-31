@@ -7,12 +7,12 @@ const { image, heading, content, url } = Astro.props;
     <img
       src={image.data.attributes.url}
       alt={image.data.attributes.caption}
-      class="aspect-auto w-full rounded-t-xl bg-gray-100 object-cover border-b-2 border-green-500"
+      class="aspect-auto w-full rounded-t-xl bg-gray-100 object-cover border-b-2 border-green"
     />
     <div class="max-w-xl">
       <div class="group relative">
         <h3
-          class="mt-3 px-4 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600"
+          class="mt-3 px-4 text-lg font-semibold leading-6 text-green group-hover:text-gray-600"
         >
           <a href={url}>
             <span class="absolute inset-0"></span>
@@ -25,7 +25,7 @@ const { image, heading, content, url } = Astro.props;
       </div>
       <div class="mt-5 px-4 flex items-center gap-x-4">
         <div class="text-sm leading-6">
-          <p class="font-semibold uppercase text-xs text-green-500">
+          <p class="font-semibold uppercase text-xs text-limeGreen">
             <a href={url}>
               <span class="absolute inset-0"></span>
               Learn More &rightarrow;
