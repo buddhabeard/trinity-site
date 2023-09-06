@@ -12,9 +12,7 @@ const { title, content, image } = Astro.props;
 >
   <div class="w-full sm:w-1/2 flex justify-center items-center">
     <HeadingAndText heading={title}>
-      <div>
-        {content}
-      </div>
+      {content}
     </HeadingAndText>
   </div>
   <div class="w-full sm:w-1/2 lg:w-1/4">
