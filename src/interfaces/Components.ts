@@ -8,6 +8,7 @@ export interface Component {
 export interface HeroComponent extends Component {
   title: string;
   content: string;
+  image: Image;
 }
 
 export interface TestimonialComponent extends Component {

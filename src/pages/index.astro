@@ -1,5 +1,5 @@
 ---
-import Hero from "../components/Hero";
+import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
 import fetchApi from "../lib/strapi";
 import type { HomePage } from "../interfaces/Pages";
@@ -26,21 +26,37 @@ const hasLinkCards = (page: HomePage) =>
 const {
   hero,
   linkCards: { linkCard: linkCards },
-  faqs,
+  // faqs,
   callout,
-  cta,
+  // cta,
 } = page.data.attributes;
 
-console.log(callout, cta, faqs);
+console.log(hero);
 ---
 
 <Layout title="Trinity Life Ministry">
-  <main>
+  <main class="container">
+    <!-- hero -->
     {hasHero(page) && <Hero {...hero} />}
+
     <!-- link cards -->
-    <LinkCards linkCards={linkCards} />
+    <div
+      class="flex flex-row justify-center items-center gap-8 sm:gap-16 md:gap-24 lg:gap-32"
+    >
+      <h3 class="text-darkBlue text-2xl sm:text-4xl font-extrabold">
+        Changing Lives, New Beginnings
+      </h3>
+      <div class="w-96 text-dark text-xl font-normal leading-7">
+        As a dedicated nonprofit driven by Christian principles, we have
+        consistently centered our efforts on faith and Christ-centered values.
+      </div>
+    </div>
+
+    {hasLinkCards(page) && <LinkCards linkCards={linkCards} />}
+
     <!-- callout -->
     <Callout {...callout} />
+
     <!-- faqs -->
     <!-- events & posts feature -->
     <!-- social embed -->

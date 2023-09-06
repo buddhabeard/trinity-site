@@ -1,0 +1,23 @@
+---
+import type { HeroComponent } from "../interfaces/Components";
+import HeadingAndText from "./HeadingAndText.astro";
+
+interface Props extends Omit<HeroComponent, "id"> {}
+
+const { title, content, image } = Astro.props;
+---
+
+<div
+  class="bg-white flex flex-wrap justify-center mt-32 items-center max-h-1/2 container"
+>
+  <div class="w-full sm:w-1/2 flex justify-center items-center">
+    <HeadingAndText heading={title}>
+      <div>
+        {content}
+      </div>
+    </HeadingAndText>
+  </div>
+  <div class="w-full sm:w-1/2 lg:w-1/4">
+    <img class="min-h-96 h-full" src={image.data.attributes.url} />
+  </div>
+</div>

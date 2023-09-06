@@ -6,7 +6,7 @@ module.exports = {
       colors: ({ colors }) => ({
         ...colors,
         teal: "#13A89E",
-        darkblue: "#073E6D",
+        darkBlue: "#073E6D",
         green: "#0D9346",
         limeGreen: "#8BC540",
       }),
