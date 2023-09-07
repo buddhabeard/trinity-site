@@ -1,5 +1,6 @@
 ---
 import Callout from "../components/Callout.astro";
+import Container from "../components/Container.astro";
 import Hero from "../components/Hero.astro";
 import HorizontalHeadingAndContent from "../components/HorizontalHeadingAndText.astro";
 import Layout from "../layouts/Layout.astro";
@@ -24,21 +25,28 @@ const {
   callout,
   // cta,
 } = page.data.attributes;
-
-console.log(hero);
 ---
 
 <Layout title="Trinity Life Ministry">
-  <main class="w-full px-4 md:px-8 lg:px-16">
+  <main>
     <!-- hero -->
-    {hasHero(page) && <Hero {...hero} />}
+
+    {
+      hasHero(page) && (
+        <Container>
+          <Hero {...hero} />
+        </Container>
+      )
+    }
 
     <!-- link cards -->
-    <HorizontalHeadingAndContent heading="Changing Lives, New Beginnings">
-      As a dedicated nonprofit driven by Christian principles, we have
-      consistently centered our efforts on faith and Christ-centered values.
-    </HorizontalHeadingAndContent>
-    {hasLinkCards(page) && <LinkCards linkCards={linkCards} />}
+    <Container>
+      <HorizontalHeadingAndContent heading="Changing Lives, New Beginnings">
+        As a dedicated nonprofit driven by Christian principles, we have
+        consistently centered our efforts on faith and Christ-centered values.
+      </HorizontalHeadingAndContent>
+      {hasLinkCards(page) && <LinkCards linkCards={linkCards} />}
+    </Container>
 
     <!-- callout -->
     <Callout {...callout} />
