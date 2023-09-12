@@ -48,3 +48,7 @@ export interface CalloutComponent extends Component {
   bgColor: "teal" | "dark blue" | "green" | "lime green";
   buttonText: string;
 }
+
+export interface CarouselComponent {
+  items: HeroComponent[];
+}

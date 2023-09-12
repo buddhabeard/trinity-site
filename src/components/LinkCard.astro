@@ -4,11 +4,15 @@ const { image, heading, content, url } = Astro.props;
 
 <article class="flex flex-col items-start justify-between max-w-[384]">
   <div class="relative w-full rounded-xl shadow-lg pb-5">
-    <img
-      src={image.data.attributes.url}
-      alt={image.data.attributes.caption}
-      class="aspect-auto w-full rounded-t-xl bg-gray-100 object-cover border-b-2 border-green"
-    />
+    {
+      image?.data?.attributes?.url && (
+        <img
+          src={image.data.attributes.url}
+          alt={image.data.attributes.caption}
+          class="aspect-auto w-full rounded-t-xl bg-gray-100 object-cover border-b-2 border-green"
+        />
+      )
+    }
     <div class="max-w-xl">
       <div class="group relative">
         <h3

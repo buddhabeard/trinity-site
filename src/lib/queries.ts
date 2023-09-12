@@ -16,7 +16,7 @@ export const createQuery = (queries: string[]) =>
     .join("&");
 
 export const homepageQuery = createQuery([
-  "hero",
+  "carousel|>items|>image",
   "linkCards|>linkCard",
   "faqs",
   "callout|>image",

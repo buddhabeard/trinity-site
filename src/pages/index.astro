@@ -1,7 +1,7 @@
 ---
+import Carousel from "../components/Carousel";
 import Callout from "../components/Callout.astro";
 import Container from "../components/Container.astro";
-import Hero from "../components/Hero.astro";
 import HorizontalHeadingAndContent from "../components/HorizontalHeadingAndText.astro";
 import Layout from "../layouts/Layout.astro";
 import LinkCards from "../components/LinkCards.astro";
@@ -14,29 +14,31 @@ const page = await fetchApi<HomePage>({
   query: homepageQuery,
 });
 
-const hasHero = (page: HomePage) => page.data.attributes?.hero;
+const hasCarousel = (page: HomePage) => page.data.attributes?.carousel;
 const hasLinkCards = (page: HomePage) =>
   page.data.attributes?.linkCards.linkCard.length;
 
 const {
-  hero,
+  carousel,
   linkCards: { linkCard: linkCards },
   // faqs,
   callout,
   // cta,
 } = page.data.attributes;
+
+console.log(carousel);
 ---
 
 <Layout title="Trinity Life Ministry">
   <main>
     <!-- hero -->
-    {
-      hasHero(page) && (
+    <!-- {
+      hasCarousel(page) && (
         <Container>
-          <Hero {...hero} />
+          <Carousel client:load carousel={carousel} />
         </Container>
       )
-    }
+    } -->
 
     <!-- link cards -->
     <Container>

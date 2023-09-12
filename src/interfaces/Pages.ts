@@ -1,8 +1,8 @@
 import type {
   CallToActionComponent,
   CalloutComponent,
+  CarouselComponent,
   FAQComponent,
-  HeroComponent,
   LinkCardComponent,
 } from "./Components";
 
@@ -10,7 +10,7 @@ export interface HomePage {
   data: {
     id: number;
     attributes: {
-      hero: HeroComponent;
+      carousel: CarouselComponent;
       linkCards: {
         linkCard: LinkCardComponent[];
       };
