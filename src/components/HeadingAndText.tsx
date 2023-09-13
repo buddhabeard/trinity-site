@@ -7,11 +7,11 @@ export interface Props {
 
 const HeadingAndText = ({ heading, children }: Props) => {
   return (
-    <div className="w-96 h-72 flex-col justify-start items-start gap-5 flex">
-      <div className="self-stretch text-darkBlue text-5xl font-bold leading-10">
+    <div className="flex-col justify-start items-start mb-5 md:mb-7 gap-5 flex">
+      <div className="self-stretch text-darkBlue text-5xl font-bold leading-tight">
         {heading}
       </div>
-      <div className="self-stretch text-dark text-xl font-normal leading-7">
+      <div className="self-stretch text-dark text-xl font-normal leading-normal">
         {children}
       </div>
     </div>

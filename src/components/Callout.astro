@@ -1,14 +1,29 @@
 ---
-import type { CalloutComponent } from "../interfaces/Components";
-import { ThemeColors } from "../interfaces/Enums";
+import type { ThemeColor } from "../interfaces/Enums";
+import { getColor } from "../utils";
 
-interface Props extends CalloutComponent {}
+interface Props {
+  image: {
+    data: {
+      attributes: {
+        url: string;
+      };
+    };
+  };
+  title: string;
+  content: string;
+  bgColor: ThemeColor;
+  buttonText: string;
+  url: string;
+}
 
 const { image, title, content, bgColor, buttonText, url } = Astro.props;
+
+const bgColorClass = getColor(bgColor);
 ---
 
 <section
-  class=`overflow-hidden bg-[url(https://images.unsplash.com/photo-1562157873-818bc0726f68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80)] bg-cover bg-top bg-no-repeat ${ThemeColors[bgColor]}/50`
+  class=`overflow-hidden bg-[url(${image.data.attributes.url})] bg-cover bg-center bg-no-repeat ${bgColorClass}`
 >
   <div class="p-8 md:p-12 lg:px-16 lg:py-24">
     <div class="text-center ltr:sm:text-left">
