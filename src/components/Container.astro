@@ -1,6 +1,11 @@
 ---
+interface Props {
+  classes?: string;
+}
+
+const { classes } = Astro.props;
 ---
 
-<div class="w-full px-4 md:px-8 lg:px-16">
+<div class=`w-full px-4 md:px-8 lg:px-16 ${classes}`>
   <slot />
 </div>

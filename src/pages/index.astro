@@ -8,6 +8,10 @@ import LinkCards from "../components/LinkCards.astro";
 import fetchApi from "../lib/strapi";
 import type { HomePage } from "../interfaces/Pages";
 import { homepageQuery } from "../lib/queries";
+import FAQs from "../components/FAQs.astro";
+import SocialShare from "../components/SocialShare.astro";
+import BlogCards from "../components/BlogCards.astro";
+import CallToAction from "../components/CallToAction.astro";
 
 const page = await fetchApi<HomePage>({
   endpoint: "home-page",
@@ -21,7 +25,7 @@ const hasLinkCards = (page: HomePage) =>
 const {
   carousel,
   linkCards: { linkCard: linkCards },
-  // faqs,
+  faqs,
   callout,
   // cta,
 } = page.data.attributes;
@@ -30,17 +34,23 @@ const {
 <Layout title="Trinity Life Ministry">
   <main>
     <!-- hero -->
-    {hasCarousel(page) && <Carousel client:only carousel={carousel} />}
+    {
+      hasCarousel(page) && (
+        <Container classes="mb-4 md:mb-8 lg:mb-16">
+          <Carousel client:only carousel={carousel} />
+        </Container>
+      )
+    }
 
     <!-- link cards -->
-    <Container>
+    <Container classes="mb-0">
       <HorizontalHeadingAndContent heading="Changing Lives, New Beginnings">
         As a dedicated nonprofit driven by Christian principles, we have
         consistently centered our efforts on faith and Christ-centered values.
       </HorizontalHeadingAndContent>
     </Container>
 
-    <Container>
+    <Container classes="mb-8 md:mb-8 lg:mb-16">
       {hasLinkCards(page) && <LinkCards linkCards={linkCards} />}
     </Container>
 
@@ -48,9 +58,18 @@ const {
     <Callout {...callout} />
 
     <!-- faqs -->
+    <!-- @ts-ignore -->
+    <FAQs faqs={faqs} />
+
     <!-- events & posts feature -->
+    <BlogCards />
+
     <!-- social embed -->
+    <SocialShare />
+
     <!-- cta -->
+    <CallToAction />
+
     <!-- footer -->
   </main>
 </Layout>
