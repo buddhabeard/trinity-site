@@ -32,13 +32,7 @@ console.log(carousel);
 <Layout title="Trinity Life Ministry">
   <main>
     <!-- hero -->
-    <!-- {
-      hasCarousel(page) && (
-        <Container>
-          <Carousel client:load carousel={carousel} />
-        </Container>
-      )
-    } -->
+    {hasCarousel(page) && <Carousel client:only carousel={carousel} />}
 
     <!-- link cards -->
     <Container>

@@ -9,6 +9,7 @@ export interface HeroComponent extends Component {
   title: string;
   content: string;
   image: Image;
+  url: string;
 }
 
 export interface TestimonialComponent extends Component {
