@@ -3,6 +3,8 @@ import fetchApi from "../../lib/strapi";
 import type Posts from "../../interfaces/Posts";
 import type { Post } from "../../interfaces/Posts";
 import { postsQuery } from "../../lib/queries";
+import Layout from "../../layouts/Layout.astro";
+import BlogHero from "../../components/BlogHero.astro";
 
 export async function getStaticPaths() {
   const posts = await fetchApi<Posts>({
@@ -30,10 +32,18 @@ export async function getStaticPaths() {
 const { title, image, content } = Astro.props;
 ---
 
-<article>
-  <h1>{title}</h1>
+<Layout title={title}>
+  <BlogHero />
+  <article class="px-16 md:px-0 md:w-2/3 lg:w-1/2 mx-auto mt-16">
+    <div class="w-full flex justify-center mb-16">
+      <img src={image} alt="image" />
+    </div>
+    <h1
+      class="text-center text-gray-900 text-4xl font-extrabold font-['Inter'] leading-10 mb-8"
+    >
+      {title}
+    </h1>
 
-  <img src={image} alt="image" />
-
-  <div set:html={content} />
-</article>
+    <div set:html={content} />
+  </article>
+</Layout>
