@@ -22,3 +22,16 @@ export const homepageQuery = createQuery([
   "callout|>image",
   "cta",
 ]);
+
+export const postsQuery = createQuery([
+  "title",
+  "likes",
+  "slug",
+  "image",
+  "event",
+  "categories",
+  "content",
+  "createdAt",
+  "updatedAt",
+  "publishedAt",
+]);

@@ -1,60 +1,20 @@
 ---
-import Callout from "../components/Callout.astro";
-import Container from "../components/Container.astro";
-import Hero from "../components/Hero.tsx";
-import HorizontalHeadingAndContent from "../components/HorizontalHeadingAndText.astro";
 import Layout from "../layouts/Layout.astro";
-import LinkCards from "../components/LinkCards.astro";
-import fetchApi from "../lib/strapi";
-import type { HomePage } from "../interfaces/Pages";
-import { homepageQuery } from "../lib/queries";
 
-const page = await fetchApi<HomePage>({
-  endpoint: "home-page",
-  query: homepageQuery,
-});
+// const page = await fetchApi<HomePage>({
+//   endpoint: "home-page",
+//   query: homepageQuery,
+// });
 
-const hasHero = (page: HomePage) => page.data.attributes?.hero;
-const hasLinkCards = (page: HomePage) =>
-  page.data.attributes?.linkCards.linkCard.length;
-
-const {
-  hero,
-  linkCards: { linkCard: linkCards },
-  // faqs,
-  callout,
-  // cta,
-} = page.data.attributes;
+// const {
+//   hero,
+//   linkCards: { linkCard: linkCards },
+//   // faqs,
+//   callout,
+//   // cta,
+// } = page.data.attributes;
 ---
 
 <Layout title="Trinity Life Ministry">
-  <main>
-    <!-- hero -->
-    {
-      hasHero(page) && (
-        <Container>
-          <Hero {...hero} />
-        </Container>
-      )
-    }
-
-    <!-- link cards -->
-    <Container>
-      <HorizontalHeadingAndContent heading="Changing Lives, New Beginnings">
-        As a dedicated nonprofit driven by Christian principles, we have
-        consistently centered our efforts on faith and Christ-centered values.
-      </HorizontalHeadingAndContent>
-      {hasLinkCards(page) && <LinkCards linkCards={linkCards} />}
-    </Container>
-
-    <!-- callout -->
-    <Callout {...callout} />
-
-    <!-- faqs -->
-    <!-- events & posts feature -->
-    <!-- social embed -->
-    <!-- cta -->
-    <!-- footer -->
-  </main>
+  <main>contact us!!</main>
 </Layout>
-../components/Hero.tsx
