@@ -8,7 +8,7 @@ export interface Component {
 export interface HeroComponent extends Component {
   title: string;
   content: string;
-  image: Image;
+  image?: Image;
   url: string;
 }
 

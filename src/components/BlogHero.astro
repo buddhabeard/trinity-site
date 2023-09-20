@@ -1,4 +1,10 @@
 ---
+interface Props {
+  heading: string;
+  content: string;
+}
+
+const { heading, content } = Astro.props;
 ---
 
 <div class="w-full min-w-full h-[424px] relative bg-teal px-8">
@@ -6,14 +12,12 @@
     <div
       class="self-stretch text-white text-3xl md:text-4xl lg:text-5xl font-extrabold font-poppins leading-10"
     >
-      Trinity Life Ministry Blog
+      {heading}
     </div>
     <div
       class="text-white text-xl font-normal font-poppins leading-7 w-full md:w-1/2"
     >
-      Trinity is deeply committed to the men we serve, their families and the
-      community. We hold routine outings and fundraisers along with charitable
-      giving events.
+      {content}
     </div>
   </div>
 </div>

@@ -1,60 +1,125 @@
 ---
-import Callout from "../components/Callout.astro";
+import BlogHero from "../components/BlogHero.astro";
 import Container from "../components/Container.astro";
-import Hero from "../components/Hero.tsx";
-import HorizontalHeadingAndContent from "../components/HorizontalHeadingAndText.astro";
 import Layout from "../layouts/Layout.astro";
-import LinkCards from "../components/LinkCards.astro";
-import fetchApi from "../lib/strapi";
-import type { HomePage } from "../interfaces/Pages";
-import { homepageQuery } from "../lib/queries";
+// import fetchApi from "../lib/strapi";
+// import type { HomePage } from "../interfaces/Pages";
+// import { homepageQuery } from "../lib/queries";
 
-const page = await fetchApi<HomePage>({
-  endpoint: "home-page",
-  query: homepageQuery,
-});
+// const page = await fetchApi<HomePage>({
+//   endpoint: "who-we-are",
+//   query: homepageQuery,
+// });
 
-const hasHero = (page: HomePage) => page.data.attributes?.hero;
-const hasLinkCards = (page: HomePage) =>
-  page.data.attributes?.linkCards.linkCard.length;
-
-const {
-  hero,
-  linkCards: { linkCard: linkCards },
-  // faqs,
-  callout,
-  // cta,
-} = page.data.attributes;
+const props = {
+  content:
+    "Who We Are Trinity is deeply committed to the men we serve, their families and the community. We hold routine outings and fundraisers along with charitable giving events.",
+};
 ---
 
-<Layout title="Trinity Life Ministry">
+<Layout title="Who We Are">
   <main>
     <!-- hero -->
-    {
-      hasHero(page) && (
-        <Container>
-          <Hero {...hero} />
-        </Container>
-      )
-    }
+    <BlogHero content={props.content} heading="Who We Are" />
 
-    <!-- link cards -->
     <Container>
-      <HorizontalHeadingAndContent heading="Changing Lives, New Beginnings">
-        As a dedicated nonprofit driven by Christian principles, we have
-        consistently centered our efforts on faith and Christ-centered values.
-      </HorizontalHeadingAndContent>
-      {hasLinkCards(page) && <LinkCards linkCards={linkCards} />}
+      <div
+        class="w-full lg:w-1/2 flex-col justify-start items-start gap-10 inline-flex"
+      >
+        <div
+          class="self-stretch h-64 flex-col justify-start items-start gap-3 flex"
+        >
+          <div
+            class="self-stretch text-gray-900 text-3xl font-extrabold font-['Inter'] leading-9"
+          >
+            What Trinity Life Ministry Provides
+          </div>
+          <div
+            class="self-stretch text-gray-500 text-lg font-normal font-['Inter'] leading-7"
+          >
+            Trinity Life Ministry is a redemptive community that brings hope by
+            transforming men's lives and reconciling their families through the
+            power of Jesus Christ.<br /><br />Trinity Life Ministry has been
+            ministering to those trapped in addiction since 1985 (38 years). We
+            are a Christ-centered, faith-based, non-profit ministry. Trinity is
+            a 12-month residential life transforming ministry for men 18 years
+            and older.
+          </div>
+        </div>
+        <div
+          class="self-stretch h-96 flex-col justify-start items-start gap-10 flex"
+        >
+          <div class="self-stretch justify-start items-start gap-4 inline-flex">
+            <div
+              class="w-12 h-12 bg-teal-500 rounded-md justify-center items-center flex"
+            >
+              <div class="w-6 h-6 relative"></div>
+            </div>
+            <div
+              class="grow shrink basis-0 flex-col justify-start items-start gap-2 inline-flex"
+            >
+              <div
+                class="self-stretch text-gray-900 text-lg font-medium font-['Inter'] leading-normal"
+              >
+                Hope, Understanding, Compassion
+              </div>
+              <div
+                class="self-stretch text-gray-500 text-base font-normal font-['Inter'] leading-normal"
+              >
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Maiores impedit perferendis suscipit eaque, iste dolor
+                cupiditate blanditiis ratione.
+              </div>
+            </div>
+          </div>
+          <div class="self-stretch justify-start items-start gap-4 inline-flex">
+            <div
+              class="w-12 h-12 bg-teal-500 rounded-md justify-center items-center flex"
+            >
+              <div class="w-6 h-6 relative"></div>
+            </div>
+            <div
+              class="grow shrink basis-0 flex-col justify-start items-start gap-2 inline-flex"
+            >
+              <div
+                class="self-stretch text-gray-900 text-lg font-medium font-['Inter'] leading-normal"
+              >
+                Housing, Meals, Community
+              </div>
+              <div
+                class="self-stretch text-gray-500 text-base font-normal font-['Inter'] leading-normal"
+              >
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Maiores impedit perferendis suscipit eaque, iste dolor
+                cupiditate blanditiis ratione.
+              </div>
+            </div>
+          </div>
+          <div class="self-stretch justify-start items-start gap-4 inline-flex">
+            <div
+              class="w-12 h-12 bg-teal-500 rounded-md justify-center items-center flex"
+            >
+              <div class="w-6 h-6 relative"></div>
+            </div>
+            <div
+              class="grow shrink basis-0 flex-col justify-start items-start gap-2 inline-flex"
+            >
+              <div
+                class="self-stretch text-gray-900 text-lg font-medium font-['Inter'] leading-normal"
+              >
+                A New Beginning
+              </div>
+              <div
+                class="self-stretch text-gray-500 text-base font-normal font-['Inter'] leading-normal"
+              >
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Maiores impedit perferendis suscipit eaque, iste dolor
+                cupiditate blanditiis ratione.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </Container>
-
-    <!-- callout -->
-    <Callout {...callout} />
-
-    <!-- faqs -->
-    <!-- events & posts feature -->
-    <!-- social embed -->
-    <!-- cta -->
-    <!-- footer -->
   </main>
-</Layout>
-../components/Hero.tsx
+</Layout>../components/Hero.tsx
