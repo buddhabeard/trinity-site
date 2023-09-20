@@ -34,7 +34,10 @@ const { title, image, content } = Astro.props;
 ---
 
 <Layout title={title}>
-  <BlogHero />
+  <BlogHero
+    heading="Trinity Life Ministry Blog"
+    content="Trinity is deeply committed to the men we serve, their families and the community. We hold routine outings and fundraisers along with charitable giving events."
+  />
   <Container classes="mt-16 md:mt-24 lg:mt-32">
     <div class="w-full flex justify-center mb-16">
       <img src={image} alt="image" />
