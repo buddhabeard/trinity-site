@@ -5,6 +5,7 @@ import type { Post } from "../../interfaces/Posts";
 import { postsQuery } from "../../lib/queries";
 import Layout from "../../layouts/Layout.astro";
 import BlogHero from "../../components/BlogHero.astro";
+import Container from "../../components/Container.astro";
 
 export async function getStaticPaths() {
   const posts = await fetchApi<Posts>({
@@ -34,16 +35,16 @@ const { title, image, content } = Astro.props;
 
 <Layout title={title}>
   <BlogHero />
-  <article class="px-16 md:px-0 md:w-2/3 lg:w-1/2 mx-auto mt-16">
+  <Container classes="mt-16 md:mt-24 lg:mt-32">
     <div class="w-full flex justify-center mb-16">
       <img src={image} alt="image" />
     </div>
-    <h1
-      class="text-center text-gray-900 text-4xl font-extrabold font-['Inter'] leading-10 mb-8"
+    <h2
+      class="text-center text-gray-900 text-2xl md:3xl lg:text-4xl font-extrabold font-poppins leading-10 mb-8"
     >
       {title}
-    </h1>
+    </h2>
 
-    <div set:html={content} />
-  </article>
+    <div set:html={content} class="font-poppins px-4" />
+  </Container>
 </Layout>

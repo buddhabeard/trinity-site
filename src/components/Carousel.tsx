@@ -1,24 +1,24 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { A11y, Autoplay, Navigation, EffectFade } from "swiper/modules";
+import { A11y, Autoplay, Pagination, EffectFlip } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/navigation";
+import "swiper/css/effect-flip";
+import "swiper/css/pagination";
 
 import Hero from "./Hero";
 import type { CarouselComponent } from "../interfaces/Components";
 
 const Carousel = ({ carousel }: { carousel: CarouselComponent }) => (
   <Swiper
-    modules={[Autoplay, A11y, EffectFade, Navigation]}
-    effect="fade"
+    modules={[Autoplay, A11y, EffectFlip, Pagination]}
+    effect="flip"
     grabCursor
-    speed={1200}
+    speed={1000}
     loop
-    navigation
+    pagination
     spaceBetween={50}
     slidesPerView={1}
     autoplay={{
-      delay: 2500,
+      delay: 2800,
       disableOnInteraction: false,
     }}
   >
