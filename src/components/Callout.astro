@@ -27,7 +27,7 @@ const bgColorClass = getColor(bgColor);
 // limeGreen: "#8BC540",
 ---
 
-<div class="bg-white py-16 sm:py-24">
+<div class="py-16 sm:py-24">
   <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
     <div
       class="relative overflow-hidden px-6 py-20 shadow-xl sm:rounded-3xl sm:px-10 sm:py-24 md:px-12 lg:px-20"
@@ -67,10 +67,16 @@ const bgColorClass = getColor(bgColor);
               {title}
             </p>
           </blockquote>
-          <figcaption class="mt-6 text-base text-white">
+          <figcaption class="my-8 text-base text-white">
             <div class="font-semibold">{content}</div>
           </figcaption>
         </figure>
+        <a
+          href="/testimonials"
+          class="bg-white flex font-bold justify-center items-center text-dark px-4 h-[50px] rounded-xl w-full md:w-1/2 lg:w-1/3"
+        >
+          See All Testimonials</a
+        >
       </div>
     </div>
   </div>
