@@ -34,17 +34,19 @@ const { title, image, content } = Astro.props;
 ---
 
 <Layout title={title}>
-  <BlogHero heading="Testimonials" content="" />
-  <Container classes="mt-16 md:mt-24 lg:mt-32">
-    <div class="w-full flex justify-center mb-16">
-      <img src={image} alt="image" />
-    </div>
-    <h2
-      class="text-center text-gray-900 text-2xl md:3xl lg:text-4xl font-extrabold font-poppins leading-10 mb-8"
-    >
-      {title}
-    </h2>
+  <main>
+    <BlogHero heading="Testimonials" content="" />
+    <Container classes="mt-16 md:mt-24 lg:mt-32">
+      <div class="w-full flex justify-center mb-16">
+        <img src={image} alt="image" />
+      </div>
+      <h2
+        class="text-center text-gray-900 text-2xl md:3xl lg:text-4xl font-extrabold font-inter leading-10 mb-8"
+      >
+        {title}
+      </h2>
 
-    <div set:html={content} class="font-poppins px-4" />
-  </Container>
+      <div set:html={content} class="font-inter px-4" />
+    </Container>
+  </main>
 </Layout>
