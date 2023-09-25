@@ -12,13 +12,13 @@ const Carousel = ({ carousel }: { carousel: CarouselComponent }) => (
     modules={[Autoplay, A11y, EffectFlip, Pagination]}
     effect="flip"
     grabCursor
-    speed={1000}
+    speed={800}
     loop
     pagination
     spaceBetween={50}
     slidesPerView={1}
     autoplay={{
-      delay: 2800,
+      delay: 3600,
       disableOnInteraction: false,
     }}
   >
