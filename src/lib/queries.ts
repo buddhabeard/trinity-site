@@ -35,3 +35,8 @@ export const postsQuery = createQuery([
   "updatedAt",
   "publishedAt",
 ]);
+
+export type Queries = typeof homepageQuery | typeof postsQuery;
+
+export const queryWithLimit = (query: Queries, limit: number): string =>
+  `${query}&pagination[pageSize]=${limit}`;

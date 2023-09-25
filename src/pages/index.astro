@@ -7,7 +7,7 @@ import Layout from "../layouts/Layout.astro";
 import LinkCards from "../components/LinkCards.astro";
 import fetchApi from "../lib/strapi";
 import type { HomePage } from "../interfaces/Pages";
-import { homepageQuery, postsQuery } from "../lib/queries";
+import { homepageQuery, postsQuery, queryWithLimit } from "../lib/queries";
 import FAQs from "../components/FAQs.astro";
 import SocialShare from "../components/SocialShare.astro";
 import BlogCards from "../components/BlogCards.astro";
@@ -21,7 +21,7 @@ const page = await fetchApi<HomePage>({
 
 const posts = await fetchApi<Posts>({
   endpoint: "posts",
-  query: postsQuery,
+  query: queryWithLimit(postsQuery, 3),
 });
 
 const hasCarousel = (page: HomePage) => page.data.attributes?.carousel;
