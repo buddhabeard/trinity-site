@@ -5,13 +5,14 @@ export interface Props extends Omit<HeroComponent, "id"> {}
 
 const Hero = ({ title, content, image }: Props) => {
   return (
-    <div className="mx-auto h-[464px] px-4 bg-white flex flex-wrap justify-center mt-24 mb-8">
-      <div className="w-full h-full md:w-1/2 md:mr-auto flex max-w-[540px] lg:mt-24 justify-center">
+    <div className="mx-auto md:h-[464px] p-4 bg-white flex flex-wrap justify-center items-center mt-24 mb-8 overflow-hidden">
+      <div className="w-full h-1/2 md:h-auto md:w-1/2 md:mr-auto flex lg:max-w-[540px] lg:my-auto lg:pl-8 justify-start">
         <HeadingAndText heading={title}>{content}</HeadingAndText>
       </div>
       {image && (
-        <div className="flex h-full items-center justify-center w-2/3 sm:w-2/3 md:w-1/3 lg:w-1/2 max-w-[587px]">
+        <div className="flex items-center justify-center md:p-8 md:w-1/2 max-w-[587px]">
           <img
+            className="h-full w-full object-fit"
             src={image.data.attributes.url}
             alt={image.data.attributes.alternativeText || "image"}
           />
