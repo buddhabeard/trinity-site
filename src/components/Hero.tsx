@@ -1,14 +1,18 @@
 import type { HeroComponent } from "../interfaces/Components";
 import HeadingAndText from "./HeadingAndText";
 
-export interface Props extends Omit<HeroComponent, "id"> {}
+export interface Props extends Omit<HeroComponent, "id"> {
+  withHeading?: boolean;
+}
 
-const Hero = ({ title, content, image }: Props) => {
+const Hero = ({ title, content, image, withHeading = true }: Props) => {
   return (
     <div className="mx-auto md:h-[464px] p-4 bg-white flex flex-wrap justify-center items-center mt-24 mb-8 overflow-hidden">
-      <div className="w-full h-1/2 md:h-auto md:w-1/2 md:mr-auto flex lg:max-w-[540px] lg:my-auto lg:pl-8 justify-start">
-        <HeadingAndText heading={title}>{content}</HeadingAndText>
-      </div>
+      {withHeading && (
+        <div className="w-full h-1/2 md:h-auto md:w-1/2 md:mr-auto flex lg:max-w-[540px] lg:my-auto lg:pl-8 justify-start">
+          <HeadingAndText heading={title}>{content}</HeadingAndText>
+        </div>
+      )}
       {image && (
         <div className="flex items-center justify-center md:p-8 md:w-1/2 max-w-[587px]">
           <img

@@ -53,3 +53,13 @@ export interface CalloutComponent extends Component {
 export interface CarouselComponent {
   items: HeroComponent[];
 }
+
+export type IconListComponent = {
+  iconList: {
+    heading: string;
+    content: string;
+    icon: Image;
+  }[];
+  heading: string;
+  content: string;
+};

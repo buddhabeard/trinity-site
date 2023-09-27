@@ -7,7 +7,13 @@ import "swiper/css/pagination";
 import Hero from "./Hero";
 import type { CarouselComponent } from "../interfaces/Components";
 
-const Carousel = ({ carousel }: { carousel: CarouselComponent }) => (
+const Carousel = ({
+  carousel,
+  withHeading = true,
+}: {
+  carousel: CarouselComponent;
+  withHeading?: boolean;
+}) => (
   <Swiper
     modules={[Autoplay, A11y, EffectFlip, Pagination]}
     effect="flip"
@@ -24,7 +30,7 @@ const Carousel = ({ carousel }: { carousel: CarouselComponent }) => (
   >
     {carousel.items.map((item, i) => (
       <SwiperSlide key={i}>
-        <Hero key={item.id} {...item} />
+        <Hero key={item.id} {...item} withHeading={withHeading} />
       </SwiperSlide>
     ))}
   </Swiper>
