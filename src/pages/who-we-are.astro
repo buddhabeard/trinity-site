@@ -1,13 +1,15 @@
 ---
+import CallToAction from "../components/CallToAction.astro";
+import Callout from "../components/Callout.astro";
 import Carousel from "../components/Carousel";
 import Container from "../components/Container.astro";
-import PageHero from "../components/PageHero.astro";
+import FAQs from "../components/FAQs.astro";
 import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import SocialShare from "../components/SocialShare.astro";
 import fetchApi from "../lib/strapi";
 import type { WhoWeArePage } from "../interfaces/Pages";
 import { whoWeAreQuery } from "../lib/queries";
-import Callout from "../components/Callout.astro";
-import FAQs from "../components/FAQs.astro";
 
 const page = await fetchApi<WhoWeArePage>({
   endpoint: "who-we-are",
@@ -83,5 +85,13 @@ const page = await fetchApi<WhoWeArePage>({
         </Container>
       )
     }
+
+    <!-- social embed -->
+    <Container isSection classes="!px-0 md:!px-8 lg:!px-16">
+      <SocialShare />
+    </Container>
+
+    <!-- cta -->
+    <CallToAction />
   </main>
 </Layout>
