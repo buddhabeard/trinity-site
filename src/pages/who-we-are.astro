@@ -6,20 +6,20 @@ import Layout from "../layouts/Layout.astro";
 import fetchApi from "../lib/strapi";
 import type { WhoWeArePage } from "../interfaces/Pages";
 import { whoWeAreQuery } from "../lib/queries";
+import Callout from "../components/Callout.astro";
+import FAQs from "../components/FAQs.astro";
 
 const page = await fetchApi<WhoWeArePage>({
   endpoint: "who-we-are",
   query: whoWeAreQuery,
 });
-
-const { hero, whatWeProvide, carousel } = page.data.attributes;
 ---
 
 <Layout title="Who We Are">
   <main>
     <PageHero {...page.data.attributes.hero} />
 
-    <Container isSection>
+    <Container isSection classes="mt-12">
       <div class="overflow-hidden">
         <div class="mx-auto px-6 lg:px-8">
           <div
@@ -28,16 +28,16 @@ const { hero, whatWeProvide, carousel } = page.data.attributes;
             <div class="lg:pr-8 lg:pt-4">
               <div class="lg:max-w-lg">
                 <h2 class="text-2xl lg:text-3xl font-bold leading-7 text-dark">
-                  {whatWeProvide.heading}
+                  {page.data.attributes.whatWeProvide.heading}
                 </h2>
                 <p class="mt-6 text-base lg:text-lg leading-8 text-gray-600">
-                  {whatWeProvide.content}
+                  {page.data.attributes.whatWeProvide.content}
                 </p>
                 <dl
                   class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none"
                 >
                   {
-                    whatWeProvide.iconList.map((item) => (
+                    page.data.attributes.whatWeProvide.iconList.map((item) => (
                       <div class="flex flex-wrap">
                         <img
                           class="h-8 w-8 lg:h-12 lg:w-12"
@@ -57,13 +57,31 @@ const { hero, whatWeProvide, carousel } = page.data.attributes;
 
             <!-- carousel goes here -->
             <div class="w-full">
-              <Carousel client:only carousel={carousel} withHeading={false} />
+              <Carousel
+                client:only
+                carousel={page.data.attributes.carousel}
+                withHeading={false}
+              />
             </div>
           </div>
         </div>
       </div>
-
-      <!-- testimonial -->
     </Container>
+
+    <!-- testimonial -->
+
+    <!-- callout -->
+    <Container isSection>
+      <Callout {...page.data.attributes.callout} />
+    </Container>
+
+    {
+      page.data.attributes?.faqs && (
+        <Container>
+          {/** @ts-ignore **/}
+          <FAQs faqs={page.data.attributes.faqs} />
+        </Container>
+      )
+    }
   </main>
 </Layout>
