@@ -7,6 +7,7 @@ import type {
   LinkCardComponent,
   TestimonialComponent,
 } from "./Components";
+import type { Image } from "./Images";
 
 export interface HomePage {
   data: {
@@ -33,6 +34,11 @@ export interface WhoWeArePage {
       hero: HeroComponent;
       carousel: CarouselComponent;
       testimonial: TestimonialComponent;
+      whatWeProvide: {
+        heading: string;
+        content: string;
+        iconList: Array<{ icon: Image; heading: string; content: string }>;
+      };
       callout: CalloutComponent;
       faqs: FAQComponent[];
       cta: CallToActionComponent;
