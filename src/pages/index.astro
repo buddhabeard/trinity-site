@@ -42,14 +42,14 @@ const {
     <!-- hero -->
     {
       hasCarousel(page) && (
-        <Container classes="mb-16">
+        <Container isSection>
           <Carousel client:only carousel={carousel} />
         </Container>
       )
     }
 
     <!-- link cards -->
-    <Container classes="mb-0">
+    <Container isSection>
       <HorizontalHeadingAndContent heading="Changing Lives, New Beginnings">
         As a dedicated nonprofit driven by Christian principles, we have
         consistently centered our efforts on faith and Christ-centered values.
@@ -57,28 +57,28 @@ const {
     </Container>
 
     <!-- last updated: event, 2 blog articles -->
-    <Container classes="mb-8 md:mb-8 lg:mb-16">
+    <Container isSection>
       {hasLinkCards(page) && <LinkCards linkCards={linkCards} />}
     </Container>
 
     <!-- callout -->
-    <Container>
+    <Container isSection>
       <Callout {...callout} />
     </Container>
 
     <!-- faqs -->
-    <Container>
+    <Container isSection>
       <!-- @ts-ignore -->
       <FAQs faqs={faqs} />
     </Container>
 
     <!-- events & posts feature -->
-    <Container>
+    <Container isSection>
       <BlogCards posts={posts} />
     </Container>
 
     <!-- social embed -->
-    <Container>
+    <Container isSection classes="!px-0 md:!px-8 lg:!px-16">
       <SocialShare />
     </Container>
 
