@@ -3,7 +3,9 @@ import type {
   CalloutComponent,
   CarouselComponent,
   FAQComponent,
+  HeroComponent,
   LinkCardComponent,
+  TestimonialComponent,
 } from "./Components";
 
 export interface HomePage {
@@ -17,6 +19,23 @@ export interface HomePage {
       faqs: FAQComponent[];
       cta: CallToActionComponent;
       callout: CalloutComponent;
+      createdAt: string;
+      updatedAt: string;
+      publishedAt: string;
+    };
+  };
+}
+
+export interface WhoWeArePage {
+  data: {
+    id: number;
+    attributes: {
+      hero: HeroComponent;
+      carousel: CarouselComponent;
+      testimonial: TestimonialComponent;
+      callout: CalloutComponent;
+      faqs: FAQComponent[];
+      cta: CallToActionComponent;
       createdAt: string;
       updatedAt: string;
       publishedAt: string;

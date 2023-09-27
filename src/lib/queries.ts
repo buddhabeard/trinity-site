@@ -36,6 +36,16 @@ export const postsQuery = createQuery([
   "publishedAt",
 ]);
 
+export const whoWeAreQuery = createQuery([
+  "hero|>image",
+  "whatWeProvide|>iconList|>icon",
+  "carousel|>items|>image",
+  "testimonial|>image",
+  "callout|>image",
+  "faqs",
+  "cta",
+]);
+
 export type Queries = typeof homepageQuery | typeof postsQuery;
 
 export const queryWithLimit = (query: Queries, limit: number): string =>
