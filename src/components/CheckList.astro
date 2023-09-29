@@ -1,0 +1,30 @@
+---
+import CheckIcon from "@heroicons/react/24/outline/CheckIcon";
+import type { AcceptingDonationsComponent } from "../interfaces/Components";
+
+interface Props {
+  items: AcceptingDonationsComponent["itemsAvailable"];
+}
+
+const { items } = Astro.props;
+---
+
+<dl
+  class="flex flex-wrap mt-10 max-w-xl text-base leading-7 text-gray-600 lg:max-w-none"
+>
+  {
+    items.map((item) => (
+      <div class="relative pl-9 w-full sm:w-1/2">
+        <dt class="inline">
+          <CheckIcon
+            className="absolute left-1 top-1"
+            stroke="#10b981"
+            height="24"
+            width="24"
+          />
+        </dt>
+        <dd>{item}</dd>
+      </div>
+    ))
+  }
+</dl>

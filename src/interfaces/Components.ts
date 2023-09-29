@@ -63,3 +63,14 @@ export type IconListComponent = {
   heading: string;
   content: string;
 };
+
+export interface AcceptingDonationsComponent {
+  heading: string;
+  content: string;
+  buttonText: string;
+  buttonColor: "teal" | "dark blue" | "green" | "lime green";
+  itemsAvailable: Array<{
+    icon: Image;
+    content: string;
+  }>;
+}

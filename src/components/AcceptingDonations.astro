@@ -1,0 +1,18 @@
+---
+import type { AcceptingDonationsComponent } from "../interfaces/Components";
+
+interface Props extends AcceptingDonationsComponent {}
+
+const props = Astro.props;
+---
+
+<div class="lg:max-w-lg">
+  <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+    A better workflow
+  </h2>
+  <p class="mt-6 text-lg leading-8 text-gray-600">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit
+    perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
+  </p>
+  <CheckList items={["one", "two", "three"]} />
+</div>
