@@ -1,5 +1,6 @@
 ---
 import type { AcceptingDonationsComponent } from "../interfaces/Components";
+import CheckList from "./CheckList.astro";
 
 interface Props extends AcceptingDonationsComponent {}
 
@@ -14,5 +15,5 @@ const props = Astro.props;
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit
     perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.
   </p>
-  <CheckList items={["one", "two", "three"]} />
+  <CheckList items={props.itemsAvailable} />
 </div>
