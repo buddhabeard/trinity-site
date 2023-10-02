@@ -13,6 +13,8 @@ import { whoWeAreQuery } from "../lib/queries";
 import TwoColumns from "../components/TwoColumns.astro";
 import dots from "../svgs/dots.svg";
 
+import "../styles/testimonial-section.css";
+
 const page = await fetchApi<WhoWeArePage>({
   endpoint: "who-we-are",
   query: whoWeAreQuery,
@@ -79,9 +81,9 @@ const page = await fetchApi<WhoWeArePage>({
     <!-- testimonial -->
     {
       page.data.attributes.testimonial && (
-        <TwoColumns>
+        <TwoColumns classes="testimonial-section">
           <YouTube id={page.data.attributes.testimonial.video} />
-          <div>{page.data.attributes.testimonial.content}</div>
+          <div set:html={page.data.attributes.testimonial.content} />
         </TwoColumns>
       )
     }
