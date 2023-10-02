@@ -13,10 +13,8 @@ export interface HeroComponent extends Component {
 }
 
 export interface TestimonialComponent extends Component {
-  quote: string;
-  name: string;
-  profession: string;
-  video: string; // json format, needs JSON.parse
+  video: any;
+  content?: any;
 }
 
 export interface FAQComponent extends Component {

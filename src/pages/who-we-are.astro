@@ -1,7 +1,6 @@
 ---
 import { YouTube } from "astro-embed";
 import CallToAction from "../components/CallToAction.astro";
-import Callout from "../components/Callout.astro";
 import Carousel from "../components/Carousel";
 import Container from "../components/Container.astro";
 import FAQs from "../components/FAQs.astro";
@@ -12,6 +11,7 @@ import fetchApi from "../lib/strapi";
 import type { WhoWeArePage } from "../interfaces/Pages";
 import { whoWeAreQuery } from "../lib/queries";
 import TwoColumns from "../components/TwoColumns.astro";
+import dots from "../svgs/dots.svg";
 
 const page = await fetchApi<WhoWeArePage>({
   endpoint: "who-we-are",
@@ -72,33 +72,19 @@ const page = await fetchApi<WhoWeArePage>({
       </div>
     </Container>
 
+    <div class="hidden md:visible h-[404px] w-[404px]">
+      <img src={dots} alt="dots" />
+    </div>
+
     <!-- testimonial -->
     {
       page.data.attributes.testimonial && (
         <TwoColumns>
           <YouTube id={page.data.attributes.testimonial.video} />
-          <div class="lg:max-w-lg">
-            <h2 class="text-2xl lg:text-3xl font-bold leading-7 text-dark">
-              Testimonials from recovered men
-            </h2>
-            <blockquote class="p-4 my-4 border-l-4 border-gray-300 bg-white">
-              <p class="text-gray-900 text-lg font-medium font-inter leading-loose italic">
-                {page.data.attributes.testimonial.quote}
-              </p>
-            </blockquote>
-            <div class="text-gray-500">
-              {page.data.attributes.testimonial.name},{" "}
-              {page.data.attributes.testimonial.profession}
-            </div>
-          </div>
+          <div>{page.data.attributes.testimonial.content}</div>
         </TwoColumns>
       )
     }
-
-    <!-- callout -->
-    <Container isSection>
-      <Callout {...page.data.attributes.callout} />
-    </Container>
 
     {
       page.data.attributes?.faqs && (
