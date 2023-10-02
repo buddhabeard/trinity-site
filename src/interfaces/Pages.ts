@@ -1,11 +1,15 @@
 import type {
+  AcceptingDonationsComponent,
   CallToActionComponent,
   CalloutComponent,
   CarouselComponent,
+  CouponComponent,
   FAQComponent,
   HeroComponent,
   IconListComponent,
   LinkCardComponent,
+  StoreHoursComponent,
+  StoreLocationComponent,
   TestimonialComponent,
 } from "./Components";
 
@@ -41,6 +45,20 @@ export interface WhoWeArePage {
       createdAt: string;
       updatedAt: string;
       publishedAt: string;
+    };
+  };
+}
+
+export interface ThriftStorePage {
+  data: {
+    id: number;
+    attributes: {
+      hero: HeroComponent;
+      acceptinDonations: AcceptingDonationsComponent;
+      storeHours: StoreHoursComponent;
+      storeLocations: Array<StoreLocationComponent>;
+      coupon: CouponComponent;
+      faqs: FAQComponent[];
     };
   };
 }

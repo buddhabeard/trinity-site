@@ -1,11 +1,21 @@
 ---
-// import AcceptingDonations from "../components/AcceptingDonations.astro";
-// import CheckList from "../components/CheckList.astro";
+import AcceptingDonations from "../components/AcceptingDonations.astro";
 import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import fetchApi from "../lib/strapi";
+import type { ThriftStorePage } from "../interfaces/Pages";
+import { thriftStoreQuery } from "../lib/queries";
+
+const page = await fetchApi<ThriftStorePage>({
+  endpoint: "who-we-are",
+  query: thriftStoreQuery,
+});
 ---
 
 <Layout title="Thrift Store">
   <main>
+    <PageHero {...page.data.attributes.hero} />
+
     <!-- section markup - general -->
     <div class="overflow-hidden bg-white py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
@@ -13,7 +23,7 @@ import Layout from "../layouts/Layout.astro";
           class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
         >
           <div class="lg:pr-8 lg:pt-4">
-            <!-- <AcceptingDonations /> -->
+            <AcceptingDonations {...page.data.attributes.acceptinDonations} />
           </div>
           <img
             src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"

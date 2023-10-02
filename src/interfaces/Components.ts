@@ -13,10 +13,10 @@ export interface HeroComponent extends Component {
 }
 
 export interface TestimonialComponent extends Component {
-  heading: string;
-  subHeading: string;
+  quote: string;
+  name: string;
+  profession: string;
   video: string; // json format, needs JSON.parse
-  content: string;
 }
 
 export interface FAQComponent extends Component {
@@ -73,4 +73,34 @@ export interface AcceptingDonationsComponent {
     icon: Image;
     content: string;
   }>;
+}
+
+export interface StoreHoursComponent {
+  hoursOpen: Array<{
+    open: Date;
+    close: Date;
+    day:
+      | "Monday"
+      | "Tuesday"
+      | "Wednesday"
+      | "Thursday"
+      | "Friday"
+      | "Saturday"
+      | "Sunday";
+  }>;
+}
+
+export interface CouponComponent {
+  name: string;
+  image: Image;
+  downloadURL: string;
+}
+
+export interface StoreLocationComponent {
+  title: string;
+  street: string;
+  city: string;
+  state: string;
+  zip: string;
+  directionsURL: string;
 }

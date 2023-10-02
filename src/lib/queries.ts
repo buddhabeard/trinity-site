@@ -46,7 +46,19 @@ export const whoWeAreQuery = createQuery([
   "cta",
 ]);
 
-export type Queries = typeof homepageQuery | typeof postsQuery;
+export const thriftStoreQuery = createQuery([
+  "hero|>image",
+  "acceptingDonations|>itemsAvailable",
+  "storeHours",
+  "storeLocations",
+  "faqs",
+  "coupon|>image",
+]);
+
+export type Queries =
+  | typeof homepageQuery
+  | typeof postsQuery
+  | typeof whoWeAreQuery;
 
 export const queryWithLimit = (query: Queries, limit: number): string =>
   `${query}&pagination[pageSize]=${limit}`;
