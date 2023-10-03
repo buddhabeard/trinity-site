@@ -1,0 +1,6 @@
+.testimonial-section blockquote {
+    @apply my-10 border-l border-indigo-600 pl-9 font-semibold text-gray-900
+}
+.testimonial-section a {
+    @apply mt-8 px-4 py-2 bg-teal text-white rounded-md shadow justify-center items-center inline-flex
+}
