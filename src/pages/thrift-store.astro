@@ -7,7 +7,7 @@ import type { ThriftStorePage } from "../interfaces/Pages";
 import { thriftStoreQuery } from "../lib/queries";
 
 const page = await fetchApi<ThriftStorePage>({
-  endpoint: "who-we-are",
+  endpoint: "thrift-store",
   query: thriftStoreQuery,
 });
 ---
@@ -16,14 +16,14 @@ const page = await fetchApi<ThriftStorePage>({
   <main>
     <PageHero {...page.data.attributes.hero} />
 
-    <!-- section markup - general -->
+    <!-- accepting donations -->
     <div class="overflow-hidden bg-white py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div
           class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
         >
           <div class="lg:pr-8 lg:pt-4">
-            <AcceptingDonations {...page.data.attributes.acceptinDonations} />
+            <AcceptingDonations {...page.data.attributes.acceptingDonations} />
           </div>
           <img
             src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"

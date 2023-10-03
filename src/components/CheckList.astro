@@ -7,13 +7,15 @@ interface Props {
 }
 
 const { items } = Astro.props;
+const firstGroup = items.slice(0, 3);
+const secondGroup = items.slice(3, 6);
 ---
 
 <dl
   class="flex flex-wrap mt-10 max-w-xl text-base leading-7 text-gray-600 lg:max-w-none"
 >
   {
-    items.map((item) => (
+    firstGroup.map((item) => (
       <div class="relative pl-9 w-full sm:w-1/2">
         <dt class="inline">
           <CheckIcon
@@ -23,7 +25,23 @@ const { items } = Astro.props;
             width="24"
           />
         </dt>
-        <dd>{item}</dd>
+        <dd>{item.content}</dd>
+      </div>
+    ))
+  }
+
+  {
+    secondGroup.map((item) => (
+      <div class="relative pl-9 w-full sm:w-1/2">
+        <dt class="inline">
+          <CheckIcon
+            className="absolute left-1 top-1"
+            stroke="#10b981"
+            height="24"
+            width="24"
+          />
+        </dt>
+        <dd>{item.content}</dd>
       </div>
     ))
   }
