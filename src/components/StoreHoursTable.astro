@@ -1,0 +1,86 @@
+---
+import type { HoursOpenComponent } from "../interfaces/Components";
+
+import lostThenFoundLogo from "../images/lost-then-found.jpg";
+
+interface Props {
+  hoursOpen: HoursOpenComponent[];
+}
+
+const sharedRowClass =
+  "self-stretch px-6 py-4 w-full justify-start items-center inline-flex h-20";
+const oddRowClass = sharedRowClass;
+const evenRowClass = `${sharedRowClass} bg-gray-50`;
+
+const { hoursOpen } = Astro.props;
+
+const headers = hoursOpen.map((time) => time.day);
+const rows = hoursOpen.map(({ open, close }) => ({ open, close }));
+
+const rowClass = (index: number): typeof oddRowClass | typeof evenRowClass =>
+  index % 2 === 0 ? evenRowClass : oddRowClass;
+
+const convertTime = (time: string) => {
+  let timeParts = time.split(":");
+  let standardTime = "";
+
+  if (parseInt(timeParts[0]) > 12) {
+    // @ts-ignore
+    timeParts[0] = timeParts[0] - 12;
+    standardTime = timeParts.join(":") + " PM";
+  } else if (parseInt(timeParts[0]) === 12) {
+    standardTime = timeParts.join(":") + " PM";
+  } else {
+    standardTime = timeParts.join(":") + " AM";
+  }
+
+  return standardTime;
+};
+---
+
+<div>
+  <img
+    src={lostThenFoundLogo}
+    class="lg:w-[560px] lg:h-[186px]"
+    alt="lost, then found"
+  />
+
+  <div
+    class="grid grid-cols-2 grid-rows-7 shadow rounded-b-md w-full max-w-[560px]"
+  >
+    <div class="flex flex-col">
+      <div class={oddRowClass}>
+        <div
+          class="text-gray-900 text-base font-medium font-inter leading-tight"
+        >
+          Sunday
+        </div>
+      </div>
+      {
+        headers.map((header, i) => (
+          <div class={rowClass(i)}>
+            <div class="text-gray-900 text-base font-medium font-inter leading-tight">
+              {header}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    <div class="flex flex-col">
+      <div class={oddRowClass}>
+        <div class="text-gray-500 text-sm font-normal font-inter leading-tight">
+          Closed
+        </div>
+      </div>
+      {
+        rows.map((row, i) => (
+          <div class={rowClass(i)}>
+            <div class="text-gray-500 text-sm font-normal font-inter leading-tight">
+              {convertTime(row.open)} &mdash; {convertTime(row.close)}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

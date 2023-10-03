@@ -5,6 +5,7 @@ import PageHero from "../components/PageHero.astro";
 import fetchApi from "../lib/strapi";
 import type { ThriftStorePage } from "../interfaces/Pages";
 import { thriftStoreQuery } from "../lib/queries";
+import StoreHoursTable from "../components/StoreHoursTable.astro";
 
 const page = await fetchApi<ThriftStorePage>({
   endpoint: "thrift-store",
@@ -16,61 +17,18 @@ const page = await fetchApi<ThriftStorePage>({
   <main>
     <PageHero {...page.data.attributes.hero} />
 
-    <!-- accepting donations -->
     <div class="overflow-hidden bg-white py-24 sm:py-32">
       <div class="mx-auto max-w-7xl px-6 lg:px-8">
         <div
           class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2"
         >
           <div class="lg:pr-8 lg:pt-4">
+            <!-- accepting donations -->
             <AcceptingDonations {...page.data.attributes.acceptingDonations} />
           </div>
-          <img
-            src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
-            alt="Product screenshot"
-            class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
-            width="2432"
-            height="1442"
-          />
-        </div>
-      </div>
-    </div>
-
-    <!-- hours table -->
-    <div class="px-4 sm:px-6 lg:px-8">
-      <div class="mt-8 flow-root">
-        <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div
-            class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8"
-          >
-            <table class="min-w-full divide-y divide-gray-300">
-              <thead>
-                <tr>
-                  <th
-                    scope="col"
-                    class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-3"
-                    >Name</th
-                  >
-                  <th
-                    scope="col"
-                    class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
-                    >Title</th
-                  >
-                </tr>
-              </thead>
-              <tbody class="bg-white">
-                <tr class="even:bg-gray-50">
-                  <td
-                    class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-3"
-                    >Lindsay Walton</td
-                  >
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
-                    >Front-end Developer</td
-                  >
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <!-- hours table -->
+          <!-- @ts-ignore -->
+          <StoreHoursTable hoursOpen={page.data.attributes?.storeHours} />
         </div>
       </div>
     </div>
