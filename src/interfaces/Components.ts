@@ -102,3 +102,10 @@ export interface StoreLocationComponent {
   zip: string;
   directionsURL: string;
 }
+
+export interface HoursOpenComponent {
+  id: number;
+  open: string;
+  close: string;
+  day: string;
+}

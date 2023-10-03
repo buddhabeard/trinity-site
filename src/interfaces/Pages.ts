@@ -54,7 +54,7 @@ export interface ThriftStorePage {
     id: number;
     attributes: {
       hero: HeroComponent;
-      acceptinDonations: AcceptingDonationsComponent;
+      acceptingDonations: AcceptingDonationsComponent;
       storeHours: StoreHoursComponent;
       storeLocations: Array<StoreLocationComponent>;
       coupon: CouponComponent;
