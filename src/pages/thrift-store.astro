@@ -6,6 +6,7 @@ import fetchApi from "../lib/strapi";
 import type { ThriftStorePage } from "../interfaces/Pages";
 import { thriftStoreQuery } from "../lib/queries";
 import StoreHoursTable from "../components/StoreHoursTable.astro";
+import StoreLocations from "../components/StoreLocations.astro";
 
 const page = await fetchApi<ThriftStorePage>({
   endpoint: "thrift-store",
@@ -32,5 +33,7 @@ const page = await fetchApi<ThriftStorePage>({
         </div>
       </div>
     </div>
+    <!-- store locations -->
+    <StoreLocations />
   </main>
 </Layout>
