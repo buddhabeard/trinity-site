@@ -7,6 +7,7 @@ import type { ThriftStorePage } from "../interfaces/Pages";
 import { thriftStoreQuery } from "../lib/queries";
 import StoreHoursTable from "../components/StoreHoursTable.astro";
 import StoreLocations from "../components/StoreLocations.astro";
+import Container from "../components/Container.astro";
 
 const page = await fetchApi<ThriftStorePage>({
   endpoint: "thrift-store",
@@ -35,5 +36,11 @@ const page = await fetchApi<ThriftStorePage>({
     </div>
     <!-- store locations -->
     <StoreLocations />
+
+    <!-- faqs -->
+    <Container isSection>
+      <!-- @ts-ignore -->
+      <FAQs faqs={faqs} />
+    </Container>
   </main>
 </Layout>
