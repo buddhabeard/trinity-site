@@ -4,8 +4,9 @@ import type Posts from "../../interfaces/Posts";
 import type { Post } from "../../interfaces/Posts";
 import { postsQuery } from "../../lib/queries";
 import Layout from "../../layouts/Layout.astro";
-import BlogHero from "../../components/BlogHero.astro";
+// import BlogHero from "../../components/BlogHero.astro";
 import Container from "../../components/Container.astro";
+// import PageHero from "../../components/PageHero.astro";
 
 export async function getStaticPaths() {
   const posts = await fetchApi<Posts>({
@@ -30,9 +31,19 @@ export async function getStaticPaths() {
   }));
 }
 
-const { title, image, content } = Astro.props;
+const posts = await fetchApi<Posts>({
+  endpoint: "posts",
+  query: postsQuery,
+});
 ---
 
 <Layout title="Blog">
-  <div>Blog index page</div>
+  <main>
+    <!-- <PageHero image={{ data:  { id: 1}}} /> -->
+    <Container isSection classes="pt-20">
+      {posts.data.map((post) => post.attributes.slug)}
+    </Container>
+    <!-- <BlogHero /> -->
+    <div>Blog index page</div>
+  </main>
 </Layout>
