@@ -11,7 +11,7 @@ import fetchApi from "../lib/strapi";
 import type { WhoWeArePage } from "../interfaces/Pages";
 import { whoWeAreQuery } from "../lib/queries";
 import TwoColumns from "../components/TwoColumns.astro";
-import dots from "../svgs/dots.svg";
+// import dots from "../svgs/dots.svg";
 
 const page = await fetchApi<WhoWeArePage>({
   endpoint: "who-we-are",
@@ -72,9 +72,9 @@ const page = await fetchApi<WhoWeArePage>({
       </div>
     </Container>
 
-    <div class="hidden md:visible h-[404px] w-[404px]">
+    <!-- <div class="hidden md:visible h-[404px] w-[404px]">
       <img src={dots} alt="dots" />
-    </div>
+    </div> -->
 
     <!-- testimonial -->
     {
@@ -89,7 +89,7 @@ const page = await fetchApi<WhoWeArePage>({
     {
       page.data.attributes?.faqs && (
         <Container isSection>
-          {/** @ts-ignore **/}
+          <!-- @ts-ignore -->
           <FAQs faqs={page.data.attributes.faqs} />
         </Container>
       )
