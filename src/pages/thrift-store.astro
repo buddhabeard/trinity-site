@@ -1,13 +1,15 @@
 ---
 import AcceptingDonations from "../components/AcceptingDonations.astro";
+import Container from "../components/Container.astro";
+import FAQs from "../components/FAQs.astro";
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
+import SocialShare from "../components/SocialShare.astro";
+import StoreHoursTable from "../components/StoreHoursTable.astro";
+import StoreLocations from "../components/StoreLocations.astro";
 import fetchApi from "../lib/strapi";
 import type { ThriftStorePage } from "../interfaces/Pages";
 import { thriftStoreQuery } from "../lib/queries";
-import StoreHoursTable from "../components/StoreHoursTable.astro";
-import StoreLocations from "../components/StoreLocations.astro";
-import Container from "../components/Container.astro";
 
 const page = await fetchApi<ThriftStorePage>({
   endpoint: "thrift-store",
@@ -34,13 +36,31 @@ const page = await fetchApi<ThriftStorePage>({
         </div>
       </div>
     </div>
+
     <!-- store locations -->
-    <StoreLocations />
+    <StoreLocations locations={page.data.attributes.storeLocations} />
+
+    <!-- coupon -->
+    <Container isSection>
+      <img
+        src={page.data.attributes?.coupon.image.data.attributes.url}
+        alt={page.data.attributes?.coupon.name || "coupon"}
+      />
+    </Container>
 
     <!-- faqs -->
-    <Container isSection>
-      <!-- @ts-ignore -->
-      <FAQs faqs={faqs} />
+    {
+      page.data.attributes?.faqs && (
+        <Container isSection>
+          <!-- @ts-ignore -->
+          <FAQs faqs={page.data.attributes.faqs} />
+        </Container>
+      )
+    }
+
+    <!-- social embed -->
+    <Container isSection classes="!px-0 md:!px-8 lg:!px-16">
+      <SocialShare />
     </Container>
   </main>
 </Layout>
