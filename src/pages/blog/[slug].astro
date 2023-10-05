@@ -2,15 +2,21 @@
 import fetchApi from "../../lib/strapi";
 import type Posts from "../../interfaces/Posts";
 import type { Post } from "../../interfaces/Posts";
-import { postsQuery } from "../../lib/queries";
+import { blogIndexPageQuery, postsQuery } from "../../lib/queries";
 import Layout from "../../layouts/Layout.astro";
-import BlogHero from "../../components/BlogHero.astro";
+import PageHero from "../../components/PageHero.astro";
 import Container from "../../components/Container.astro";
+import type { BlogIndexPage } from "../../interfaces/Pages";
 
 export async function getStaticPaths() {
   const posts = await fetchApi<Posts>({
     endpoint: "posts",
     query: postsQuery,
+  });
+
+  const blog = await fetchApi<BlogIndexPage>({
+    endpoint: "blog",
+    query: blogIndexPageQuery,
   });
 
   return posts.data.map((post: Post) => ({
@@ -22,6 +28,7 @@ export async function getStaticPaths() {
       likes: post.attributes.likes || 0,
       image: post.attributes.image?.data?.attributes?.url || "",
       event: post.attributes.event?.data?.attributes?.title || "",
+      hero: blog.data.attributes.hero,
       categories:
         post.attributes.categories?.data
           ?.map((c) => c?.attributes?.name)
@@ -30,14 +37,12 @@ export async function getStaticPaths() {
   }));
 }
 
-const { title, image, content } = Astro.props;
+const { title, image, content, hero } = Astro.props;
 ---
 
 <Layout title={title}>
-  <BlogHero
-    heading="Trinity Life Ministry Blog"
-    content="Trinity is deeply committed to the men we serve, their families and the community. We hold routine outings and fundraisers along with charitable giving events."
-  />
+  <!-- @ts-ignore -->
+  <PageHero {...hero} />
   <Container classes="mt-16 md:mt-24 lg:mt-32">
     <div class="w-full flex justify-center mb-16">
       <img src={image} alt="image" />

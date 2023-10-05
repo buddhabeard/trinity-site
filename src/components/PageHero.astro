@@ -1,5 +1,6 @@
 ---
 import type { HeroComponent } from "../interfaces/Components";
+import Container from "./Container.astro";
 
 interface Props extends HeroComponent {}
 
@@ -32,7 +33,7 @@ const { title, content, image } = Astro.props;
     >
     </div>
   </div>
-  <div class="mx-auto max-w-7xl px-4 md:px-8 lg:px-16">
+  <Container>
     <div class="mx-auto max-w-2xl lg:mx-0">
       <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">
         {title}
@@ -41,5 +42,5 @@ const { title, content, image } = Astro.props;
         {content}
       </p>
     </div>
-  </div>
+  </Container>
 </div>

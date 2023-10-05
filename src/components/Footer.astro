@@ -1,4 +1,76 @@
 ---
+const links = [
+  {
+    text: "TRINITY LIFE MINISTRY",
+    children: [
+      {
+        text: "Who We Are",
+        href: "/who-we-are",
+        children: null,
+      },
+      {
+        text: "Events",
+        href: "/events",
+        children: null,
+      },
+      {
+        text: "Apply",
+        href: "/apply",
+        children: null,
+      },
+      {
+        text: "Donate",
+        href: "/donate",
+        children: null,
+      },
+      {
+        text: "Contact",
+        href: "/contact",
+        children: null,
+      },
+    ],
+  },
+  {
+    text: "THRIFT STORE",
+    children: [
+      { text: "Hours", href: "/thrift-store#hours" },
+      {
+        text: "Locations",
+        href: "/thrift-store#locations",
+      },
+      {
+        text: "Donate",
+        href: "/donate",
+      },
+    ],
+  },
+  {
+    text: "BLOG",
+    children: [
+      {
+        text: "Articles",
+        href: "/blog",
+      },
+      {
+        text: "Events",
+        href: "/blog/events",
+      },
+      {
+        text: "Videos",
+        href: "/blog/videos",
+      },
+    ],
+  },
+  {
+    text: "RESIDENCY",
+    children: [
+      { text: "Apply", href: "/apply" },
+      { text: "FAQs", href: "/apply#faqs" },
+    ],
+  },
+];
+
+const [basePages, thriftPages, blogPages, applyPages] = links;
 ---
 
 <footer class="bg-white" aria-labelledby="footer-heading">
@@ -9,142 +81,80 @@
         <div class="md:grid md:grid-cols-2 md:gap-8">
           <div>
             <h3 class="text-sm font-semibold leading-6 text-gray-900">
-              Solutions
+              {basePages.text}
             </h3>
             <ul role="list" class="mt-6 space-y-4">
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Marketing</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Analytics</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Commerce</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Insights</a
-                >
-              </li>
+              {
+                basePages.children.map((child) => (
+                  <li>
+                    <a
+                      href={child.href}
+                      class="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                    >
+                      {child.text}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
           <div class="mt-10 md:mt-0">
             <h3 class="text-sm font-semibold leading-6 text-gray-900">
-              Support
+              {thriftPages.text}
             </h3>
             <ul role="list" class="mt-6 space-y-4">
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Pricing</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Documentation</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Guides</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >API Status</a
-                >
-              </li>
+              {
+                thriftPages.children.map((child) => (
+                  <li>
+                    <a
+                      href={child.href}
+                      class="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                    >
+                      {child.text}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>
         <div class="md:grid md:grid-cols-2 md:gap-8">
           <div>
             <h3 class="text-sm font-semibold leading-6 text-gray-900">
-              Company
+              {blogPages.text}
             </h3>
             <ul role="list" class="mt-6 space-y-4">
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >About</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Blog</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Jobs</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Press</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Partners</a
-                >
-              </li>
+              {
+                blogPages.children.map((child) => (
+                  <li>
+                    <a
+                      href={child.href}
+                      class="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                    >
+                      {child.text}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
           <div class="mt-10 md:mt-0">
-            <h3 class="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
+            <h3 class="text-sm font-semibold leading-6 text-gray-900">
+              {applyPages.text}
+            </h3>
             <ul role="list" class="mt-6 space-y-4">
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Claim</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Privacy</a
-                >
-              </li>
-              <li>
-                <a
-                  href="#"
-                  class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                  >Terms</a
-                >
-              </li>
+              {
+                applyPages.children.map((child) => (
+                  <li>
+                    <a
+                      href={child.href}
+                      class="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                    >
+                      {child.text}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>
@@ -206,7 +216,12 @@
         </a>
       </div>
       <p class="mt-8 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
-        &copy; 2023 Your Company, Inc. All rights reserved.
+        &copy; {new Date().getFullYear()} Trinity Life Ministry. All rights reserved.
+        Site by <a
+          class="text-teal font-semibold"
+          target="_blank"
+          href="https://buddhabeard.com">BuddhaBeard</a
+        >.
       </p>
     </div>
   </div>

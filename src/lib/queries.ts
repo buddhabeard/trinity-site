@@ -24,6 +24,7 @@ export const homepageQuery = createQuery([
 ]);
 
 export const postsQuery = createQuery([
+  "hero|>image",
   "title",
   "likes",
   "slug",

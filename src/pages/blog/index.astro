@@ -1,38 +1,15 @@
 ---
-import BlogHero from "../../components/BlogHero.astro";
 import Container from "../../components/Container.astro";
 import Layout from "../../layouts/Layout.astro";
-// import PageHero from "../../components/PageHero.astro";
+import PageHero from "../../components/PageHero.astro";
 import fetchApi from "../../lib/strapi";
 import type Posts from "../../interfaces/Posts";
 import type { BlogIndexPage } from "../../interfaces/Pages";
-import type { Post } from "../../interfaces/Posts";
 import { blogIndexPageQuery, postsQuery } from "../../lib/queries";
-import type { HeroComponent } from "../../interfaces/Components";
 import TwoColumns from "../../components/TwoColumns.astro";
-
-export async function getStaticPaths() {
-  const posts = await fetchApi<Posts>({
-    endpoint: "posts",
-    query: postsQuery,
-  });
-
-  return posts.data.map((post: Post) => ({
-    params: {
-      slug: post.attributes.slug,
-    },
-    props: {
-      ...post.attributes,
-      likes: post.attributes.likes || 0,
-      image: post.attributes.image?.data?.attributes?.url || "",
-      event: post.attributes.event?.data?.attributes?.title || "",
-      categories:
-        post.attributes.categories?.data
-          ?.map((c) => c?.attributes?.name)
-          .join(" ") || "",
-    },
-  }));
-}
+import BlogCards from "../../components/BlogCards.astro";
+import CallToAction from "../../components/CallToAction.astro";
+import SocialShare from "../../components/SocialShare.astro";
 
 const blog = await fetchApi<BlogIndexPage>({
   endpoint: "blog",
@@ -50,14 +27,14 @@ const featurePost = posts.data[0].attributes;
 <Layout title="Blog">
   <main>
     <!-- @ts-ignore -->
-    <BlogHero {...blog.data.attributes.hero} />
+    <PageHero {...blog.data.attributes.hero} />
 
     <!-- feature post -->
-    <TwoColumns classes="h-[386px]">
+    <TwoColumns classes="lg:h-[386px]">
       <img class="w-full" src={featurePost.image.data.attributes.url} />
 
-      <div>
-        <div class="overflow-hidden max-h-[150px] lg:mb-4">
+      <div class="flex flex-col">
+        <div class="overflow-hidden max-h-[300px] lg:max-h-[150px] lg:mb-4">
           <p
             class="text-gray-500 text-base font-normal font-inter leading-normal"
             set:html={featurePost.content}
@@ -65,15 +42,15 @@ const featurePost = posts.data[0].attributes;
         </div>
 
         <a
-          class="w-28 h-10 px-4 py-2 lg:ml-6 bg-teal text-white rounded-md shadow justify-center items-center inline-flex"
+          class="w-28 h-10 px-4 py-2 mx-auto self-center lg:ml-6 bg-teal text-white rounded-md shadow justify-center items-center inline-flex"
           href={`/blog/${featurePost.slug}`}>Read more</a
         >
         <div
-          class="w-full lg:mx-6 lg:my-8 h-px border border-black border-opacity-20"
+          class="w-full my-4 lg:mx-6 lg:my-8 h-px border border-black border-opacity-20"
         >
         </div>
         <div
-          class="text-gray-500 lg:mx-6 text-base font-normal font-inter leading-tight"
+          class="text-gray-500 mx-auto lg:mx-6 text-base font-normal font-inter leading-tight"
         >
           {
             new Date(featurePost.updatedAt).toLocaleDateString("en-US", {
@@ -85,7 +62,15 @@ const featurePost = posts.data[0].attributes;
     </TwoColumns>
 
     <Container isSection>
-      {posts.data.map((post) => post.attributes.slug)}
+      <BlogCards posts={posts} />
     </Container>
+
+    <!-- social embed -->
+    <Container isSection classes="!px-0 md:!px-8 lg:!px-16">
+      <SocialShare />
+    </Container>
+
+    <!-- cta -->
+    <CallToAction />
   </main>
 </Layout>
