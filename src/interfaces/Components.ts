@@ -100,7 +100,7 @@ export interface StoreLocationComponent {
   city: string;
   state: string;
   zip: string;
-  directionsURL: string;
+  directionsLink: string;
 }
 
 export interface HoursOpenComponent {
