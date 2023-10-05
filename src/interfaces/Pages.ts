@@ -62,3 +62,13 @@ export interface ThriftStorePage {
     };
   };
 }
+
+export interface BlogIndexPage {
+  data: {
+    id: number;
+    attributes: {
+      hero: HeroComponent;
+      cta: CallToActionComponent;
+    };
+  };
+}

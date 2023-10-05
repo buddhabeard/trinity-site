@@ -1,12 +1,14 @@
 ---
+import BlogHero from "../../components/BlogHero.astro";
+import Container from "../../components/Container.astro";
+import Layout from "../../layouts/Layout.astro";
+// import PageHero from "../../components/PageHero.astro";
 import fetchApi from "../../lib/strapi";
 import type Posts from "../../interfaces/Posts";
+import type { BlogIndexPage } from "../../interfaces/Pages";
 import type { Post } from "../../interfaces/Posts";
-import { postsQuery } from "../../lib/queries";
-import Layout from "../../layouts/Layout.astro";
-// import BlogHero from "../../components/BlogHero.astro";
-import Container from "../../components/Container.astro";
-// import PageHero from "../../components/PageHero.astro";
+import { blogIndexPageQuery, postsQuery } from "../../lib/queries";
+import type { HeroComponent } from "../../interfaces/Components";
 
 export async function getStaticPaths() {
   const posts = await fetchApi<Posts>({
@@ -31,6 +33,11 @@ export async function getStaticPaths() {
   }));
 }
 
+const blog = await fetchApi<BlogIndexPage>({
+  endpoint: "blog",
+  query: blogIndexPageQuery,
+});
+
 const posts = await fetchApi<Posts>({
   endpoint: "posts",
   query: postsQuery,
@@ -39,11 +46,11 @@ const posts = await fetchApi<Posts>({
 
 <Layout title="Blog">
   <main>
-    <!-- <PageHero image={{ data:  { id: 1}}} /> -->
+    <!-- @ts-ignore -->
+    <BlogHero {...blog.data.attributes.hero} />
+
     <Container isSection classes="pt-20">
       {posts.data.map((post) => post.attributes.slug)}
     </Container>
-    <!-- <BlogHero /> -->
-    <div>Blog index page</div>
   </main>
 </Layout>

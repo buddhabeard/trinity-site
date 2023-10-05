@@ -55,6 +55,8 @@ export const thriftStoreQuery = createQuery([
   "coupon|>image",
 ]);
 
+export const blogIndexPageQuery = createQuery(["hero|>image", "cta"]);
+
 export type Queries =
   | typeof homepageQuery
   | typeof postsQuery
