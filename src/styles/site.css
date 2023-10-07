@@ -4,3 +4,9 @@
 .testimonial-section a {
     @apply mt-8 px-4 py-2 bg-teal text-white rounded-md shadow justify-center items-center inline-flex
 }
+
+main div.w-full.mx-auto.px-4.mb-16:nth-child(1) {
+    background-image: url('https://res.cloudinary.com/db7kwocif/image/upload/v1694110214/bg_desktop_2x_52e525a5a7.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
