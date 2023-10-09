@@ -57,6 +57,7 @@ export interface ThriftStorePage {
       acceptingDonations: AcceptingDonationsComponent;
       storeHours: StoreHoursComponent;
       storeLocations: Array<StoreLocationComponent>;
+      testimonial: TestimonialComponent;
       coupon: CouponComponent;
       faqs: FAQComponent[];
     };

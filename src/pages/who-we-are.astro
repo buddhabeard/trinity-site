@@ -1,5 +1,4 @@
 ---
-import { YouTube } from "astro-embed";
 import CallToAction from "../components/CallToAction.astro";
 import Carousel from "../components/Carousel";
 import Container from "../components/Container.astro";
@@ -10,8 +9,7 @@ import SocialShare from "../components/SocialShare.astro";
 import fetchApi from "../lib/strapi";
 import type { WhoWeArePage } from "../interfaces/Pages";
 import { whoWeAreQuery } from "../lib/queries";
-import TwoColumns from "../components/TwoColumns.astro";
-// import dots from "../svgs/dots.svg";
+import VideoWithContent from "../components/VideoWithContent.astro";
 
 const page = await fetchApi<WhoWeArePage>({
   endpoint: "who-we-are",
@@ -51,7 +49,7 @@ const page = await fetchApi<WhoWeArePage>({
                         <div class="font-semibold text-gray-900 ml-4">
                           {item.heading}
                         </div>
-                        <div class="ml-12 lg:ml-16">{item.content}</div>
+                        <div class="ml-12 lg:ml-16 -mt-4">{item.content}</div>
                       </div>
                     ))
                   }
@@ -59,7 +57,7 @@ const page = await fetchApi<WhoWeArePage>({
               </div>
             </div>
 
-            <!-- carousel goes here -->
+            <!-- carousel -->
             <div class="w-full">
               <Carousel
                 client:only
@@ -79,16 +77,17 @@ const page = await fetchApi<WhoWeArePage>({
     <!-- testimonial -->
     {
       page.data.attributes.testimonial && (
-        <TwoColumns classes="testimonial-section">
-          <YouTube id={page.data.attributes.testimonial.video} />
-          <div set:html={page.data.attributes.testimonial.content} />
-        </TwoColumns>
+        // @ts-ignore
+        <VideoWithContent 
+          video={page.data.attributes.testimonial.video} 
+          content={page.data.attributes.testimonial.content} 
+        />
       )
     }
 
     {
       page.data.attributes?.faqs && (
-        <Container isSection>
+        <Container isSection classes="faqs-section">
           <!-- @ts-ignore -->
           <FAQs faqs={page.data.attributes.faqs} />
         </Container>
@@ -96,7 +95,7 @@ const page = await fetchApi<WhoWeArePage>({
     }
 
     <!-- social embed -->
-    <Container isSection>
+    <Container isSection classes="social-section">
       <SocialShare />
     </Container>
 

@@ -1,0 +1,17 @@
+---
+import TwoColumns from "./TwoColumns.astro";
+import type { TestimonialComponent } from "../interfaces/Components";
+import { YouTube } from "astro-embed";
+
+interface Props extends TestimonialComponent {
+  video: string;
+  content: string;
+}
+
+const { video, content } = Astro.props;
+---
+
+<TwoColumns classes="testimonial-section">
+  <YouTube id={video} />
+  <div set:html={content} />
+</TwoColumns>

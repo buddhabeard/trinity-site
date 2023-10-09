@@ -16,6 +16,7 @@ const Carousel = ({
   withHeading?: boolean;
 }) => (
   <Swiper
+    className="carousel"
     modules={[Autoplay, A11y, EffectFlip, Pagination]}
     effect="flip"
     grabCursor
