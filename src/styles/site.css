@@ -4,3 +4,27 @@
 .testimonial-section a {
     @apply mt-8 px-4 py-2 bg-teal text-white rounded-md shadow justify-center items-center inline-flex
 }
+
+.page-home .swiper {
+    background: url('https://res.cloudinary.com/db7kwocif/image/upload/v1694110214/bg_desktop_2x_52e525a5a7.png') no-repeat;
+    background-size: cover;
+}
+
+.page-home .home-hero {
+  height: 100%;
+  
+  background-position:
+    top 1% left 1%,
+    top 1% right 1%,
+    bottom 1% right 1%,
+    bottom 1% left 1%;
+  
+  background-size: 13%;
+  background-repeat: no-repeat;
+  
+  background-image:
+    url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110170/brandaccent_top_left_6b0f6b0238.svg),
+    url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110169/brandaccent_top_right_2830903d0c.svg),
+    url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110170/brandaccent_bottom_right_ba3a234848.svg),
+    url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110169/brandaccent_bottom_left_c2f9545c23.svg);
+}  
