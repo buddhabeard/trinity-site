@@ -20,7 +20,7 @@ const page = await fetchApi<WhoWeArePage>({
 ---
 
 <Layout title="Who We Are">
-  <main>
+  <main class="page-who-we-are">
     <PageHero {...page.data.attributes.hero} />
 
     <Container isSection classes="mt-12">
