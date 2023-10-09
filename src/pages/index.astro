@@ -40,13 +40,7 @@ const {
 <Layout title="Trinity Life Ministry">
   <main class="page-home">
     <!-- hero -->
-    {
-      hasCarousel(page) && (
-        <Container isSection>
-          <Carousel client:only carousel={carousel} />
-        </Container>
-      )
-    }
+    {hasCarousel(page) && <Carousel client:only carousel={carousel} />}
 
     <!-- link cards -->
     <Container isSection>
