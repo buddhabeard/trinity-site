@@ -12,7 +12,7 @@ export interface HeroComponent extends Component {
   url: string;
 }
 
-export interface TestimonialComponent extends Component {
+export interface TestimonialComponent {
   video: any;
   content?: any;
 }

@@ -10,6 +10,7 @@ import StoreLocations from "../components/StoreLocations.astro";
 import fetchApi from "../lib/strapi";
 import type { ThriftStorePage } from "../interfaces/Pages";
 import { thriftStoreQuery } from "../lib/queries";
+import VideoWithContent from "../components/VideoWithContent.astro";
 
 const page = await fetchApi<ThriftStorePage>({
   endpoint: "thrift-store",
@@ -39,6 +40,16 @@ const page = await fetchApi<ThriftStorePage>({
 
     <!-- store locations -->
     <StoreLocations locations={page.data.attributes.storeLocations} />
+
+    <!-- testimonial -->
+    {
+      page.data.attributes.testimonial && (
+        <VideoWithContent
+          video={page.data.attributes.testimonial.video} 
+          content={page.data.attributes.testimonial.content}
+        />
+      )
+    }
 
     <!-- coupon -->
     <Container isSection>

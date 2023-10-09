@@ -52,6 +52,7 @@ export const thriftStoreQuery = createQuery([
   "acceptingDonations|>itemsAvailable",
   "storeHours",
   "storeLocations",
+  "testimonial|>image",
   "faqs",
   "coupon|>image",
 ]);
