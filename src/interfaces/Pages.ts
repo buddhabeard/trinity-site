@@ -64,6 +64,17 @@ export interface ThriftStorePage {
   };
 }
 
+export interface DonatePage {
+  data: {
+    id: number;
+    attributes: {
+      hero: HeroComponent;
+      content: string;
+      faqs: FAQComponent[];
+    };
+  };
+}
+
 export interface BlogIndexPage {
   data: {
     id: number;

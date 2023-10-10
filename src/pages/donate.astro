@@ -1,7 +1,44 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import TwoColumns from "../components/TwoColumns.astro";
+import fetchApi from "../lib/strapi";
+import type { DonatePage } from "../interfaces/Pages";
+import { donatePageQuery } from "../lib/queries";
+
+const page = await fetchApi<DonatePage>({
+  endpoint: "donation-page",
+  query: donatePageQuery,
+});
 ---
 
 <Layout title="Donate">
-  <main class="page-donate">donate</main>
+  <main class="page-donate">
+    <!-- hero -->
+    {page.data?.attributes?.hero && <PageHero {...page.data.attributes.hero} />}
+
+    <!-- spirit blurb -->
+    <TwoColumns>
+      <div
+        class="w-96 text-darkBlue text-4xl font-extrabold font-inter leading-10"
+      >
+        The Spirit of Giving: Ways to Give
+      </div>
+      <div
+        class="w-96 text-gray-500 text-xl font-normal font-['Inter'] leading-7"
+      >
+        As a dedicated nonprofit driven by Christian principles, we have
+        consistently centered our efforts on faith and Christ-centered values.
+      </div>
+    </TwoColumns>
+
+    <!-- page content -->
+    {
+      page.data?.attributes?.content && (
+        <div set:html={page.data.attributes.content} />
+      )
+    }
+
+    <!-- forms -->
+  </main>
 </Layout>

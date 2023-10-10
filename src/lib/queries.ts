@@ -59,6 +59,8 @@ export const thriftStoreQuery = createQuery([
 
 export const blogIndexPageQuery = createQuery(["hero|>image", "cta"]);
 
+export const donatePageQuery = createQuery(["hero|>image", "content", "faqs"]);
+
 export type Queries =
   | typeof homepageQuery
   | typeof postsQuery
