@@ -1,16 +1,16 @@
 ---
+import BlogPostsGrid from "../../components/BlogPostsGrid.astro";
+import CallToAction from "../../components/CallToAction.astro";
 import Container from "../../components/Container.astro";
 import Layout from "../../layouts/Layout.astro";
+import NewsletterSignup from "../../components/NewsletterSignup.astro";
 import PageHero from "../../components/PageHero.astro";
+import SocialShare from "../../components/SocialShare.astro";
+import TwoColumns from "../../components/TwoColumns.astro";
 import fetchApi from "../../lib/strapi";
 import type Posts from "../../interfaces/Posts";
 import type { BlogIndexPage } from "../../interfaces/Pages";
 import { blogIndexPageQuery, postsQuery } from "../../lib/queries";
-import TwoColumns from "../../components/TwoColumns.astro";
-import BlogCards from "../../components/BlogCards.astro";
-import CallToAction from "../../components/CallToAction.astro";
-import SocialShare from "../../components/SocialShare.astro";
-import BlogPostsGrid from "../../components/BlogPostsGrid.astro";
 
 const blog = await fetchApi<BlogIndexPage>({
   endpoint: "blog",
@@ -61,6 +61,11 @@ const featurePost = posts.data[0].attributes;
         </div>
       </div>
     </TwoColumns>
+
+    <!-- newsletter signup cta -->
+    <Container isSection>
+      <NewsletterSignup />
+    </Container>
 
     <!-- posts previews -->
     <Container isSection>
