@@ -1,0 +1,36 @@
+---
+interface Props {
+  heading: string;
+  borderColor: "teal" | "darkBlue" | "green" | "limeGreen";
+  headingId: string;
+}
+
+const { heading, borderColor, headingId } = Astro.props;
+---
+
+<a
+  href={`#${headingId}`}
+  class="w-72 block h-40 relative bg-white rounded-lg shadow mb-4"
+>
+  <div class="w-72 h-36 left-0 top-[8px] absolute bg-white">
+    <div class=`w-72 h-2 left-0 top-[-8px] absolute bg-${borderColor}`></div>
+    <div
+      class="h-24 left-[24px] top-[24px] absolute flex-col justify-start items-start gap-2 inline-flex"
+    >
+      <div
+        class="self-stretch h-24 flex-col justify-start items-start gap-3 flex"
+      >
+        <div
+          class="self-stretch text-sky-900 text-3xl font-bold font-inter leading-9"
+        >
+          {heading}
+        </div>
+        <div
+          class="self-stretch text-gray-500 text-base font-normal font-inter leading-normal"
+        >
+          <slot />
+        </div>
+      </div>
+    </div>
+  </div>
+</a>
