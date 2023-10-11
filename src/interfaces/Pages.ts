@@ -75,6 +75,16 @@ export interface DonatePage {
   };
 }
 
+export interface ContactPage {
+  data: {
+    id: number;
+    attributes: {
+      hero: HeroComponent;
+      faqs: FAQComponent[];
+    };
+  };
+}
+
 export interface BlogIndexPage {
   data: {
     id: number;

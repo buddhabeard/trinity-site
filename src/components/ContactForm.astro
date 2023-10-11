@@ -1,0 +1,136 @@
+---
+---
+
+<form id="contact-form" class="w-full shadow p-4">
+  <div class="space-y-12">
+    <div class="pb-12">
+      <h2 class="text-base font-semibold leading-7 text-gray-900">
+        Contact Us
+      </h2>
+      <p class="mt-1 text-sm leading-6 text-gray-600">
+        Complete the form and we will get back to you.
+      </p>
+
+      <div class="flex flex-col md:flex-row w-full">
+        <div class="mt-10 order-2 md:order-1 gap-x-6 gap-y-8 w-full md:w-1/2">
+          <div>
+            <label
+              for="first-name"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >First name</label
+            >
+            <div class="mt-2">
+              <input
+                type="text"
+                name="first-name"
+                id="first-name"
+                autocomplete="given-name"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="last-name"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Last name</label
+            >
+            <div class="mt-2">
+              <input
+                type="text"
+                name="last-name"
+                id="last-name"
+                autocomplete="family-name"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Email address</label
+            >
+            <div class="mt-2">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label
+              for="message"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Message</label
+            >
+            <div class="mt-2">
+              <textarea
+                id="message"
+                name="message"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="order-1 md:order-2 flex flex-col items-center w-full md:w-1/2"
+        >
+          <img
+            class="hidden md:block w-[133px] h-[180px]"
+            src="https://res.cloudinary.com/diattpuqa/image/upload/v1695395088/tlm_emblem_2x_8c8bcad4f4.png"
+            alt=""
+          />
+
+          <div class="address-info text-center">
+            <h3>Mailing Address</h3>
+
+            <div class="flex flex-col items-center mb-8">
+              <span>2150 Elmwood Ave</span>
+              <span>Lafayette, IN 47904</span>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <span>Corporate Office | 765-742-1060</span>
+              <span>Fax | 765-742-1061</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 flex items-center justify-start gap-x-6">
+    <button
+      type="submit"
+      class="rounded-md bg-teal px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >Send Message</button
+    >
+  </div>
+
+  <div class="hidden thank-you">
+    ✅ Thank you! We will be in touch shortly &mdash; allow at least 48 hours
+    for a reply.
+  </div>
+</form>
+
+<script>
+  document.addEventListener("DOMContentLoaded", (e) => {
+    e.preventDefault();
+    const volunteerForm = document.getElementById("volunteer-form");
+
+    if (volunteerForm) {
+      volunteerForm.addEventListener("submit", (form) => {
+        // fetch() post to /api/ezforms
+        // toggle .thank-you message on post
+      });
+    }
+  });
+</script>
