@@ -1,20 +1,29 @@
 ---
+import ContactForm from "../components/ContactForm.astro";
+import Container from "../components/Container.astro";
+import PageHero from "../components/PageHero.astro";
+import SocialShare from "../components/SocialShare.astro";
+import type { ContactPage } from "../interfaces/Pages";
 import Layout from "../layouts/Layout.astro";
+import { contactPageQuery } from "../lib/queries";
+import fetchApi from "../lib/strapi";
 
-// const page = await fetchApi<HomePage>({
-//   endpoint: "home-page",
-//   query: homepageQuery,
-// });
-
-// const {
-//   hero,
-//   linkCards: { linkCard: linkCards },
-//   // faqs,
-//   callout,
-//   // cta,
-// } = page.data.attributes;
+const page = await fetchApi<ContactPage>({
+  endpoint: "contact",
+  query: contactPageQuery,
+});
 ---
 
 <Layout title="Trinity Life Ministry">
-  <main class="page-contact">contact us!!</main>
+  <main class="page-contact">
+    <PageHero {...page.data.attributes.hero} />
+
+    <Container isSection>
+      <ContactForm />
+    </Container>
+
+    <Container isSection>
+      <SocialShare />
+    </Container>
+  </main>
 </Layout>
