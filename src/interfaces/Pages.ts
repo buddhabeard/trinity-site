@@ -75,6 +75,17 @@ export interface DonatePage {
   };
 }
 
+export interface ApplyPage {
+  data: {
+    id: number;
+    attributes: {
+      hero: HeroComponent;
+      applicationProcess: IconListComponent;
+      faqs: FAQComponent[];
+    };
+  };
+}
+
 export interface ContactPage {
   data: {
     id: number;

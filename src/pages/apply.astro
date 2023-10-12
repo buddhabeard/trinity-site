@@ -1,7 +1,20 @@
 ---
+import PageHero from "../components/PageHero.astro";
+import type { ApplyPage } from "../interfaces/Pages";
 import Layout from "../layouts/Layout.astro";
+import { applyPageQuery } from "../lib/queries";
+import fetchApi from "../lib/strapi";
+
+const page = await fetchApi<ApplyPage>({
+  endpoint: "who-we-are",
+  query: applyPageQuery,
+});
+
+console.log(page);
 ---
 
-<Layout title="Apply">
-  <main class="page-apply">apply</main>
+<Layout title="Trinity Life Ministry - Application">
+  <main class="page-apply">
+    <PageHero {...page.data?.attributes.hero} />
+  </main>
 </Layout>

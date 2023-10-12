@@ -63,6 +63,12 @@ export const contactPageQuery = createQuery(["hero|>image", "faqs"]);
 
 export const donatePageQuery = createQuery(["hero|>image", "content", "faqs"]);
 
+export const applyPageQuery = createQuery([
+  "hero|>image",
+  "applicationProcess|>iconList|>icon",
+  "faqs",
+]);
+
 export type Queries =
   | typeof homepageQuery
   | typeof postsQuery
