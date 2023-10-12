@@ -1,20 +1,117 @@
 ---
-import PageHero from "../components/PageHero.astro";
-import type { ApplyPage } from "../interfaces/Pages";
+import ApplicationForm from "../components/ApplicationForm.astro";
+import Container from "../components/Container.astro";
+import FAQs from "../components/FAQs.astro";
 import Layout from "../layouts/Layout.astro";
-import { applyPageQuery } from "../lib/queries";
+import PageHero from "../components/PageHero.astro";
+import SocialShare from "../components/SocialShare.astro";
+import TwoColumns from "../components/TwoColumns.astro";
 import fetchApi from "../lib/strapi";
+import type { ApplyPage } from "../interfaces/Pages";
+import { applyPageQuery } from "../lib/queries";
 
 const page = await fetchApi<ApplyPage>({
-  endpoint: "who-we-are",
+  endpoint: "apply",
   query: applyPageQuery,
 });
-
-console.log(page);
 ---
 
 <Layout title="Trinity Life Ministry - Application">
   <main class="page-apply">
     <PageHero {...page.data?.attributes.hero} />
+
+    <Container isSection classes="mt-12">
+      <TwoColumns>
+        <div class="lg:pr-8 lg:pt-4 order-2 md:order-1">
+          <div class="lg:max-w-lg">
+            <h2 class="text-2xl lg:text-3xl font-bold leading-7 text-dark">
+              {page.data.attributes.applicationProcess.heading}
+            </h2>
+            <p class="mt-6 text-base lg:text-lg leading-8 text-gray-600">
+              {page.data.attributes.applicationProcess.content}
+            </p>
+            <dl
+              class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none"
+            >
+              {
+                page.data.attributes.applicationProcess.iconList.map((item) => (
+                  <div class="flex flex-wrap">
+                    <img
+                      class="h-8 w-8 lg:h-12 lg:w-12"
+                      src={item.icon.data.attributes.url}
+                      alt=""
+                    />
+                    <div class="font-semibold text-gray-900 ml-4">
+                      {item.heading}
+                    </div>
+                    <div class="ml-12 lg:ml-16 -mt-4">{item.content}</div>
+                  </div>
+                ))
+              }
+            </dl>
+          </div>
+        </div>
+
+        <!-- carousel -->
+        <div
+          class="order-1 md:order-2 flex flex-col items-center justify-center"
+        >
+          <img
+            class="w-full h-full sm:w-[344px] sm:h-[344px] lg:w-[485px] lg:h-[485px]"
+            src="https://res.cloudinary.com/diattpuqa/image/upload/v1695395100/testimonial_19_6d800d0ced.png"
+            alt="quote"
+          />
+        </div>
+      </TwoColumns>
+    </Container>
+
+    <TwoColumns>
+      <ApplicationForm />
+      <div
+        id="application-download"
+        class="flex flex-col items-center justify-start lg:pt-24"
+      >
+        <img
+          src="https://res.cloudinary.com/diattpuqa/image/upload/v1697045462/icon_print_download_b3acfabae6.svg"
+          alt=""
+          class="mb-12"
+        />
+        <h3>Print a copy</h3>
+        <p class="text-center mb-4">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur,
+          molestiae. Nisi illum qui perferendis minus? Voluptatum at deleniti
+          sequi in molestias incidunt dolore?
+        </p>
+        <button
+          class="bg-teal text-white w-44 h-10 px-4 py-2 rounded-md shadow justify-center items-center inline-flex mb-8"
+          >Download & Return</button
+        >
+
+        <h5 class="mb-4 font-bold">Return to:</h5>
+
+        <div class="text-center mb-4">
+          <div>Trinity Life Ministry</div>
+          <div>2150 Elmwood Ave</div>
+          <div>Lafayette, IN 47904</div>
+        </div>
+
+        <div class="text-center">
+          <div>Email | engage@trinitylifeministry.com</div>
+          <div>Corporate Office | 765-742-1060</div>
+          <div>Fax | 765-742-1061</div>
+        </div>
+      </div>
+    </TwoColumns>
+
+    <!-- faqs -->
+    <Container isSection>
+      <!-- @ts-ignore -->
+      <FAQs faqs={page.data.attributes.faqs} />
+    </Container>
+
+    <!-- social embed -->
+    <Container isSection classes="!px-0 md:!px-8 lg:!px-16">
+      <SocialShare />
+    </Container>
   </main>
 </Layout>
