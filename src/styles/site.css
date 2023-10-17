@@ -6,18 +6,19 @@
 }
 
 .page-home .swiper {
-    background: url('https://res.cloudinary.com/db7kwocif/image/upload/v1694110214/bg_desktop_2x_52e525a5a7.png') no-repeat;
+    background: url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110214/bg_desktop_2x_52e525a5a7.png) no-repeat;
     background-size: cover;
+    @apply mb-6
 }
 
 .page-home .home-hero {
   height: 100%;
   
   background-position:
-    top 1% left 1%,
-    top 1% right 1%,
-    bottom 1% right 1%,
-    bottom 1% left 1%;
+    top 0.5em left 0.5em,
+    top 0.5em right 0.5em,
+    bottom 0.5em right 0.5em,
+    bottom 0.5em left 0.5em;
   
   background-size: 13%;
   background-repeat: no-repeat;
@@ -27,4 +28,12 @@
     url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110169/brandaccent_top_right_2830903d0c.svg),
     url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110170/brandaccent_bottom_right_ba3a234848.svg),
     url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110169/brandaccent_bottom_left_c2f9545c23.svg);
-}  
+}
+
+.text-darkBlue.text-2xl,
+.text-darkBlue.text-3xl {
+    background-image: url(https://res.cloudinary.com/diattpuqa/image/upload/v1696951285/heading_underline_6128d0fd09.svg);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    @apply p-6 pt-0
+} 
