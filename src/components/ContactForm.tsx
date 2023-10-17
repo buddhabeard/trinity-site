@@ -1,8 +1,6 @@
 import { useRef, useState } from "react";
 import axios from "axios";
 
-type Form = {};
-
 type ContactFormFields = {
   firstName: string;
   lastName: string;
@@ -18,9 +16,6 @@ const initFormData = {
 };
 
 const formName = "Contact Form";
-
-// @ts-ignore
-const hasFieldRef = (ref): boolean => "current" in ref;
 
 const ContactForm = () => {
   const fNameRef = useRef<HTMLInputElement>();
