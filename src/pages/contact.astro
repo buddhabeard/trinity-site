@@ -1,5 +1,5 @@
 ---
-import ContactForm from "../components/ContactForm.astro";
+import ContactForm from "../components/ContactForm";
 import Container from "../components/Container.astro";
 import PageHero from "../components/PageHero.astro";
 import SocialShare from "../components/SocialShare.astro";
@@ -19,11 +19,11 @@ const page = await fetchApi<ContactPage>({
     <PageHero {...page.data.attributes.hero} />
 
     <Container isSection>
-      <ContactForm />
+      <ContactForm client:only />
     </Container>
 
     <Container isSection>
       <SocialShare />
     </Container>
   </main>
-</Layout>
+</Layout>../components/ContactForm.tsx

@@ -8,7 +8,7 @@ import Container from "../components/Container.astro";
 import PageHeadingRouter from "../components/PageHeadingRouter.astro";
 import VolunteerForm from "../components/VolunteerForm.astro";
 import KindfulForm from "../components/KindfulForm.astro";
-import ContactForm from "../components/ContactForm.astro";
+import ContactForm from "../components/ContactForm";
 
 const page = await fetchApi<DonatePage>({
   endpoint: "donation-page",
@@ -90,9 +90,9 @@ const page = await fetchApi<DonatePage>({
 
           <KindfulForm />
 
-          <ContactForm />
+          <ContactForm client:only />
         </div>
       </div>
     </Container>
   </main>
-</Layout>
+</Layout>../components/ContactForm.tsx
