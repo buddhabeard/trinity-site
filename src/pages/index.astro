@@ -2,7 +2,7 @@
 import Carousel from "../components/Carousel";
 import Callout from "../components/Callout.astro";
 import Container from "../components/Container.astro";
-import HorizontalHeadingAndContent from "../components/HorizontalHeadingAndText.astro";
+import HorizontalHeadingAndText from "../components/HorizontalHeadingAndText.astro";
 import Layout from "../layouts/Layout.astro";
 import LinkCards from "../components/LinkCards.astro";
 import fetchApi from "../lib/strapi";
@@ -42,15 +42,14 @@ const {
     <!-- hero -->
     {hasCarousel(page) && <Carousel client:only carousel={carousel} />}
 
-    <!-- link cards -->
     <Container isSection>
-      <HorizontalHeadingAndContent heading="Changing Lives, New Beginnings">
+      <HorizontalHeadingAndText heading="Changing Lives, New Beginnings">
         As a dedicated nonprofit driven by Christian principles, we have
         consistently centered our efforts on faith and Christ-centered values.
-      </HorizontalHeadingAndContent>
+      </HorizontalHeadingAndText>
     </Container>
 
-    <!-- last updated: event, 2 blog articles -->
+    <!-- link cards -->
     <Container isSection>
       {hasLinkCards(page) && <LinkCards linkCards={linkCards} />}
     </Container>
