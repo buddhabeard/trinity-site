@@ -15,8 +15,6 @@ const initFormData = {
   message: "",
 };
 
-const formName = "Contact Form";
-
 const ContactForm = () => {
   const fNameRef = useRef<HTMLInputElement>();
   const lNameRef = useRef<HTMLInputElement>();
@@ -58,10 +56,15 @@ const ContactForm = () => {
       formData.message = messageRef.current.value;
     }
 
-    await axios.post("https://trinity-cms.onrender.com/api/ezforms/submit", {
-      formData,
-      formName,
-    });
+    await axios.post(
+      "https://trinity-cms.onrender.com/api/contact-form-submissions",
+      {
+        data: formData,
+      }
+    );
+
+    // @TODO: sendgrid email notification once Ken has verified on his end.
+    // await axios.post()
 
     setFormSubmitted(true);
     clearFields();
