@@ -8,7 +8,8 @@ import Container from "../components/Container.astro";
 import PageHeadingRouter from "../components/PageHeadingRouter.astro";
 import VolunteerForm from "../components/VolunteerForm.astro";
 import KindfulForm from "../components/KindfulForm.astro";
-import ContactForm from "../components/ContactForm.astro";
+import ContactForm from "../components/ContactForm";
+import HorizontalHeadingAndText from "../components/HorizontalHeadingAndText.astro";
 
 const page = await fetchApi<DonatePage>({
   endpoint: "donation-page",
@@ -22,26 +23,38 @@ const page = await fetchApi<DonatePage>({
     {page.data?.attributes?.hero && <PageHero {...page.data.attributes.hero} />}
 
     <Container isSection>
+      <HorizontalHeadingAndText heading="The Spirit of Giving: Ways to Give">
+        As a dedicated nonprofit driven by Christian principles, we have
+        consistently centered our efforts on faith and Christ-centered values.
+      </HorizontalHeadingAndText>
+    </Container>
+
+    <Container isSection>
       <div class="flex mt-16">
         <!-- spirit blurb -->
         <div
           class="lg:w-2/3 mb-4 lg:mb-0 text-darkBlue text-4xl font-extrabold font-inter leading-10"
         >
-          The Spirit of Giving: Ways to Give
         </div>
         <div
           class="lg:w-1/2 text-gray-500 text-xl font-normal font-inter leading-7 mb-8"
         >
-          As a dedicated nonprofit driven by Christian principles, we have
-          consistently centered our efforts on faith and Christ-centered values.
         </div>
       </div>
 
       <div class="flex items-start">
         <!-- sidebar routes -->
         <div
-          class="hidden lg:block pb-5 h-[calc(100vh-500px)] lg:w-1/4 lg:mb-12 page-router"
+          class="hidden sticky top-28 lg:block pb-5 h-[calc(100vh-500px)] lg:w-1/4 lg:mb-12 page-router"
         >
+          <PageHeadingRouter
+            headingId="kindful-form"
+            heading="Donate Funds"
+            borderColor="green"
+          >
+            Your monetary contributions always go to a good cause
+          </PageHeadingRouter>
+
           <PageHeadingRouter
             headingId="kindful-form"
             heading="Donate Goods"
@@ -56,14 +69,6 @@ const page = await fetchApi<DonatePage>({
             borderColor="darkBlue"
           >
             Volunteering opportunities with Trinity Life Ministry
-          </PageHeadingRouter>
-
-          <PageHeadingRouter
-            headingId="kindful-form"
-            heading="Donate Funds"
-            borderColor="green"
-          >
-            Your monetary contributions always go to a good cause
           </PageHeadingRouter>
 
           <PageHeadingRouter
@@ -90,9 +95,9 @@ const page = await fetchApi<DonatePage>({
 
           <KindfulForm />
 
-          <ContactForm />
+          <ContactForm client:only />
         </div>
       </div>
     </Container>
   </main>
-</Layout>
+</Layout>../components/ContactForm.tsx

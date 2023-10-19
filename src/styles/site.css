@@ -35,5 +35,5 @@
     background-image: url(https://res.cloudinary.com/diattpuqa/image/upload/v1696951285/heading_underline_6128d0fd09.svg);
     background-repeat: no-repeat;
     background-position: bottom left;
-    @apply p-6 pt-0
+    @apply p-6 pt-0;
 } 
