@@ -1,5 +1,3 @@
-// const test = ["hero", "linkCards|>linkCard", "faqs", "callout|>image", "cta"];
-
 export const createQuery = (queries: string[]) =>
   queries
     .map((t) => {
@@ -69,6 +67,8 @@ export const applyPageQuery = createQuery([
   "faqs",
 ]);
 
+export const categoryQuery = createQuery(["name"]);
+
 export type Queries =
   | typeof homepageQuery
   | typeof postsQuery
@@ -76,7 +76,9 @@ export type Queries =
   | typeof thriftStoreQuery
   | typeof blogIndexPageQuery
   | typeof contactPageQuery
-  | typeof donatePageQuery;
+  | typeof donatePageQuery
+  | typeof applyPageQuery
+  | typeof categoryQuery;
 
 export const queryWithLimit = (query: Queries, limit: number): string =>
   `${query}&pagination[pageSize]=${limit}`;

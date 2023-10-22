@@ -1,5 +1,5 @@
 ---
-import BlogPostsGrid from "../../components/BlogPostsGrid.astro";
+import BlogPostsGrid from "../../components/BlogPostsGrid";
 import CallToAction from "../../components/CallToAction.astro";
 import Container from "../../components/Container.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -69,7 +69,7 @@ const featurePost = posts.data[0].attributes;
 
     <!-- posts previews -->
     <Container isSection>
-      <BlogPostsGrid posts={posts} />
+      <BlogPostsGrid client:only posts={posts} />
     </Container>
 
     <!-- social embed -->
