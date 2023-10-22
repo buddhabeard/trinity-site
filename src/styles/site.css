@@ -37,3 +37,11 @@
     background-position: bottom left;
     @apply p-6 pt-0;
 } 
+
+.page-who-we-are .swiper-slide {
+  @apply h-[376px];
+}
+
+.page-who-we-are .swiper-slide img {
+  @apply fixed top-6 lg:h-[315px] lg:w-[376px];
+}
