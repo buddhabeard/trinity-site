@@ -1,6 +1,5 @@
 ---
 import type { ThemeColor } from "../interfaces/Enums";
-import { getColor } from "../utils";
 
 interface Props {
   image: {
@@ -17,14 +16,7 @@ interface Props {
   url: string;
 }
 
-const { image, title, content, bgColor, buttonText, url } = Astro.props;
-
-const bgColorClass = getColor(bgColor);
-
-// teal: "#13A89E",
-// darkBlue: "#073E6D",
-// green: "#0D9346",
-// limeGreen: "#8BC540",
+const { image, title, content } = Astro.props;
 ---
 
 <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -34,7 +26,7 @@ const bgColorClass = getColor(bgColor);
     <img
       class="absolute inset-0 h-full w-full object-cover brightness-150"
       src={image.data.attributes.url}
-      alt=""
+      alt="testimonial"
     />
     <div class="absolute inset-0 bg-teal mix-blend-multiply"></div>
     <div
@@ -50,7 +42,8 @@ const bgColorClass = getColor(bgColor);
     <div class="relative mx-auto max-w-2xl lg:mx-0">
       <figure>
         <blockquote
-          class="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
+          class="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8"
+        >
           <p>
             {title}
           </p>
