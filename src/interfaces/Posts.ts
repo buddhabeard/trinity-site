@@ -1,4 +1,4 @@
-import type Categories from "./Categories";
+import type { Categories } from "./Categories";
 import type { HeroComponent } from "./Components";
 import type { Image } from "./Images";
 
@@ -13,7 +13,7 @@ export interface Post {
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
-    categories?: Categories;
+    categories?: { data: Categories };
     image: Image;
     event?: {
       data: {

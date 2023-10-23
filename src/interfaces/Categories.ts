@@ -7,6 +7,4 @@ export interface Category {
   };
 }
 
-export default interface Categories {
-  data: Category[];
-}
+export type Categories = Category[];

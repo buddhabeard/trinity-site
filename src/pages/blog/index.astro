@@ -1,12 +1,12 @@
 ---
-import BlogPostsGrid from "../../components/BlogPostsGrid.astro";
+import BlogPostsGrid from "../../components/BlogPostsGrid";
 import CallToAction from "../../components/CallToAction.astro";
 import Container from "../../components/Container.astro";
+import FeaturePost from "../../components/FeaturePost";
 import Layout from "../../layouts/Layout.astro";
 import NewsletterSignup from "../../components/NewsletterSignup.astro";
 import PageHero from "../../components/PageHero.astro";
 import SocialShare from "../../components/SocialShare.astro";
-import TwoColumns from "../../components/TwoColumns.astro";
 import fetchApi from "../../lib/strapi";
 import type Posts from "../../interfaces/Posts";
 import type { BlogIndexPage } from "../../interfaces/Pages";
@@ -31,36 +31,7 @@ const featurePost = posts.data[0].attributes;
     <PageHero {...blog.data.attributes.hero} />
 
     <!-- feature post -->
-    <TwoColumns classes="lg:h-[386px]">
-      <img class="w-full" src={featurePost.image.data.attributes.url} />
-
-      <div class="flex flex-col">
-        <div class="overflow-hidden max-h-[300px] lg:max-h-[150px] mb-4">
-          <p
-            class="text-gray-500 text-base font-normal font-inter leading-normal"
-            set:html={featurePost.content}
-          />
-        </div>
-
-        <a
-          class="w-28 h-10 px-4 py-2 mx-auto self-center lg:ml-6 bg-teal text-white rounded-md shadow justify-center items-center inline-flex"
-          href={`/blog/${featurePost.slug}`}>Read more</a
-        >
-        <div
-          class="w-full my-4 lg:mx-6 lg:my-8 h-px border border-black border-opacity-20"
-        >
-        </div>
-        <div
-          class="text-gray-500 mx-auto lg:mx-6 text-base font-normal font-inter leading-tight"
-        >
-          {
-            new Date(featurePost.updatedAt).toLocaleDateString("en-US", {
-              dateStyle: "long",
-            })
-          } · 2 Likes
-        </div>
-      </div>
-    </TwoColumns>
+    <FeaturePost client:only />
 
     <!-- newsletter signup cta -->
     <Container isSection>
@@ -69,7 +40,7 @@ const featurePost = posts.data[0].attributes;
 
     <!-- posts previews -->
     <Container isSection>
-      <BlogPostsGrid posts={posts} />
+      <BlogPostsGrid client:only />
     </Container>
 
     <!-- social embed -->

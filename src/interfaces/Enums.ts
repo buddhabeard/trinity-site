@@ -3,6 +3,12 @@ export enum ThemeColors {
   "dark blue" = "bg-darkBlue",
   green = "bg-green",
   "lime green" = "bg-limeGreen",
+  "white" = "bg-white",
 }
 
-export type ThemeColor = "teal" | "dark blue" | "green" | "lime green";
+export type ThemeColor =
+  | "teal"
+  | "dark blue"
+  | "green"
+  | "lime green"
+  | "white";

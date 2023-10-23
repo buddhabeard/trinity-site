@@ -17,7 +17,7 @@ const navItems = [
   },
   {
     text: "Events",
-    href: "/events",
+    href: "/blog?category=Event Upcoming",
   },
   {
     text: "Blog",
