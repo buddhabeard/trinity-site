@@ -4,25 +4,57 @@ import parse from "html-react-parser";
 import type Posts from "../interfaces/Posts";
 import CategorySelect from "./CategorySelect";
 import { getCategoryParam } from "../utils";
+import axios from "axios";
 
 export type BlogPostsGridProps = {
   posts: Posts;
 };
 
-const BlogPostsGrid = ({ posts }: BlogPostsGridProps) => {
+type Pagination = {
+  page: number;
+  pageSize: number;
+  pageCount: number;
+  total: number;
+};
+
+const initPosts = {
+  data: [],
+  meta: {
+    pagination: {
+      page: 0,
+      pageSize: 0,
+      pageCount: 0,
+      total: 0,
+    },
+  },
+};
+
+const BlogPostsGrid = () => {
   // @ts-ignore
-  const [filteredPosts, setFilteredPosts] = useState<Posts>(posts);
+  const [posts, setPosts] = useState<Posts>(initPosts);
+  const [filteredPosts, setFilteredPosts] = useState<Posts>(initPosts);
+  const [pagination, setPagination] = useState<Pagination>();
+
+  const fetchPosts = async () =>
+    await axios.get("https://trinity-cms.onrender.com/api/posts?populate=*");
+
+  useEffect(() => {
+    fetchPosts().then((posts) => {
+      setPosts(posts.data);
+    });
+  }, []);
 
   useEffect(() => {
     const catP = getCategoryParam();
     if (catP) onCategorySelect(catP);
-  }, []);
+  }, [posts]);
 
   const onCategorySelect = (cat: string) => {
     let filtered = {
       data: posts.data.filter((p) =>
         p.attributes.categories?.data.find((d) => d.attributes.name === cat)
       ),
+      meta: posts.meta,
     };
 
     if (filtered.data.length === 0) {
