@@ -2,27 +2,18 @@
 import BlogPostsGrid from "../../components/BlogPostsGrid";
 import CallToAction from "../../components/CallToAction.astro";
 import Container from "../../components/Container.astro";
-import FeaturePost from "../../components/FeaturePost";
 import Layout from "../../layouts/Layout.astro";
 import NewsletterSignup from "../../components/NewsletterSignup.astro";
 import PageHero from "../../components/PageHero.astro";
 import SocialShare from "../../components/SocialShare.astro";
 import fetchApi from "../../lib/strapi";
-import type Posts from "../../interfaces/Posts";
 import type { BlogIndexPage } from "../../interfaces/Pages";
-import { blogIndexPageQuery, postsQuery } from "../../lib/queries";
+import { blogIndexPageQuery } from "../../lib/queries";
 
 const blog = await fetchApi<BlogIndexPage>({
   endpoint: "blog",
   query: blogIndexPageQuery,
 });
-
-const posts = await fetchApi<Posts>({
-  endpoint: "posts",
-  query: postsQuery,
-});
-
-const featurePost = posts.data[0].attributes;
 ---
 
 <Layout title="Blog">
