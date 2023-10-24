@@ -42,7 +42,7 @@ const CategorySelect = ({ onClick, clearFilter }: CategorySelectProps) => {
   const isActive = (name: string) => filterBy === name;
 
   return (
-    <div className="flex flex-wrap items-center justify-center lg:justify-start mb-8 lg:mb-16">
+    <div className="flex flex-wrap items-center justify-center mb-8 lg:mb-16">
       {categories.map((cat: Category) => (
         <Pill
           key={cat.attributes.name}

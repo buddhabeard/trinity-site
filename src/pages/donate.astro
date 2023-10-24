@@ -1,15 +1,14 @@
 ---
+import Container from "../components/Container.astro";
+import HorizontalHeadingAndText from "../components/HorizontalHeadingAndText.astro";
+import KindfulForm from "../components/KindfulForm.astro";
 import Layout from "../layouts/Layout.astro";
+import PageHeadingRouter from "../components/PageHeadingRouter.astro";
 import PageHero from "../components/PageHero.astro";
+import VolunteerForm from "../components/VolunteerForm.astro";
 import fetchApi from "../lib/strapi";
 import type { DonatePage } from "../interfaces/Pages";
 import { donatePageQuery } from "../lib/queries";
-import Container from "../components/Container.astro";
-import PageHeadingRouter from "../components/PageHeadingRouter.astro";
-import VolunteerForm from "../components/VolunteerForm.astro";
-import KindfulForm from "../components/KindfulForm.astro";
-import ContactForm from "../components/ContactForm";
-import HorizontalHeadingAndText from "../components/HorizontalHeadingAndText.astro";
 
 const page = await fetchApi<DonatePage>({
   endpoint: "donation-page",
@@ -70,14 +69,6 @@ const page = await fetchApi<DonatePage>({
           >
             Volunteering opportunities with Trinity Life Ministry
           </PageHeadingRouter>
-
-          <PageHeadingRouter
-            headingId="contact-form"
-            heading="Contact Us"
-            borderColor="limeGreen"
-          >
-            Reach out with questions and inquiries
-          </PageHeadingRouter>
         </div>
 
         <div
@@ -94,10 +85,8 @@ const page = await fetchApi<DonatePage>({
           <VolunteerForm />
 
           <KindfulForm />
-
-          <ContactForm client:only />
         </div>
       </div>
     </Container>
   </main>
-</Layout>../components/ContactForm.tsx
+</Layout>

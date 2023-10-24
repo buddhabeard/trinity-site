@@ -12,10 +12,6 @@ const navItems = [
     href: "/thrift-store",
   },
   {
-    text: "Donate",
-    href: "/donate",
-  },
-  {
     text: "Events",
     href: "/blog?category=Event Upcoming",
   },
@@ -109,7 +105,7 @@ const Header = () => {
             href="/donate"
             className="px-4 py-2 bg-teal text-white rounded-md shadow justify-center items-center inline-flex"
           >
-            Get Involved
+            Donate
           </a>
         </div>
       </nav>
@@ -188,7 +184,7 @@ const Header = () => {
                   href="/donate"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  Get Involved
+                  Donate
                 </a>
               </div>
             </div>

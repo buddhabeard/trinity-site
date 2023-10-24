@@ -130,6 +130,8 @@ const BlogPostsGrid = () => {
           </div>
         ))}
       </div>
+
+      {/* put that pagination right hurrr */}
     </div>
   );
 };
