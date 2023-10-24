@@ -105,7 +105,7 @@ const Header = () => {
             href="/donate"
             className="px-4 py-2 bg-teal text-white rounded-md shadow justify-center items-center inline-flex"
           >
-            Get Involved
+            Donate
           </a>
         </div>
       </nav>
