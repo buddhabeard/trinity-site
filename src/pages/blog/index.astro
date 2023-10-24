@@ -30,17 +30,14 @@ const featurePost = posts.data[0].attributes;
     <!-- @ts-ignore -->
     <PageHero {...blog.data.attributes.hero} />
 
-    <!-- feature post -->
-    <FeaturePost client:only />
+    <!-- posts previews -->
+    <Container isSection classes="mt-10">
+      <BlogPostsGrid client:only />
+    </Container>
 
     <!-- newsletter signup cta -->
     <Container isSection>
       <NewsletterSignup />
-    </Container>
-
-    <!-- posts previews -->
-    <Container isSection>
-      <BlogPostsGrid client:only />
     </Container>
 
     <!-- social embed -->
