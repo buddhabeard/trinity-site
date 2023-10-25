@@ -7,10 +7,10 @@ import PageHero from "../components/PageHero.astro";
 import SocialShare from "../components/SocialShare.astro";
 import StoreHoursTable from "../components/StoreHoursTable.astro";
 import StoreLocations from "../components/StoreLocations.astro";
+import VideoWithContent from "../components/VideoWithContent.astro";
 import fetchApi from "../lib/strapi";
 import type { ThriftStorePage } from "../interfaces/Pages";
 import { thriftStoreQuery } from "../lib/queries";
-import VideoWithContent from "../components/VideoWithContent.astro";
 
 const page = await fetchApi<ThriftStorePage>({
   endpoint: "thrift-store",
