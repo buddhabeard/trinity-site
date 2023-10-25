@@ -24,7 +24,7 @@ const FeaturePost = () => {
   }, []);
 
   return featurePost ? (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 p-8 lg:h-[386px]">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 p-8 lg:h-[386px] mb-8">
       <img className="w-full" src={featurePost?.image.data.attributes.url} />
 
       <div className="flex flex-col">

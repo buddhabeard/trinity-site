@@ -5,7 +5,7 @@ import parse from "html-react-parser";
 import type Posts from "../interfaces/Posts";
 import type { Post } from "../interfaces/Posts";
 import CategorySelect from "./CategorySelect";
-import { getCategoryParam } from "../utils";
+import { getCategoryParam, getPostCategory } from "../utils";
 import FeaturePost from "./FeaturePost";
 import Pill from "./Pill";
 import Logo from "./Logo";
@@ -35,12 +35,6 @@ const initPosts = {
 
 const postDate = (post: Post) =>
   post.attributes?.eventDate ?? post.attributes.publishedAt;
-
-const getPostCategory = (post: Post): string => {
-  if (!post.attributes.categories?.data) return "General";
-
-  return post.attributes.categories.data[0].attributes.name;
-};
 
 const hasImage = (post: Post) => post?.attributes?.image?.data;
 
