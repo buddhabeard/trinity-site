@@ -4,6 +4,8 @@ import type { Post } from "../interfaces/Posts";
 interface Props extends Post {}
 
 const post = Astro.props;
+
+const postDate = post.attributes?.eventDate ?? post.attributes.publishedAt;
 ---
 
 <div
@@ -49,14 +51,11 @@ const post = Astro.props;
     <div class="mt-6 flex items-center">
       <div class="ml-0">
         <div class="flex space-x-1 text-sm text-dark">
-          <time datetime={post.attributes.publishedAt}
+          <time datetime={postDate}
             >{
-              new Date(post.attributes.publishedAt).toLocaleDateString(
-                "en-US",
-                {
-                  dateStyle: "long",
-                }
-              )
+              new Date(postDate).toLocaleDateString("en-US", {
+                dateStyle: "long",
+              })
             }</time
           >
         </div>
