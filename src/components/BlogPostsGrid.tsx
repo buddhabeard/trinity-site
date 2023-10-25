@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import parse from "html-react-parser";
 
 import type Posts from "../interfaces/Posts";
 import CategorySelect from "./CategorySelect";
 import { getCategoryParam } from "../utils";
-import axios from "axios";
+import FeaturePost from "./FeaturePost";
 
 export type BlogPostsGridProps = {
   posts: Posts;
@@ -34,6 +35,7 @@ const BlogPostsGrid = () => {
   const [posts, setPosts] = useState<Posts>(initPosts);
   const [filteredPosts, setFilteredPosts] = useState<Posts>(initPosts);
   const [pagination, setPagination] = useState<Pagination>();
+  const [showFeaturePost, setShowFeaturePost] = useState<boolean>(false);
 
   const fetchPosts = async () =>
     await axios.get(
@@ -59,6 +61,15 @@ const BlogPostsGrid = () => {
       meta: posts.meta,
     };
 
+    const featureOK =
+      cat === "General" || cat === "Blog Article" || cat === typeof undefined;
+
+    if (featureOK) {
+      setShowFeaturePost(true);
+    } else {
+      setShowFeaturePost(false);
+    }
+
     if (filtered.data.length === 0) {
       setFilteredPosts(posts);
     } else {
@@ -73,6 +84,8 @@ const BlogPostsGrid = () => {
         clearFilter={filteredPosts.data.length === 0}
         onClick={onCategorySelect}
       />
+
+      {showFeaturePost ? <FeaturePost /> : null}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-auto gap-12 posts-section">
         {filteredPosts.data.map((post) => (

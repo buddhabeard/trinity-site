@@ -9,3 +9,13 @@ export const getCategoryParam = () => {
   const params = query.split("&");
   return decodeURI(params[0].split("=")[1]);
 };
+
+export const showFeaturePost = () => {
+  const category = getCategoryParam();
+
+  return (
+    category === null ||
+    category.toLowerCase() === "general" ||
+    category.toLowerCase() === "blog article"
+  );
+};
