@@ -111,7 +111,7 @@ const BlogPostsGrid = () => {
                   alt={post.attributes.title}
                 />
               ) : (
-                <div className="h-[128px] w-[158px] px-4 bg-white shadow">
+                <div className="flex items-center justify-center w-3/4 bg-white shadow">
                   <Logo />
                 </div>
               )}
@@ -120,11 +120,11 @@ const BlogPostsGrid = () => {
             <div className="flex flex-col gap-1 col-span-2">
               <div className="post-date text-gray-500 text-sm font-normal font-inter leading-tight">
                 <div className="flex items-center mb-4">
-                  <span>
+                  <div>
                     {new Date(postDate(post)).toLocaleDateString("en-US", {
                       dateStyle: "long",
                     })}
-                  </span>
+                  </div>
                   <Pill
                     color="teal"
                     bg="white"
