@@ -32,7 +32,6 @@ const Carousel = ({
     {carousel.items.map((item, i) => (
       <SwiperSlide key={i}>
         <div className="max-w-[1280px] mx-auto px-4 md:px-8 lg:px-16">
-          <p>shit</p>
           <Hero key={item.id} {...item} withHeading={withHeading} />
         </div>
       </SwiperSlide>
