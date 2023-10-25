@@ -46,6 +46,11 @@
   @apply fixed top-6 lg:h-[315px] lg:w-[376px];
 }
 
+.page-who-we-are .testimonial-section a,
+.page-who-we-are .testimonial-section a strong {
+  @apply text-white;
+}
+
 .page-thrift-store h3 {
   @apply text-gray-900 text-2xl lg:text-3xl font-extrabold leading-9;
 }
