@@ -36,12 +36,14 @@ const {
   callout,
   // cta,
 } = page.data.attributes;
+
+console.log(carousel);
 ---
 
 <Layout title="Trinity Life Ministry">
   <main class="page-home">
     <!-- hero -->
-    {hasCarousel(page) && <Carousel client:only carousel={carousel} />}
+    <Carousel client:only carousel={carousel} />
 
     <Container isSection>
       <HorizontalHeadingAndText heading="Changing Lives, New Beginnings">
