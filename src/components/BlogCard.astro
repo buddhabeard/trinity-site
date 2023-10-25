@@ -49,9 +49,16 @@ const post = Astro.props;
     <div class="mt-6 flex items-center">
       <div class="ml-0">
         <div class="flex space-x-1 text-sm text-dark">
-          <time datetime="2020-03-16">Mar 16, 2020</time>
-          <span aria-hidden="true">&middot;</span>
-          <span>6 min read</span>
+          <time datetime={post.attributes.publishedAt}
+            >{
+              new Date(post.attributes.publishedAt).toLocaleDateString(
+                "en-US",
+                {
+                  dateStyle: "long",
+                }
+              )
+            }</time
+          >
         </div>
       </div>
     </div>

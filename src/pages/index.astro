@@ -22,6 +22,7 @@ const page = await fetchApi<HomePage>({
 const posts = await fetchApi<Posts>({
   endpoint: "posts",
   query: queryWithLimit(postsQuery, 3),
+  sortBy: "publishedAt",
 });
 
 const hasCarousel = (page: HomePage) => page.data.attributes?.carousel;
