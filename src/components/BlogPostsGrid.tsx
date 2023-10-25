@@ -36,7 +36,9 @@ const BlogPostsGrid = () => {
   const [pagination, setPagination] = useState<Pagination>();
 
   const fetchPosts = async () =>
-    await axios.get("https://trinity-cms.onrender.com/api/posts?populate=*");
+    await axios.get(
+      "https://trinity-cms.onrender.com/api/posts?populate=*&sort=publishedAt:desc"
+    );
 
   useEffect(() => {
     fetchPosts().then((posts) => {
