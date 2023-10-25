@@ -15,11 +15,7 @@ export interface Post {
     publishedAt: string;
     categories?: { data: Categories };
     image: Image;
-    event?: {
-      data: {
-        attributes: { title: string };
-      };
-    };
+    eventDate: null | string;
   };
 }
 

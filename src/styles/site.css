@@ -45,3 +45,7 @@
 .page-who-we-are .swiper-slide img {
   @apply fixed top-6 lg:h-[315px] lg:w-[376px];
 }
+
+.page-thrift-store h3 {
+  @apply text-gray-900 text-2xl lg:text-3xl font-extrabold leading-9;
+}

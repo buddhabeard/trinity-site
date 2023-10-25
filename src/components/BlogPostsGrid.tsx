@@ -3,9 +3,12 @@ import axios from "axios";
 import parse from "html-react-parser";
 
 import type Posts from "../interfaces/Posts";
+import type { Post } from "../interfaces/Posts";
 import CategorySelect from "./CategorySelect";
 import { getCategoryParam } from "../utils";
 import FeaturePost from "./FeaturePost";
+import Pill from "./Pill";
+import Logo from "./Logo";
 
 export type BlogPostsGridProps = {
   posts: Posts;
@@ -29,6 +32,17 @@ const initPosts = {
     },
   },
 };
+
+const postDate = (post: Post) =>
+  post.attributes?.eventDate ?? post.attributes.publishedAt;
+
+const getPostCategory = (post: Post): string => {
+  if (!post.attributes.categories?.data) return "General";
+
+  return post.attributes.categories.data[0].attributes.name;
+};
+
+const hasImage = (post: Post) => post?.attributes?.image?.data;
 
 const BlogPostsGrid = () => {
   // @ts-ignore
@@ -78,6 +92,11 @@ const BlogPostsGrid = () => {
     }
   };
 
+  const handleCategoryClick = (post: Post): void => {
+    const cat = getPostCategory(post);
+    window.location.href = `${window.location.origin}/blog?category=${cat}`;
+  };
+
   return (
     <div>
       <CategorySelect
@@ -91,21 +110,36 @@ const BlogPostsGrid = () => {
         {filteredPosts.data.map((post) => (
           <div key={post.id} className="post-preview grid grid-cols-3">
             <div className="flex items-start justify-center col-span-1">
-              <img
-                className="max-h-[128px] max-w-[158px] px-4"
-                src={post.attributes.image.data.attributes.url}
-                alt={post.attributes.title}
-              />
+              {hasImage(post) ? (
+                <img
+                  className="max-h-[128px] max-w-[158px] px-4"
+                  src={post.attributes.image.data.attributes.url}
+                  alt={post.attributes.title}
+                />
+              ) : (
+                <div className="h-[128px] w-[158px] px-4 bg-white shadow">
+                  <Logo />
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col gap-1 col-span-2">
               <div className="post-date text-gray-500 text-sm font-normal font-inter leading-tight">
-                {new Date(post.attributes.updatedAt).toLocaleDateString(
-                  "en-US",
-                  {
-                    dateStyle: "long",
-                  }
-                )}
+                <div className="flex items-center mb-4">
+                  <span>
+                    {new Date(postDate(post)).toLocaleDateString("en-US", {
+                      dateStyle: "long",
+                    })}
+                  </span>
+                  <Pill
+                    color="teal"
+                    bg="white"
+                    onClick={() => handleCategoryClick(post)}
+                    classes="text-xs py ml-auto border-2 shadow-darkBlue"
+                  >
+                    {getPostCategory(post)}
+                  </Pill>
+                </div>
                 {post.attributes?.likes && (
                   <span>
                     &middot;
