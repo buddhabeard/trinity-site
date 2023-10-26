@@ -69,7 +69,7 @@ const VolunteerForm = () => {
     <form
       onSubmit={handleSubmit}
       id="volunteer-form"
-      className="w-full shadow p-4 mb-16"
+      className="w-full md:w-11/12 lg:ml-auto shadow p-4 mb-16"
     >
       <div className="space-y-12">
         <div className="pb-12">
@@ -119,7 +119,7 @@ const VolunteerForm = () => {
               </div>
             </div>
 
-            <div className="sm:col-span-4">
+            <div className="sm:col-span-3">
               <label
                 htmlFor="email"
                 className="block text-sm font-medium leading-6 text-gray-900"
@@ -139,9 +139,9 @@ const VolunteerForm = () => {
           </div>
         </div>
 
-        <div className="pb-12">
+        <div className="pb-6">
           <div className="flex flex-wrap mt-10">
-            <fieldset className="w-full sm:w-1/2">
+            {/* <fieldset className="w-full sm:w-1/2">
               <legend className="text-sm font-semibold leading-6 text-gray-900">
                 Type of Positions You&apos;re Open to:
               </legend>
@@ -201,7 +201,7 @@ const VolunteerForm = () => {
                   </div>
                 </div>
               </div>
-            </fieldset>
+            </fieldset> */}
             <fieldset className="w-full sm:w-1/2">
               <legend className="text-sm font-semibold leading-6 text-gray-900">
                 Times You&apos;re Available:
