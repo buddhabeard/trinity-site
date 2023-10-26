@@ -7,7 +7,7 @@ export interface Props extends Omit<HeroComponent, "id"> {
 
 const Hero = ({ title, content, image, withHeading = true }: Props) => {
   return (
-    <div className="mx-auto md:h-[464px] flex flex-wrap justify-center items-center mt-24 mb-12 overflow-hidden">
+    <div className="mx-auto flex flex-wrap justify-center items-center mt-24 mb-12 overflow-hidden">
       {withHeading && (
         <div className="w-full h-1/2 bg-white md:h-auto md:w-1/2 md:mr-auto flex lg:max-w-[540px] lg:my-auto justify-start">
           <HeadingAndText heading={title}>{content}</HeadingAndText>
