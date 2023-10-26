@@ -7,6 +7,7 @@ import Layout from "../../layouts/Layout.astro";
 import PageHero from "../../components/PageHero.astro";
 import Container from "../../components/Container.astro";
 import type { BlogIndexPage } from "../../interfaces/Pages";
+import logoImage from "../../images/logo.svg";
 
 export async function getStaticPaths() {
   const posts = await fetchApi<Posts>({
@@ -26,8 +27,7 @@ export async function getStaticPaths() {
     props: {
       ...post.attributes,
       likes: post.attributes.likes || 0,
-      image: post.attributes.image?.data?.attributes?.url || "",
-      event: post.attributes.event?.data?.attributes?.title || "",
+      image: post.attributes.image?.data?.attributes?.url || logoImage,
       hero: blog.data.attributes.hero,
       categories:
         post.attributes.categories?.data
