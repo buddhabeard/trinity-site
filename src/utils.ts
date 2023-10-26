@@ -16,3 +16,5 @@ export const getPostCategory = (post: Post): string => {
 
   return post.attributes.categories.data[0].attributes.name;
 };
+
+const containsHTML = (str: string) => /<[a-z][\s\S]*>/i.test(str);
