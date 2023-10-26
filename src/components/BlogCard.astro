@@ -12,7 +12,7 @@ const postDate = post.attributes?.eventDate ?? post.attributes.publishedAt;
 
 <div
   id={post.id.toString()}
-  class="flex flex-col overflow-hidden rounded-lg shadow-lg"
+  class="overflow-hidden rounded-lg shadow-lg h-auto"
 >
   <div class="flex-shrink-0">
     <img
@@ -21,27 +21,22 @@ const postDate = post.attributes?.eventDate ?? post.attributes.publishedAt;
       alt={post.attributes.image.data?.attributes.caption || "post image"}
     />
   </div>
-  <div class="flex flex-1 flex-col justify-between bg-white p-6">
-    <div class="flex-1">
-      <p class="text-sm font-medium text-teal mb-4">
-        <a
-          href={`/blog?category=${getPostCategory(post)}`}
-          class="inline-flex items-center rounded-full px-3 py-0.5 font-medium bg-white text-teal text-xs py ml-auto border-2 shadow-darkBlue"
-        >
-          {getPostCategory(post)}
-        </a>
-      </p>
-    </div>
+  <div class="flex flex-col bg-white p-6">
+    <p class="text-sm font-medium text-teal mb-4">
+      <a
+        href={`/blog?category=${getPostCategory(post)}`}
+        class="inline-flex items-center rounded-full px-3 py-0.5 font-medium bg-white text-teal text-xs py ml-auto border-2 shadow-darkBlue"
+      >
+        {getPostCategory(post)}
+      </a>
+    </p>
     <a
       href={`/blog/${post.attributes.slug}`}
-      class="mt-2 block text-dark h-[140px] font-sans overflow-hidden"
+      class="mt-2 block text-dark font-sans overflow-hidden"
     >
       <p class="text-xl font-semibold text-dark">
         {post.attributes.title}
       </p>
-      <div>
-        <p set:html={post.attributes.content} class="mt-3 text-base" />
-      </div>
     </a>
   </div>
   <div class="mt-4 flex items-center ml-6 mb-6">
