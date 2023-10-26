@@ -69,10 +69,10 @@ const VolunteerForm = () => {
     <form
       onSubmit={handleSubmit}
       id="volunteer-form"
-      className="w-full md:w-11/12 lg:ml-auto shadow p-4 mb-16"
+      className="w-full md:w-11/12 lg:ml-auto shadow p-4"
     >
       <div className="space-y-12">
-        <div className="pb-12">
+        <div className="pb-2">
           <h2 className="text-base font-semibold leading-7 text-gray-900">
             Personal Information
           </h2>
@@ -141,67 +141,6 @@ const VolunteerForm = () => {
 
         <div className="pb-6">
           <div className="flex flex-wrap mt-10">
-            {/* <fieldset className="w-full sm:w-1/2">
-              <legend className="text-sm font-semibold leading-6 text-gray-900">
-                Type of Positions You&apos;re Open to:
-              </legend>
-              <div className="mt-6 flex flex-col">
-                <div className="relative flex gap-x-3">
-                  <div className="flex h-6 items-center">
-                    <input
-                      id="comments"
-                      name="comments"
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                  </div>
-                  <div className="text-sm leading-6">
-                    <label
-                      htmlFor="comments"
-                      className="font-medium text-gray-900"
-                    >
-                      Comments
-                    </label>
-                  </div>
-                </div>
-                <div className="relative flex gap-x-3">
-                  <div className="flex h-6 items-center">
-                    <input
-                      id="candidates"
-                      name="candidates"
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                  </div>
-                  <div className="text-sm leading-6">
-                    <label
-                      htmlFor="candidates"
-                      className="font-medium text-gray-900"
-                    >
-                      Candidates
-                    </label>
-                  </div>
-                </div>
-                <div className="relative flex gap-x-3">
-                  <div className="flex h-6 items-center">
-                    <input
-                      id="offers"
-                      name="offers"
-                      type="checkbox"
-                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                    />
-                  </div>
-                  <div className="text-sm leading-6">
-                    <label
-                      htmlFor="offers"
-                      className="font-medium text-gray-900"
-                    >
-                      Offers
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </fieldset> */}
             <fieldset className="w-full sm:w-1/2">
               <legend className="text-sm font-semibold leading-6 text-gray-900">
                 Times You&apos;re Available:

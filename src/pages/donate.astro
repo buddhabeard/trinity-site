@@ -81,7 +81,7 @@ const page = await fetchApi<DonatePage>({
           {
             page.data?.attributes?.content && (
               <div
-                class="content lg:w-11/12 lg:ml-auto space-y-12"
+                class="content lg:w-11/12 lg:ml-auto space-y-10 pt-6"
                 set:html={page.data.attributes.content}
               />
             )
