@@ -6,7 +6,6 @@ import "swiper/css/pagination";
 
 import Hero from "./Hero";
 import type { CarouselComponent } from "../interfaces/Components";
-import Container from "./Container.astro";
 
 const Carousel = ({
   carousel,
@@ -30,13 +29,16 @@ const Carousel = ({
       disableOnInteraction: false,
     }}
   >
-    {carousel.items.map((item, i) => (
-      <SwiperSlide key={i}>
-        <div className="max-w-[1280px] mx-auto px-4 md:px-8 lg:px-16">
-          <Hero key={item.id} {...item} withHeading={withHeading} />
-        </div>
-      </SwiperSlide>
-    ))}
+    <>
+      {console.log(carousel.items)}
+      {carousel.items.map((item, i) => (
+        <SwiperSlide key={i}>
+          <div className="max-w-[1280px] mx-auto px-4 md:px-8 lg:px-16">
+            <Hero key={item.id} {...item} withHeading={withHeading} />
+          </div>
+        </SwiperSlide>
+      ))}
+    </>
   </Swiper>
 );
 

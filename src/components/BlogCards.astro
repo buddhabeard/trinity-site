@@ -7,7 +7,7 @@ interface Props {
 }
 
 const {
-  posts: { data, meta },
+  posts: { data },
 } = Astro.props;
 ---
 
@@ -15,11 +15,13 @@ const {
   <div class="absolute inset-0">
     <div class="h-1/3 bg-white sm:h-2/3"></div>
   </div>
-  <div class="relative mx-auto max-w-7xl">
+  <div class="relative mx-auto">
     <h2 class="text-3xl font-bold tracking-tight text-darkBlue sm:text-4xl">
       Events, Testimonials and Updates
     </h2>
-    <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+    <div
+      class="my-6 grid grid-cols-1 lg:grid-cols-3 gap-y-8 lg:gap-8 md:max-w-96"
+    >
       {data.map((post) => <BlogCard {...post} />)}
     </div>
   </div>

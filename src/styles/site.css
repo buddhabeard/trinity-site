@@ -8,7 +8,7 @@
 .page-home .swiper {
     background: url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110214/bg_desktop_2x_52e525a5a7.png) no-repeat;
     background-size: cover;
-    @apply mb-6
+    @apply mb-6;
 }
 
 .page-home .home-hero {
@@ -46,8 +46,18 @@
   @apply fixed top-6 lg:h-[315px] lg:w-[376px];
 }
 
+<<<<<<< HEAD
 @media (max-width: 1024px) {
 .page-home .home-hero {
     padding: 2em;
   }
+=======
+.page-who-we-are .testimonial-section a,
+.page-who-we-are .testimonial-section a strong {
+  @apply text-white;
+}
+
+.page-thrift-store h3 {
+  @apply text-gray-900 text-2xl lg:text-3xl font-extrabold leading-9;
+>>>>>>> main
 }

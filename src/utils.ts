@@ -1,3 +1,4 @@
+import type { Post } from "./interfaces/Posts";
 import { ThemeColor, ThemeColors } from "./interfaces/Enums";
 
 export const getColor = (color: ThemeColor): string => {
@@ -9,3 +10,11 @@ export const getCategoryParam = () => {
   const params = query.split("&");
   return decodeURI(params[0].split("=")[1]);
 };
+
+export const getPostCategory = (post: Post): string => {
+  if (!post.attributes.categories?.data) return "General";
+
+  return post.attributes.categories.data[0].attributes.name;
+};
+
+const containsHTML = (str: string) => /<[a-z][\s\S]*>/i.test(str);

@@ -49,7 +49,7 @@ const CategorySelect = ({ onClick, clearFilter }: CategorySelectProps) => {
           onClick={() => handleCategoryClick(cat)}
           color={isActive(cat.attributes.name) ? "white" : "dark blue"}
           bg={isActive(cat.attributes.name) ? "teal" : "white"}
-          classes="mr-4 mb-4 drop-shadow"
+          classes="mr-4 mb-4 py-2 px drop-shadow"
         >
           {/* @ts-ignore */}
           {cat.attributes.name}

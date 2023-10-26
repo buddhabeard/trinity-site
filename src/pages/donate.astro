@@ -5,7 +5,7 @@ import KindfulForm from "../components/KindfulForm.astro";
 import Layout from "../layouts/Layout.astro";
 import PageHeadingRouter from "../components/PageHeadingRouter.astro";
 import PageHero from "../components/PageHero.astro";
-import VolunteerForm from "../components/VolunteerForm.astro";
+import VolunteerForm from "../components/VolunteerForm";
 import fetchApi from "../lib/strapi";
 import type { DonatePage } from "../interfaces/Pages";
 import { donatePageQuery } from "../lib/queries";
@@ -74,17 +74,20 @@ const page = await fetchApi<DonatePage>({
         <div
           class="flex flex-wrap w-full lg:w-3/4 p-4 lg:p-8 lg:pt-0 page-right"
         >
+          <!-- forms -->
+          <KindfulForm />
+
           <!-- content -->
           {
             page.data?.attributes?.content && (
-              <div class="content" set:html={page.data.attributes.content} />
+              <div
+                class="content lg:w-11/12 lg:ml-auto space-y-10 pt-6"
+                set:html={page.data.attributes.content}
+              />
             )
           }
 
-          <!-- forms -->
-          <VolunteerForm />
-
-          <KindfulForm />
+          <VolunteerForm client:only />
         </div>
       </div>
     </Container>

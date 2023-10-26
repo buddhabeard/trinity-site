@@ -1,18 +1,18 @@
 ---
-import Carousel from "../components/Carousel";
+import BlogCards from "../components/BlogCards.astro";
+import CallToAction from "../components/CallToAction.astro";
 import Callout from "../components/Callout.astro";
+import Carousel from "../components/Carousel";
 import Container from "../components/Container.astro";
+import FAQs from "../components/FAQs.astro";
 import HorizontalHeadingAndText from "../components/HorizontalHeadingAndText.astro";
 import Layout from "../layouts/Layout.astro";
 import LinkCards from "../components/LinkCards.astro";
+import SocialShare from "../components/SocialShare.astro";
 import fetchApi from "../lib/strapi";
+import type Posts from "../interfaces/Posts";
 import type { HomePage } from "../interfaces/Pages";
 import { homepageQuery, postsQuery, queryWithLimit } from "../lib/queries";
-import FAQs from "../components/FAQs.astro";
-import SocialShare from "../components/SocialShare.astro";
-import BlogCards from "../components/BlogCards.astro";
-import CallToAction from "../components/CallToAction.astro";
-import type Posts from "../interfaces/Posts";
 
 const page = await fetchApi<HomePage>({
   endpoint: "home-page",
@@ -22,6 +22,7 @@ const page = await fetchApi<HomePage>({
 const posts = await fetchApi<Posts>({
   endpoint: "posts",
   query: queryWithLimit(postsQuery, 3),
+  sortBy: "publishedAt:desc",
 });
 
 const hasCarousel = (page: HomePage) => page.data.attributes?.carousel;
@@ -40,7 +41,7 @@ const {
 <Layout title="Trinity Life Ministry">
   <main class="page-home">
     <!-- hero -->
-    {hasCarousel(page) && <Carousel client:only carousel={carousel} />}
+    <Carousel client:only carousel={carousel} />
 
     <Container isSection>
       <HorizontalHeadingAndText heading="Changing Lives, New Beginnings">

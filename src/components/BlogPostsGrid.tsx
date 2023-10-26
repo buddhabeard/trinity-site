@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import parse from "html-react-parser";
 
 import type Posts from "../interfaces/Posts";
+import type { Post } from "../interfaces/Posts";
 import CategorySelect from "./CategorySelect";
-import { getCategoryParam } from "../utils";
-import axios from "axios";
+import { getCategoryParam, getPostCategory } from "../utils";
+import FeaturePost from "./FeaturePost";
+import Pill from "./Pill";
+import Logo from "./Logo";
 
 export type BlogPostsGridProps = {
   posts: Posts;
@@ -29,14 +33,22 @@ const initPosts = {
   },
 };
 
+const postDate = (post: Post) =>
+  post.attributes?.eventDate ?? post.attributes.publishedAt;
+
+const hasImage = (post: Post) => post?.attributes?.image?.data;
+
 const BlogPostsGrid = () => {
   // @ts-ignore
   const [posts, setPosts] = useState<Posts>(initPosts);
   const [filteredPosts, setFilteredPosts] = useState<Posts>(initPosts);
   const [pagination, setPagination] = useState<Pagination>();
+  const [showFeaturePost, setShowFeaturePost] = useState<boolean>(false);
 
   const fetchPosts = async () =>
-    await axios.get("https://trinity-cms.onrender.com/api/posts?populate=*");
+    await axios.get(
+      "https://trinity-cms.onrender.com/api/posts?populate=*&sort=publishedAt:desc"
+    );
 
   useEffect(() => {
     fetchPosts().then((posts) => {
@@ -57,12 +69,26 @@ const BlogPostsGrid = () => {
       meta: posts.meta,
     };
 
+    const featureOK =
+      cat === "General" || cat === "Blog Article" || cat === typeof undefined;
+
+    if (featureOK) {
+      setShowFeaturePost(true);
+    } else {
+      setShowFeaturePost(false);
+    }
+
     if (filtered.data.length === 0) {
       setFilteredPosts(posts);
     } else {
       // @ts-ignore
       setFilteredPosts(filtered);
     }
+  };
+
+  const handleCategoryClick = (post: Post): void => {
+    const cat = getPostCategory(post);
+    window.location.href = `${window.location.origin}/blog?category=${cat}`;
   };
 
   return (
@@ -72,25 +98,42 @@ const BlogPostsGrid = () => {
         onClick={onCategorySelect}
       />
 
+      {showFeaturePost ? <FeaturePost /> : null}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 grid-rows-auto gap-12 posts-section">
         {filteredPosts.data.map((post) => (
           <div key={post.id} className="post-preview grid grid-cols-3">
             <div className="flex items-start justify-center col-span-1">
-              <img
-                className="max-h-[128px] max-w-[158px] px-4"
-                src={post.attributes.image.data.attributes.url}
-                alt={post.attributes.title}
-              />
+              {hasImage(post) ? (
+                <img
+                  className="max-h-[128px] max-w-[158px] px-4"
+                  src={post.attributes.image.data.attributes.url}
+                  alt={post.attributes.title}
+                />
+              ) : (
+                <div className="flex items-center justify-center w-3/4 bg-white shadow">
+                  <Logo />
+                </div>
+              )}
             </div>
 
             <div className="flex flex-col gap-1 col-span-2">
               <div className="post-date text-gray-500 text-sm font-normal font-inter leading-tight">
-                {new Date(post.attributes.updatedAt).toLocaleDateString(
-                  "en-US",
-                  {
-                    dateStyle: "long",
-                  }
-                )}
+                <div className="flex items-center mb-4">
+                  <div>
+                    {new Date(postDate(post)).toLocaleDateString("en-US", {
+                      dateStyle: "long",
+                    })}
+                  </div>
+                  <Pill
+                    color="teal"
+                    bg="white"
+                    onClick={() => handleCategoryClick(post)}
+                    classes="text-xs py ml-auto border-2 shadow-darkBlue"
+                  >
+                    {getPostCategory(post)}
+                  </Pill>
+                </div>
                 {post.attributes?.likes && (
                   <span>
                     &middot;
