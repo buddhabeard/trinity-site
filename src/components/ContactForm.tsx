@@ -73,10 +73,10 @@ const ContactForm = () => {
   return (
     <form
       id="contact-form"
-      className="w-full shadow p-4"
+      className="w-full shadow p-4 mt-10"
       onSubmit={handleSubmit}
     >
-      <div className="space-y-12">
+      <div className="flex flex-col justify-center pt-4">
         <div className="pb-12">
           <h2 className="text-base font-semibold leading-7 text-gray-900">
             Contact Us
@@ -86,7 +86,7 @@ const ContactForm = () => {
           </p>
 
           <div className="flex flex-col md:flex-row w-full">
-            <div className="mt-10 order-2 md:order-1 gap-x-6 gap-y-8 w-full md:w-1/2">
+            <div className="mt-10 gap-x-6 gap-y-8 w-full md:w-1/2 mb-8">
               <div>
                 <label
                   htmlFor="firstName"
@@ -166,12 +166,25 @@ const ContactForm = () => {
               </div>
             </div>
 
-            <div className="order-1 md:order-2 flex flex-col items-center w-full md:w-1/2">
+            <div className="flex flex-col items-center w-full md:w-1/2">
               <img
                 className="hidden md:block w-[133px] h-[180px]"
                 src="https://res.cloudinary.com/diattpuqa/image/upload/v1695395088/tlm_emblem_2x_8c8bcad4f4.png"
                 alt=""
               />
+
+              <div className="my-6 flex items-center justify-start gap-x-6">
+                <button
+                  type="submit"
+                  className="rounded-md bg-teal px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  Send Message
+                </button>
+                <div className={`${formSubmitted ? "" : "hidden"} thank-you`}>
+                  ✅ Thank you! We will be in touch shortly &mdash; allow at
+                  least 48 hours for a reply.
+                </div>
+              </div>
 
               <div className="address-info text-center">
                 <h3>Mailing Address</h3>
@@ -188,19 +201,6 @@ const ContactForm = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div className="mt-6 flex items-center justify-start gap-x-6">
-        <button
-          type="submit"
-          className="rounded-md bg-teal px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        >
-          Send Message
-        </button>
-        <div className={`${formSubmitted ? "" : "hidden"} thank-you`}>
-          ✅ Thank you! We will be in touch shortly &mdash; allow at least 48
-          hours for a reply.
         </div>
       </div>
     </form>
