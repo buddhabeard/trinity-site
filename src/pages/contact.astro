@@ -16,7 +16,7 @@ const page = await fetchApi<ContactPage>({
 
 <Layout title="Trinity Life Ministry">
   <main class="page-contact">
-    <PageHero {...page.data.attributes.hero} />
+    <PageHero {...page?.data?.attributes.hero} />
 
     <Container isSection>
       <ContactForm client:only />
