@@ -20,7 +20,7 @@
     bottom 0.5em right 0.5em,
     bottom 0.5em left 0.5em;
   
-  background-size: 13%;
+  background-size: 3em;
   background-repeat: no-repeat;
   
   background-image:
@@ -53,4 +53,10 @@
 
 .page-thrift-store h3 {
   @apply text-gray-900 text-2xl lg:text-3xl font-extrabold leading-9;
+}
+
+@media (max-width: 1024px) {
+  .page-home .home-hero {
+      padding: 2em;
+    }
 }
