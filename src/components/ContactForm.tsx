@@ -164,18 +164,28 @@ const ContactForm = () => {
                   ></textarea>
                 </div>
               </div>
+            </div>
 
-              <div className="mb-8 lg:my-6 flex items-center justify-start gap-x-6">
-                <button
-                  type="submit"
-                  className="rounded-md bg-teal px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            <div className="flex flex-col flex-wrap items-center w-full md:w-1/2">
+              <img
+                className="hidden h-0 w-0 md:block md:w-[133px] md:h-[180px]"
+                src="https://res.cloudinary.com/diattpuqa/image/upload/v1695395088/tlm_emblem_2x_8c8bcad4f4.png"
+                alt=""
+              />
+
+              <div className="flex flex-wrap flex-col items-center justify-center p-4 md:p-6">
+                <div
+                  className={`mb-8 ${formSubmitted ? "" : "hidden"} thank-you`}
                 >
-                  Send Message
-                </button>
-                <div className={`${formSubmitted ? "" : "hidden"} thank-you`}>
                   ✅ Thank you! We will be in touch shortly &mdash; allow at
                   least 48 hours for a reply.
                 </div>
+                <button
+                  type="submit"
+                  className="rounded-md bg-teal px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 lg:my-6"
+                >
+                  Send Message
+                </button>
               </div>
             </div>
 
