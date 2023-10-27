@@ -19,10 +19,12 @@ const page = await fetchApi<DonatePage>({
 <Layout title="Donate">
   <main class="page-donate">
     <!-- hero -->
-    {page.data?.attributes?.hero && <PageHero {...page.data.attributes.hero} />}
 
-    <Container isSection>
-      <HorizontalHeadingAndText heading="The Spirit of Giving: Ways to Give">
+    <Container classes="pt-16 lg:pt-24">
+      <HorizontalHeadingAndText
+        heading="The Spirit of Giving: Ways to Give"
+        classes="-mb-16 lg:mb-0 pb-0"
+      >
         As a dedicated nonprofit driven by Christian principles, we have
         consistently centered our efforts on faith and Christ-centered values.
       </HorizontalHeadingAndText>
