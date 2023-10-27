@@ -164,14 +164,6 @@ const ContactForm = () => {
                   ></textarea>
                 </div>
               </div>
-            </div>
-
-            <div className="flex flex-col items-center w-full md:w-1/2">
-              <img
-                className="hidden md:block w-[133px] h-[180px]"
-                src="https://res.cloudinary.com/diattpuqa/image/upload/v1695395088/tlm_emblem_2x_8c8bcad4f4.png"
-                alt=""
-              />
 
               <div className="mb-8 lg:my-6 flex items-center justify-start gap-x-6">
                 <button
@@ -185,6 +177,14 @@ const ContactForm = () => {
                   least 48 hours for a reply.
                 </div>
               </div>
+            </div>
+
+            <div className="flex flex-col items-center w-full md:w-1/2">
+              <img
+                className="hidden md:block w-[133px] h-[180px]"
+                src="https://res.cloudinary.com/diattpuqa/image/upload/v1695395088/tlm_emblem_2x_8c8bcad4f4.png"
+                alt=""
+              />
 
               <div className="address-info text-center">
                 <h3>Mailing Address</h3>

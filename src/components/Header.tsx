@@ -95,7 +95,7 @@ const Header = () => {
             <a
               key={item.text}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900"
+              className="text-sm font-semibold leading-6 text-darkBlue"
             >
               {item.text}
             </a>
