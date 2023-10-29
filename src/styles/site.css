@@ -39,7 +39,7 @@
 }
 
 .page-who-we-are .swiper-pagination-bullet.swiper-pagination-bullet-active {
-  background-color: teal;
+    background-color: teal;
 }
 
 .text-darkBlue.text-3xl {
@@ -50,20 +50,24 @@
 } 
 
 .page-who-we-are .swiper-slide {
-  @apply h-[376px];
+    @apply h-[376px];
 }
 
 .page-who-we-are .swiper-slide img {
-  @apply fixed top-6 lg:h-[315px] lg:w-[376px];
+    @apply fixed top-6 lg:h-[315px] lg:w-[376px];
 }
 
 .page-who-we-are .testimonial-section a,
 .page-who-we-are .testimonial-section a strong {
-  @apply text-white;
+    @apply text-white;
 }
 
 .page-thrift-store h3 {
-  @apply text-gray-900 text-2xl lg:text-3xl font-extrabold leading-9;
+    @apply text-gray-900 text-3xl font-extrabold leading-9;
+}
+
+.page-donate h2 {
+    @apply text-darkBlue text-3xl font-extrabold leading-9;
 }
 
 @media (max-width: 1024px) {

@@ -41,12 +41,12 @@ const convertTime = (time: string) => {
 <div>
   <img
     src={lostThenFoundLogo}
-    class="lg:w-[560px] lg:h-[186px]"
+    class="pb-6"
     alt="lost, then found"
   />
 
   <div
-    class="grid grid-cols-2 grid-rows-7 shadow rounded-b-md w-full max-w-[560px]"
+    class="grid grid-cols-2 grid-rows-7 shadow rounded-b-md w-full"
   >
     <div class="flex flex-col">
       <div class={oddRowClass}>
@@ -68,14 +68,14 @@ const convertTime = (time: string) => {
     </div>
     <div class="flex flex-col">
       <div class={oddRowClass}>
-        <div class="text-gray-500 text-sm font-normal font-inter leading-tight">
+        <div class="text-gray-900 text-base font-normal font-inter leading-tight">
           Closed
         </div>
       </div>
       {
         rows.map((row, i) => (
           <div class={rowClass(i)}>
-            <div class="text-gray-500 text-sm font-normal font-inter leading-tight">
+            <div class="text-gray-900 text-base font-normal font-inter leading-tight">
               {convertTime(row.open)} &mdash; {convertTime(row.close)}
             </div>
           </div>

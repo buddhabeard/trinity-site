@@ -100,15 +100,15 @@ const VolunteerForm = () => {
   return (
     <form
       id="volunteer-form"
-      className="w-full md:w-11/12 lg:ml-auto shadow p-4"
+      className="w-full md:w-11/12 lg:ml-auto pt-12"
     >
       <div className="space-y-12">
         <div className="pb-2">
           <h2 className="text-base font-semibold leading-7 text-gray-900">
-            Personal Information
+            Volunteer Your Time
           </h2>
-          <p className="mt-1 text-sm leading-6 text-gray-600">
-            Use a permanent address where you can receive mail.
+          <p className="mt-6 text-base leading-6 text-gray-600">
+            If you are interested in helping out with our events and other needs amongst the community please provide the information below and we'll get back to you.
           </p>
 
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
