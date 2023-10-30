@@ -5,6 +5,7 @@ import axios from "axios";
 import type { Image } from "../interfaces/Images";
 
 export type FeaturePostProps = {
+  title: string;
   image: Image;
   content: string;
   slug: string;
@@ -28,6 +29,9 @@ const FeaturePost = () => {
       <img className="w-full" src={featurePost?.image.data.attributes.url} />
 
       <div className="flex flex-col">
+        <h3 className="text-gray-900 text-3xl font-extrabold leading-9 mb-4 lg:mb-5">
+          {featurePost.title}
+        </h3>
         {featurePost?.content && (
           <div className="overflow-hidden max-h-[300px] lg:max-h-[150px] mb-4">
             <p className="text-gray-500 text-base font-normal font-inter leading-normal">

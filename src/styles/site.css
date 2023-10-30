@@ -1,77 +1,74 @@
 .testimonial-section blockquote {
-    @apply my-10 border-l border-teal pl-9 font-semibold text-gray-900
+  @apply my-10 border-l border-teal pl-9 font-semibold text-gray-900;
 }
 .testimonial-section a {
-    @apply mt-8 px-4 py-2 bg-teal text-white rounded-md shadow justify-center items-center inline-flex
+  @apply mt-8 px-4 py-2 bg-teal text-white rounded-md shadow justify-center items-center inline-flex;
 }
 
 .page-home .swiper {
-    background: url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110214/bg_desktop_2x_52e525a5a7.png) no-repeat;
-    background-size: cover;
-    @apply mb-6;
+  background: url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110214/bg_desktop_2x_52e525a5a7.png)
+    no-repeat;
+  background-size: cover;
+  @apply mb-6;
 }
 
 .page-home .home-hero {
   height: 100%;
-  
-  background-position:
-    top 0.5em left 0.5em,
-    top 0.5em right 0.5em,
-    bottom 0.5em right 0.5em,
-    bottom 0.5em left 0.5em;
-  
+
+  background-position: top 0.5em left 0.5em, top 0.5em right 0.5em,
+    bottom 0.5em right 0.5em, bottom 0.5em left 0.5em;
+
   background-size: 3em;
   background-repeat: no-repeat;
-  
-  background-image:
-    url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110170/brandaccent_top_left_6b0f6b0238.svg),
+
+  background-image: url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110170/brandaccent_top_left_6b0f6b0238.svg),
     url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110169/brandaccent_top_right_2830903d0c.svg),
     url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110170/brandaccent_bottom_right_ba3a234848.svg),
     url(https://res.cloudinary.com/db7kwocif/image/upload/v1694110169/brandaccent_bottom_left_c2f9545c23.svg);
 }
 
 .page-home .swiper-pagination-bullet {
-    transform: scale(1.4);
+  transform: scale(1.4);
 }
 
 .page-home .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    background-color: white;
+  background-color: white;
 }
 
 .page-who-we-are .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    background-color: teal;
+  background-color: teal;
 }
 
 .text-darkBlue.text-3xl {
-    background-image: url(https://res.cloudinary.com/diattpuqa/image/upload/v1696951285/heading_underline_6128d0fd09.svg);
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    @apply p-6 pt-0;
-} 
+  background-image: url(https://res.cloudinary.com/diattpuqa/image/upload/v1696951285/heading_underline_6128d0fd09.svg);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  @apply p-6 pt-0;
+}
 
 .page-who-we-are .swiper-slide {
-    @apply h-[376px];
+  @apply h-[376px];
 }
 
 .page-who-we-are .swiper-slide img {
-    @apply fixed top-6 lg:h-[315px] lg:w-[376px];
+  @apply fixed top-6 lg:h-[315px] lg:w-[376px];
 }
 
 .page-who-we-are .testimonial-section a,
 .page-who-we-are .testimonial-section a strong {
-    @apply text-white;
+  @apply text-white;
 }
 
 .page-thrift-store h3 {
-    @apply text-gray-900 text-3xl font-extrabold leading-9 mb-4 lg:mb-5;
+  @apply text-gray-900 text-3xl font-extrabold leading-9 mb-4 lg:mb-5;
 }
 
 .page-donate h2 {
-    @apply text-darkBlue text-3xl font-extrabold leading-9;
+  @apply text-darkBlue text-3xl font-extrabold leading-9;
 }
 
 @media (max-width: 1024px) {
   .page-home .home-hero {
-      padding: 2em;
-    }
+    padding: 2em;
+  }
 }
