@@ -37,14 +37,14 @@ export async function getStaticPaths() {
   }));
 }
 
-const { title, image, content, hero } = Astro.props;
+const { title, image, content } = Astro.props;
 ---
 
 <Layout title={title}>
-  <!-- @ts-ignore -->
-  <PageHero {...hero} />
   <Container classes="mt-16 md:mt-24 lg:mt-32">
-    <div class="w-full flex justify-center mb-16">
+    <div
+      class="w-full flex justify-center mb-16 aspect-square max-h-[300px] lg:max-h-[400px]"
+    >
       <img src={image} alt="image" />
     </div>
     <h2
