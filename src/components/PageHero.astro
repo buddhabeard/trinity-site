@@ -5,19 +5,37 @@ import logoImage from "../images/logo.svg";
 
 interface Props extends HeroComponent {}
 
-const { title, content, image } = Astro.props;
+const { title, content, image, url } = Astro.props;
 
 const imageSrc = image?.data?.attributes?.url || logoImage;
 ---
 
 <div class="relative isolate overflow-hidden bg-teal py-24 sm:py-32">
-  <img
-    src={imageSrc}
-    alt={image?.data.attributes.alternativeText ||
-      image?.data.attributes.name ||
-      "page hero image"}
-    class="absolute inset-0 -z-10 h-full w-full object-cover mix-blend-multiply"
-  />
+  {
+    url ? (
+      <a href={url}>
+        <img
+          src={imageSrc}
+          alt={
+            image?.data.attributes.alternativeText ||
+            image?.data.attributes.name ||
+            "page hero image"
+          }
+          class="absolute inset-0 -z-10 h-full w-full object-cover mix-blend-multiply"
+        />
+      </a>
+    ) : (
+      <img
+        src={imageSrc}
+        alt={
+          image?.data.attributes.alternativeText ||
+          image?.data.attributes.name ||
+          "page hero image"
+        }
+        class="absolute inset-0 -z-10 h-full w-full object-cover mix-blend-multiply"
+      />
+    )
+  }
   <div
     class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
     aria-hidden="true"
