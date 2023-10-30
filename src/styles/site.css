@@ -63,7 +63,7 @@
 }
 
 .page-thrift-store h3 {
-    @apply text-gray-900 text-3xl font-extrabold leading-9;
+    @apply text-gray-900 text-3xl font-extrabold leading-9 mb-4 lg:mb-5;
 }
 
 .page-donate h2 {

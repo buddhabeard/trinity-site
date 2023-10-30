@@ -101,8 +101,10 @@ const page = await fetchApi<ApplyPage>({
 
     <!-- faqs -->
     <Container isSection>
-      <!-- @ts-ignore -->
-      <FAQs faqs={page.data.attributes.faqs} />
+      <div id="apply-faqs">
+        <!-- @ts-ignore -->
+        <FAQs faqs={page.data.attributes.faqs} />
+      </div>
     </Container>
 
     <!-- social embed -->
