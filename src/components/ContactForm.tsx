@@ -73,13 +73,13 @@ const ContactForm = () => {
   return (
     <form
       id="contact-form"
-      className="w-full shadow px-4 mt-8 lg:mt-10"
+      className="w-full px-12 pt-6 mt-8 lg:mt-10"
       onSubmit={handleSubmit}
     >
       <div className="flex flex-col justify-center pt-4">
         <div className="pb-12">
-          <h2 className="text-base font-semibold leading-7 text-gray-900">
-            Contact Us
+          <h2 className="font-semibold leading-7 text-darkBlue text-3xl">
+            Send us a message
           </h2>
           <p className="mt-1 text-sm leading-6 text-gray-600">
             Complete the form and we will get back to you.
@@ -90,7 +90,7 @@ const ContactForm = () => {
               <div>
                 <label
                   htmlFor="firstName"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-md font-medium leading-6 text-gray-900"
                 >
                   First name
                 </label>
@@ -110,7 +110,7 @@ const ContactForm = () => {
               <div>
                 <label
                   htmlFor="last-name"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-md font-medium leading-6 text-gray-900"
                 >
                   Last name
                 </label>
@@ -130,7 +130,7 @@ const ContactForm = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-md font-medium leading-6 text-gray-900"
                 >
                   Email address
                 </label>
@@ -150,7 +150,7 @@ const ContactForm = () => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium leading-6 text-gray-900"
+                  className="block text-md font-medium leading-6 text-gray-900"
                 >
                   Message
                 </label>
@@ -164,14 +164,6 @@ const ContactForm = () => {
                   ></textarea>
                 </div>
               </div>
-            </div>
-
-            <div className="flex flex-col flex-wrap items-center w-full md:w-1/2">
-              <img
-                className="hidden h-0 w-0 md:block md:w-[133px] md:h-[180px]"
-                src="https://res.cloudinary.com/diattpuqa/image/upload/v1695395088/tlm_emblem_2x_8c8bcad4f4.png"
-                alt=""
-              />
 
               <div className="flex flex-wrap flex-col items-center justify-center p-4 md:p-6">
                 <div
@@ -182,7 +174,7 @@ const ContactForm = () => {
                 </div>
                 <button
                   type="submit"
-                  className="rounded-md bg-teal px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 lg:my-6"
+                  className="rounded-md bg-teal px-3 py-2 text-md font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 lg:my-6"
                 >
                   Send Message
                 </button>
@@ -193,10 +185,10 @@ const ContactForm = () => {
               <img
                 className="hidden md:block w-[133px] h-[180px]"
                 src="https://res.cloudinary.com/diattpuqa/image/upload/v1695395088/tlm_emblem_2x_8c8bcad4f4.png"
-                alt=""
+                alt="Trinity Life Ministry"
               />
 
-              <div className="address-info text-center">
+              <div className="address-info text-center pt-12">
                 <h3>Mailing Address</h3>
 
                 <div className="flex flex-col items-center mb-8">
