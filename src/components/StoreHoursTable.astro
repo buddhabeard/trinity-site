@@ -22,32 +22,20 @@ const rowClass = (index: number): typeof oddRowClass | typeof evenRowClass =>
 
 const convertTime = (time: string) => {
   let timeParts = time.split(":");
-  let standardTime = "";
 
   if (parseInt(timeParts[0]) > 12) {
     // @ts-ignore
     timeParts[0] = timeParts[0] - 12;
-    standardTime = timeParts.join(":") + " PM";
-  } else if (parseInt(timeParts[0]) === 12) {
-    standardTime = timeParts.join(":") + " PM";
-  } else {
-    standardTime = timeParts.join(":") + " AM";
   }
 
-  return standardTime;
+  return timeParts[0].toString().replace("0", "");
 };
 ---
 
 <div>
-  <img
-    src={lostThenFoundLogo}
-    class="pb-6"
-    alt="lost, then found"
-  />
+  <img src={lostThenFoundLogo} class="pb-6" alt="lost, then found" />
 
-  <div
-    class="grid grid-cols-2 grid-rows-7 shadow rounded-b-md w-full"
-  >
+  <div class="grid grid-cols-2 grid-rows-7 shadow rounded-b-md w-full">
     <div class="flex flex-col">
       <div class={oddRowClass}>
         <div
@@ -68,7 +56,9 @@ const convertTime = (time: string) => {
     </div>
     <div class="flex flex-col">
       <div class={oddRowClass}>
-        <div class="text-gray-900 text-base font-normal font-inter leading-tight">
+        <div
+          class="text-gray-900 text-base font-normal font-inter leading-tight"
+        >
           Closed
         </div>
       </div>
@@ -76,7 +66,7 @@ const convertTime = (time: string) => {
         rows.map((row, i) => (
           <div class={rowClass(i)}>
             <div class="text-gray-900 text-base font-normal font-inter leading-tight">
-              {convertTime(row.open)} &mdash; {convertTime(row.close)}
+              {convertTime(row.open)} AM &ndash; {convertTime(row.close)} PM
             </div>
           </div>
         ))

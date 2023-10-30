@@ -5,11 +5,11 @@ export interface Props extends Omit<HeroComponent, "id"> {
   withHeading?: boolean;
 }
 
-const Hero = ({ title, content, image, withHeading = true }: Props) => {
+const Hero = ({ title, content, image, url, withHeading = true }: Props) => {
   return (
     <div className="mx-auto flex flex-wrap justify-center items-center mt-24 mb-12 overflow-hidden">
       {withHeading && (
-        <div className="w-full h-1/2 bg-white md:h-auto md:w-1/2 md:mr-auto flex lg:max-w-[540px] lg:my-auto justify-start">
+        <div className="w-full h-1/2 bg-white md:h-auto md:w-1/2 md:mr-auto flex flex-wrap lg:max-w-[540px] lg:my-auto justify-start">
           <HeadingAndText heading={title}>{content}</HeadingAndText>
         </div>
       )}
@@ -21,6 +21,14 @@ const Hero = ({ title, content, image, withHeading = true }: Props) => {
             alt={image.data?.attributes.alternativeText || "image"}
           />
         </div>
+      )}
+      {url && (
+        <a
+          className="mt-6 lg:mt-8 mb-0 px-4 py-2 mx-auto bg-teal text-white rounded-md shadow justify-center inline-flex"
+          href={url}
+        >
+          Read More
+        </a>
       )}
     </div>
   );
