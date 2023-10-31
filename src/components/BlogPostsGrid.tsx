@@ -128,7 +128,7 @@ const BlogPostsGrid = () => {
                   >
                     {getPostCategory(post)}
                   </Pill>
-                  <div className="date-text">
+                  <div className="date-text ml-4">
                     {new Date(postDate(post)).toLocaleDateString("en-US", {
                       dateStyle: "long",
                     })}
@@ -153,7 +153,7 @@ const BlogPostsGrid = () => {
                   </span>
                 )}
               </div>
-              <div className="text-gray-900 text-xl font-semibold font-inter leading-7">
+              <div className="text-darkBlue text-xl font-semibold font-inter leading-7">
                 <a href={`/blog/${post.attributes.slug}`}>
                   {post.attributes.title}
                 </a>
