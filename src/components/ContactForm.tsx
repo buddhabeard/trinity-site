@@ -107,7 +107,7 @@ const ContactForm = () => {
                 </div>
               </div>
 
-              <div>
+              <div className="mt-6">
                 <label
                   htmlFor="last-name"
                   className="block text-md font-medium leading-6 text-gray-900"
@@ -127,7 +127,7 @@ const ContactForm = () => {
                 </div>
               </div>
 
-              <div>
+              <div className="mt-6">
                 <label
                   htmlFor="email"
                   className="block text-md font-medium leading-6 text-gray-900"
@@ -147,7 +147,7 @@ const ContactForm = () => {
                 </div>
               </div>
 
-              <div>
+              <div className="mt-6">
                 <label
                   htmlFor="message"
                   className="block text-md font-medium leading-6 text-gray-900"

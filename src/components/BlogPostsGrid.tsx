@@ -106,7 +106,7 @@ const BlogPostsGrid = () => {
             <div className="flex items-start justify-center col-span-1">
               {hasImage(post) ? (
                 <img
-                  className="max-h-[128px] max-w-[158px] px-4"
+                  className="max-h-[128px] pl-4 lg:px-4 xl:px-4"
                   src={post.attributes.image.data.attributes.url}
                   alt={post.attributes.title}
                 />
@@ -117,22 +117,22 @@ const BlogPostsGrid = () => {
               )}
             </div>
 
-            <div className="flex flex-col gap-1 col-span-2">
+            <div className="flex flex-col gap-1 col-span-2 pl-4 lg:pl-0 xl:pl-0">
               <div className="post-date text-gray-500 text-sm font-normal font-inter leading-tight">
                 <div className="flex items-center mb-4">
-                  <div>
+                <Pill
+                    color="teal"
+                    bg="white"
+                    onClick={() => handleCategoryClick(post)}
+                    classes="text-xs border-2 shadow-darkBlue"
+                  >
+                    {getPostCategory(post)}
+                  </Pill>
+                  <div className="date-text">
                     {new Date(postDate(post)).toLocaleDateString("en-US", {
                       dateStyle: "long",
                     })}
                   </div>
-                  <Pill
-                    color="teal"
-                    bg="white"
-                    onClick={() => handleCategoryClick(post)}
-                    classes="text-xs py ml-auto border-2 shadow-darkBlue"
-                  >
-                    {getPostCategory(post)}
-                  </Pill>
                 </div>
                 {post.attributes?.likes && (
                   <span>
