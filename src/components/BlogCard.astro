@@ -15,11 +15,14 @@ const postDate = post.attributes?.eventDate ?? post.attributes.publishedAt;
   class="overflow-hidden rounded-lg shadow-lg h-auto"
 >
   <div class="flex-shrink-0">
-    <img
+    <a
+      href={`/blog/${post.attributes.slug}`}
+    ><img
       class="h-48 w-full object-cover"
       src={post.attributes.image.data?.attributes.url || logoImage}
       alt={post.attributes.image.data?.attributes.caption || "post image"}
     />
+    </a>
   </div>
   <div class="flex flex-col bg-white p-6">
     <p class="text-sm font-medium text-teal mb-4">
@@ -32,15 +35,15 @@ const postDate = post.attributes?.eventDate ?? post.attributes.publishedAt;
     </p>
     <a
       href={`/blog/${post.attributes.slug}`}
-      class="mt-2 block text-dark font-sans overflow-hidden"
+      class="mt-2 block text-darkBlue overflow-hidden"
     >
-      <p class="text-xl font-semibold text-dark">
+      <p class="text-xl font-semibold text-darkBlue">
         {post.attributes.title}
       </p>
     </a>
   </div>
   <div class="mt-4 flex items-center ml-6 mb-6">
-    <div class="flex space-x-1 text-sm text-dark">
+    <div class="flex space-x-1 text-sm text-gray-600">
       <time datetime={postDate}
         >{
           new Date(postDate).toLocaleDateString("en-US", {
