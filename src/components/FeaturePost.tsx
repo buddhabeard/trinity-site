@@ -3,6 +3,7 @@ import parse from "html-react-parser";
 import axios from "axios";
 
 import type { Image } from "../interfaces/Images";
+import { postsByPostDate } from "../utils";
 
 export type FeaturePostProps = {
   title: string;
@@ -16,11 +17,23 @@ const FeaturePost = () => {
   const [featurePost, setFeaturePost] = useState<FeaturePostProps>();
 
   const fetchPosts = async () =>
-    await axios.get("https://trinity-cms.onrender.com/api/posts?populate=*");
+    await axios.get(
+      "https://trinity-cms.onrender.com/api/posts?populate=*&sort[0]=publishedAt"
+    );
 
   useEffect(() => {
     fetchPosts().then((posts) => {
-      setFeaturePost(posts.data.data[0].attributes);
+      const recent = postsByPostDate(posts.data.data).filter((p) =>
+        p.attributes.categories?.data.find(
+          (d) =>
+            d.attributes.name === "General" ||
+            d.attributes.name === "Blog Article"
+        )
+      );
+
+      if (recent.length) {
+        setFeaturePost(recent[0].attributes);
+      }
     });
   }, []);
 

@@ -17,4 +17,21 @@ export const getPostCategory = (post: Post): string => {
   return post.attributes.categories.data[0].attributes.name;
 };
 
-const containsHTML = (str: string) => /<[a-z][\s\S]*>/i.test(str);
+// if eventDate use that first else publishedAt
+export const postDate = (post: Post) =>
+  post.attributes?.eventDate ?? post.attributes.publishedAt;
+
+export const postsByPostDate = (posts: Post[]) => {
+  if (posts && posts.length > 0) {
+    return posts.sort((a, b) => {
+      const prev = new Date(postDate(a));
+      const next = new Date(postDate(b));
+
+      // @ts-ignore
+      return next - prev;
+    });
+  }
+  return posts;
+};
+
+export const containsHTML = (str: string) => /<[a-z][\s\S]*>/i.test(str);
