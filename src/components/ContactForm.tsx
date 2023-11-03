@@ -38,6 +38,8 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setFormSubmitted(true);
+
     let formData: ContactFormFields = initFormData;
 
     if (fNameRef?.current) {
@@ -63,10 +65,10 @@ const ContactForm = () => {
       }
     );
 
-    // @TODO: sendgrid email notification once Ken has verified on his end.
-    // await axios.post()
+    await axios.post("https://pfrrthx5az.us.aircode.run/email", {
+      data: formData,
+    });
 
-    setFormSubmitted(true);
     clearFields();
   };
 
@@ -174,7 +176,8 @@ const ContactForm = () => {
                 </div>
                 <button
                   type="submit"
-                  className="rounded-md bg-teal px-3 py-2 text-md font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 lg:my-6"
+                  disabled={formSubmitted}
+                  className="rounded-md bg-teal px-3 py-2 text-md font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 lg:my-6 disabled:opacity-25"
                 >
                   Send Message
                 </button>
