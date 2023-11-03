@@ -76,3 +76,11 @@
     padding: 2em;
   }
 }
+
+.blog-content p {
+  @apply pb-6;
+}
+
+.blog-content a {
+  @apply text-teal font-semibold;
+}

@@ -16,7 +16,7 @@ const Hero = ({ title, content, image, url, withHeading = true }: Props) => {
       {image && (
         <div className="flex items-center justify-center md:p-8 md:w-1/2 max-w-[587px]">
           <img
-            className="h-full w-full object-fit"
+            className="w-full object-fit"
             src={image.data?.attributes.url}
             alt={image.data?.attributes.alternativeText || "image"}
           />
