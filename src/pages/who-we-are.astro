@@ -40,16 +40,16 @@ const page = await fetchApi<WhoWeArePage>({
                 >
                   {
                     page.data.attributes.whatWeProvide.iconList.map((item) => (
-                      <div class="flex flex-wrap">
+                      <div class="flex">
                         <img
-                          class="h-8 w-8 lg:h-12 lg:w-12"
+                          class="h-8 w-8"
                           src={item.icon.data.attributes.url}
                           alt=""
                         />
                         <div class="font-semibold text-gray-900 ml-4">
                           {item.heading}
                         </div>
-                        <div class="ml-12 lg:ml-16 -mt-4">{item.content}</div>
+                        <div class="ml-12 lg:ml-16">{item.content}</div>
                       </div>
                     ))
                   }
