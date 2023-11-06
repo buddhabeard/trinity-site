@@ -14,5 +14,6 @@ export default defineConfig({
     "/residential-application": "/apply",
     "/about-4": "/who-we-are",
     "/tlm-calendar": "/blog?category=Event Upcoming",
+    "/banquet": "/blog/trinity-life-ministry-s-fall-banquet",
   },
 });
