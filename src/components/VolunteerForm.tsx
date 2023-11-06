@@ -91,6 +91,7 @@ const VolunteerForm = () => {
     );
 
     // @TODO: sendgrid email notification once Ken has verified on his end.
+    // TBD: second field group: Areas to Volunteer? (House, Thrift Store, Office)
     // await axios.post()
 
     setFormSubmitted(true);

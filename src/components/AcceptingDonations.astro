@@ -17,10 +17,12 @@ const hasItemsAvailable = () =>
   <p class="mt-6 mb-4 text-lg leading-8 text-gray-600">
     {props.content}
   </p>
-  <a
+  <!--
+    <a
     class="bg-teal text-white text-base font-medium font-inter px-4 py-2 rounded-md shadow items-center inline-flex"
     href="/donate">Donate Goods</a
   >
+  -->
   {hasItemsAvailable() && <CheckList items={props.itemsAvailable} />}
 
   <div class="w-full pt-6 flex-col justify-start items-start gap-3 inline-flex">

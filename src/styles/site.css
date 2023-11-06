@@ -81,6 +81,29 @@
   @apply pb-6;
 }
 
-.blog-content a {
+.blog-content a,
+.page-donate .content a,
+.contact-links a {
   @apply text-teal font-semibold;
+}
+
+a.bg-teal:hover {
+  @apply hover-bg-teal-800;
+}
+
+a.bg-white:hover {
+  @apply hover:bg-indigo-50;
+}
+
+.hover-bg-teal-800 {
+  background-color: rgb(17, 94, 89);
+}
+
+.blog-content a:hover {
+  text-decoration: underline;
+}
+
+.contact-intro .text-sm {
+  padding-left: 1.5em;
+  padding-top: 0.5em;
 }
