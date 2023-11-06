@@ -59,15 +59,15 @@ const FeaturePost = () => {
 
         {featurePost?.slug && (
           <a
-            className="w-28 h-10 px-4 py-2 mx-auto self-center lg:ml-6 bg-teal text-white rounded-md shadow justify-center items-center inline-flex"
+            className="w-28 h-10 px-4 py-2 mx-auto self-center lg:ml-0 bg-teal text-white rounded-md shadow justify-center items-center inline-flex"
             href={`/blog/${featurePost.slug}`}
           >
             Read more
           </a>
         )}
-        <div className="w-full my-4 lg:mx-6 lg:my-8 h-px border border-black border-opacity-20"></div>
+        <div className="w-full my-4 lg:mx-0 lg:my-8 h-px border border-black border-opacity-20"></div>
         {featurePost?.updatedAt && (
-          <div className="text-gray-500 mx-auto lg:mx-6 text-base font-normal font-inter leading-tight">
+          <div className="text-gray-500 mx-auto lg:mx-0 text-base font-normal font-inter leading-tight">
             {new Date(featurePost.updatedAt).toLocaleDateString("en-US", {
               dateStyle: "long",
             })}{" "}

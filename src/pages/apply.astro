@@ -44,7 +44,7 @@ const page = await fetchApi<ApplyPage>({
                     <div class="font-semibold text-gray-900 ml-4">
                       {item.heading}
                     </div>
-                    <div class="ml-12 lg:ml-16 -mt-4">{item.content}</div>
+                    <div class="ml-12 lg:ml-16">{item.content}</div>
                   </div>
                 ))
               }
@@ -91,10 +91,10 @@ const page = await fetchApi<ApplyPage>({
           <div>Lafayette, IN 47904</div>
         </div>
 
-        <div class="text-center">
-          <div>Email | engage@trinitylifeministry.com</div>
-          <div>Corporate Office | 765-742-1060</div>
-          <div>Fax | 765-742-1061</div>
+        <div class="text-center contact-links">
+          <div>Email | <a href="mailto:engage@trinitylifeministry.com">engage@trinitylifeministry.com</a></div>
+          <div>Corporate Office | <a href="tel:17657421060">765-742-1060</a></div>
+          <div>Fax | <a href="tel:17657421061">765-742-1061</a></div>
         </div>
       </div>
     </TwoColumns>

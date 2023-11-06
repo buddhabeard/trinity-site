@@ -79,7 +79,7 @@ const ContactForm = () => {
       onSubmit={handleSubmit}
     >
       <div className="flex flex-col justify-center pt-4">
-        <div className="pb-12">
+        <div className="pb-12 contact-intro">
           <h2 className="font-semibold leading-7 text-darkBlue text-3xl">
             Send us a message
           </h2>
@@ -199,9 +199,9 @@ const ContactForm = () => {
                   <span>Lafayette, IN 47904</span>
                 </div>
 
-                <div className="flex flex-col items-center">
-                  <span>Corporate Office | 765-742-1060</span>
-                  <span>Fax | 765-742-1061</span>
+                <div className="flex flex-col items-center contact-links">
+                  <div>Corporate Office | <a href="tel:17657421060">765-742-1060</a></div>
+                  <div>Fax | <a href="tel:17657421061">765-742-1061</a></div>
                 </div>
               </div>
             </div>

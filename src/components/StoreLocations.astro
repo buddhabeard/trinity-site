@@ -42,13 +42,13 @@ const [firstLoc, secondLoc] = Astro.props.locations;
                 <li>{firstLoc.street}</li>
                 <li>{firstLoc.city}, {firstLoc.state} {firstLoc.zip}</li>
                 <li>
-                  <span class="text-gray-400">765-742-1060</span>
+                  <span class="text-gray-400"><a href="tel:17657421060">765-742-1060</a></span>
                 </li>
               </ul>
               <a
                 target="_blank"
                 href={firstLoc.directionsLink}
-                class="mt-8 block rounded-md bg-teal px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                class="mt-8 block rounded-md bg-teal px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800"
                 >Get Directions</a
               >
 
@@ -74,13 +74,13 @@ const [firstLoc, secondLoc] = Astro.props.locations;
                 <li>{secondLoc.street}</li>
                 <li>{secondLoc.city}, {secondLoc.state} {secondLoc.zip}</li>
                 <li>
-                  <span class="text-gray-400">765-742-1060</span>
+                  <span class="text-gray-400"><a href="tel:17657421060">765-742-1060</a></span>
                 </li>
               </ul>
               <a
                 target="_blank"
                 href={secondLoc.directionsLink}
-                class="mt-8 block rounded-md bg-teal px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                class="mt-8 block rounded-md bg-teal px-3.5 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800"
                 >Get Directions</a
               >
               <div class="border-t mt-8 pt-4 flex items-center">
