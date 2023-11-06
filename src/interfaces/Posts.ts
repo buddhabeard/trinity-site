@@ -16,6 +16,7 @@ export interface Post {
     categories?: { data: Categories };
     image: Image;
     eventDate: null | string;
+    feature: boolean;
   };
 }
 

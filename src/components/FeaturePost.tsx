@@ -23,12 +23,8 @@ const FeaturePost = () => {
 
   useEffect(() => {
     fetchPosts().then((posts) => {
-      const recent = postsByPostDate(posts.data.data).filter((p) =>
-        p.attributes.categories?.data.find(
-          (d) =>
-            d.attributes.name === "General" ||
-            d.attributes.name === "Blog Article"
-        )
+      const recent = postsByPostDate(posts.data.data).filter(
+        (p) => p.attributes.feature
       );
 
       if (recent.length) {
