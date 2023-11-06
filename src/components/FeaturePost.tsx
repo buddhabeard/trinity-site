@@ -18,7 +18,7 @@ const FeaturePost = () => {
 
   const fetchPosts = async () =>
     await axios.get(
-      "https://trinity-cms.onrender.com/api/posts?populate=*&sort[0]=publishedAt&filters[feature]=true"
+      "https://trinity-cms.onrender.com/api/posts?populate=*&sort[0]=publishedAt"
     );
 
   useEffect(() => {
