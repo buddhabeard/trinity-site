@@ -107,11 +107,13 @@ const BlogPostsGrid = () => {
           <div key={post.id} className="post-preview grid grid-cols-3">
             <div className="flex items-start justify-center col-span-1">
               {hasImage(post) ? (
-                <img
-                  className="max-h-[128px] pl-4 lg:px-4 xl:px-4"
+                <a href={`/blog/${post.attributes.slug}`}>
+                  <img
+                  className="max-h-[128px] pl-4 lg:px-4 xl:px-4 object-cover"
                   src={post.attributes.image.data.attributes.url}
                   alt={post.attributes.title}
                 />
+                </a>
               ) : (
                 <div className="flex items-center justify-center w-3/4 bg-white shadow">
                   <Logo />
