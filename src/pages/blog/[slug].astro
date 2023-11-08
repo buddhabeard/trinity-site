@@ -42,16 +42,16 @@ const { title, image, content } = Astro.props;
 
 <Layout title={title}>
   <Container classes="mt-16 md:mt-24 lg:mt-32">
-    <div
-      class="w-full flex justify-center mb-12"
-    >
-      <img src={image} alt="image" class="w-full object-cover" />
-    </div>
     <h2
       class="text-center text-darkBlue text-2xl md:text-3xl lg:text-4xl font-extrabold font-inter leading-10 mb-8 px-0 md:px-24 lg:px-32 xl:px-40"
     >
       {title}
     </h2>
+    <div
+      class="w-full flex justify-center mb-12"
+    >
+      <img src={image} class="object-cover lg:w-3/4 xl:w-3/4" />
+    </div>
 
     <div set:html={content} class="font-inter px-0 md:px-24 lg:px-32 xl:px-40 blog-content" />
   </Container>

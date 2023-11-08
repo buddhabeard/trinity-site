@@ -99,11 +99,47 @@ a.bg-white:hover {
   background-color: rgb(17, 94, 89);
 }
 
+.contact-intro .text-sm {
+  padding-left: 1.5em;
+  padding-top: 0.5em;
+}
+
 .blog-content a:hover {
   text-decoration: underline;
 }
 
-.contact-intro .text-sm {
-  padding-left: 1.5em;
-  padding-top: 0.5em;
+.blog-content h1 {
+  @apply leading-10 text-4xl font-extrabold pb-8 text-darkBlue;
+}
+
+.blog-content h2 {
+  @apply text-3xl font-semibold pb-8 text-darkBlue;
+}
+
+.blog-content h3 {
+  @apply text-2xl font-semibold pb-4 text-darkBlue;
+}
+
+.blog-content h4 {
+  @apply text-xl font-semibold pb-4;
+}
+
+.blog-content h5 {
+  @apply leading-10 text-lg font-semibold pb-2 text-darkBlue;
+}
+
+.blog-content h6 {
+  @apply leading-10 text-base font-extrabold pb-2;
+}
+
+.blog-content hr {
+  @apply py-4;
+}
+
+.blog-content img {
+  @apply py-4;
+}
+
+.blog-content .image_resized {
+  margin: auto;
 }
