@@ -25,7 +25,7 @@ const Carousel = ({
     spaceBetween={50}
     slidesPerView={1}
     autoplay={{
-      delay: 3800,
+      delay: 6000,
       disableOnInteraction: false,
     }}
   >
