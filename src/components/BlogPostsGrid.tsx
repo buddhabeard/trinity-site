@@ -27,16 +27,18 @@ type Pagination = {
 };
 
 const initPosts = {
-  data: [],
+  data: [] as Posts["data"],
   meta: {
     pagination: {
       page: 0,
       pageSize: 0,
       pageCount: 0,
       total: 0,
-    },
+    } as Pagination,
   },
 };
+
+const baseURL = "https://trinity-cms.onrender.com/api/posts";
 
 const hasImage = (post: Post) => post?.attributes?.image?.data;
 
@@ -44,13 +46,10 @@ const BlogPostsGrid = () => {
   // @ts-ignore
   const [posts, setPosts] = useState<Posts>(initPosts);
   const [filteredPosts, setFilteredPosts] = useState<Posts>(initPosts);
-  const [pagination, setPagination] = useState<Pagination>();
   const [showFeaturePost, setShowFeaturePost] = useState<boolean>(false);
 
   const fetchPosts = async () =>
-    await axios.get(
-      "https://trinity-cms.onrender.com/api/posts?populate=*&sort=publishedAt:desc"
-    );
+    await axios.get(`${baseURL}?populate=*&sort=publishedAt:desc`);
 
   useEffect(() => {
     fetchPosts().then((posts) => {
@@ -93,6 +92,30 @@ const BlogPostsGrid = () => {
     window.location.href = `${window.location.origin}/blog?category=${cat}`;
   };
 
+  const handleLikeClicked = (post: Post) => async () => {
+    // let likeCount = 0;
+    // if (post.attributes?.likes) {
+    //   likeCount = likeCount + 1;
+    // } else {
+    //   likeCount = 1;
+    // }
+    // const data = { ...post.attributes, likes: likeCount };
+    // console.log(data);
+    // const response = await axios.put(
+    //   `${baseURL}/${post.id}`,
+    //   { data },
+    //   {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${
+    //         import.meta.env.PUBLIC_STRAPI_LIKES_API_KEY
+    //       }`,
+    //     },
+    //   }
+    // );
+    // console.log(response.data);
+  };
+
   return (
     <div>
       <CategorySelect
@@ -109,10 +132,10 @@ const BlogPostsGrid = () => {
               {hasImage(post) ? (
                 <a href={`/blog/${post.attributes.slug}`}>
                   <img
-                  className="max-h-[128px] pl-4 lg:px-4 xl:px-4 object-cover"
-                  src={post.attributes.image.data.attributes.url}
-                  alt={post.attributes.title}
-                />
+                    className="max-h-[128px] pl-4 lg:px-4 xl:px-4 object-cover"
+                    src={post.attributes.image.data.attributes.url}
+                    alt={post.attributes.title}
+                  />
                 </a>
               ) : (
                 <div className="flex items-center justify-center w-3/4 bg-white shadow">
@@ -138,24 +161,17 @@ const BlogPostsGrid = () => {
                     })}
                   </div>
                 </div>
-                {post.attributes?.likes && (
-                  <span>
-                    &middot;
-                    <svg
-                      className="inline"
-                      width="16"
-                      height="17"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8.00065 1.80791C9.87981 -0.0171648 12.7838 0.0434248 14.5938 2.00598C16.4039 3.96853 16.4661 7.0952 14.7826 9.13447L7.99977 16.4849L1.21708 9.13447C-0.466353 7.0952 -0.403426 3.96358 1.40586 2.00598C3.21719 0.0461513 6.11604 -0.019874 8.00065 1.80791ZM13.4613 3.2288C12.2621 1.92858 10.3259 1.87584 9.06943 3.09617L8.00137 4.13344L6.93275 3.09698C5.67268 1.87494 3.73998 1.9287 2.53721 3.23007C1.34544 4.51954 1.28561 6.58477 2.3839 7.94882L7.99977 14.0347L13.6158 7.94882C14.7145 6.58425 14.6549 4.52295 13.4613 3.2288Z"
-                        fill="#073E6D"
-                      />
-                    </svg>
-                  </span>
-                )}
+
+                {/* @TODO: move to like component to init with heart-empy.svg and when clicked heart-filled */}
+                <button onClick={handleLikeClicked(post)}>
+                  <svg
+                    className="text-red-400 w-6 h-auto fill-current"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512"
+                  >
+                    <path d="M0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84.02L256 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 .0003 232.4 .0003 190.9L0 190.9z" />
+                  </svg>
+                </button>
               </div>
               <div className="text-darkBlue text-xl font-semibold font-inter leading-7">
                 <a href={`/blog/${post.attributes.slug}`}>
