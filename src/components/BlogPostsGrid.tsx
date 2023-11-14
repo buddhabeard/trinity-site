@@ -14,6 +14,7 @@ import {
 import FeaturePost from "./FeaturePost";
 import Pill from "./Pill";
 import Logo from "./Logo";
+import LikeButton from "./LikeButton";
 
 export type BlogPostsGridProps = {
   posts: Posts;
@@ -27,16 +28,18 @@ type Pagination = {
 };
 
 const initPosts = {
-  data: [],
+  data: [] as Posts["data"],
   meta: {
     pagination: {
       page: 0,
       pageSize: 0,
       pageCount: 0,
       total: 0,
-    },
+    } as Pagination,
   },
 };
+
+const baseURL = "https://trinity-cms.onrender.com/api/posts";
 
 const hasImage = (post: Post) => post?.attributes?.image?.data;
 
@@ -44,13 +47,10 @@ const BlogPostsGrid = () => {
   // @ts-ignore
   const [posts, setPosts] = useState<Posts>(initPosts);
   const [filteredPosts, setFilteredPosts] = useState<Posts>(initPosts);
-  const [pagination, setPagination] = useState<Pagination>();
   const [showFeaturePost, setShowFeaturePost] = useState<boolean>(false);
 
   const fetchPosts = async () =>
-    await axios.get(
-      "https://trinity-cms.onrender.com/api/posts?populate=*&sort=publishedAt:desc"
-    );
+    await axios.get(`${baseURL}?populate=*&sort=publishedAt:desc`);
 
   useEffect(() => {
     fetchPosts().then((posts) => {
@@ -109,10 +109,10 @@ const BlogPostsGrid = () => {
               {hasImage(post) ? (
                 <a href={`/blog/${post.attributes.slug}`}>
                   <img
-                  className="max-h-[128px] pl-4 lg:px-4 xl:px-4 object-cover"
-                  src={post.attributes.image.data.attributes.url}
-                  alt={post.attributes.title}
-                />
+                    className="max-h-[128px] pl-4 lg:px-4 xl:px-4 object-cover"
+                    src={post.attributes.image.data.attributes.url}
+                    alt={post.attributes.title}
+                  />
                 </a>
               ) : (
                 <div className="flex items-center justify-center w-3/4 bg-white shadow">
@@ -132,36 +132,20 @@ const BlogPostsGrid = () => {
                   >
                     {getPostCategory(post)}
                   </Pill>
-                  <div className="date-text ml-4">
+                  <div className="date-text ml-4 mr-2">
                     {new Date(postDate(post)).toLocaleDateString("en-US", {
                       dateStyle: "long",
                     })}
                   </div>
                 </div>
-                {post.attributes?.likes && (
-                  <span>
-                    &middot;
-                    <svg
-                      className="inline"
-                      width="16"
-                      height="17"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8.00065 1.80791C9.87981 -0.0171648 12.7838 0.0434248 14.5938 2.00598C16.4039 3.96853 16.4661 7.0952 14.7826 9.13447L7.99977 16.4849L1.21708 9.13447C-0.466353 7.0952 -0.403426 3.96358 1.40586 2.00598C3.21719 0.0461513 6.11604 -0.019874 8.00065 1.80791ZM13.4613 3.2288C12.2621 1.92858 10.3259 1.87584 9.06943 3.09617L8.00137 4.13344L6.93275 3.09698C5.67268 1.87494 3.73998 1.9287 2.53721 3.23007C1.34544 4.51954 1.28561 6.58477 2.3839 7.94882L7.99977 14.0347L13.6158 7.94882C14.7145 6.58425 14.6549 4.52295 13.4613 3.2288Z"
-                        fill="#073E6D"
-                      />
-                    </svg>
-                  </span>
-                )}
               </div>
               <div className="text-darkBlue text-xl font-semibold font-inter leading-7">
                 <a href={`/blog/${post.attributes.slug}`}>
                   {post.attributes.title}
                 </a>
               </div>
+
+              <LikeButton post={post} />
 
               <div className="overflow-hidden max-h-[96px] lg:mb-2">
                 {parse(post.attributes.content)}
