@@ -14,6 +14,7 @@ import {
 import FeaturePost from "./FeaturePost";
 import Pill from "./Pill";
 import Logo from "./Logo";
+import LikeButton from "./LikeButton";
 
 export type BlogPostsGridProps = {
   posts: Posts;
@@ -92,30 +93,6 @@ const BlogPostsGrid = () => {
     window.location.href = `${window.location.origin}/blog?category=${cat}`;
   };
 
-  const handleLikeClicked = (post: Post) => async () => {
-    // let likeCount = 0;
-    // if (post.attributes?.likes) {
-    //   likeCount = likeCount + 1;
-    // } else {
-    //   likeCount = 1;
-    // }
-    // const data = { ...post.attributes, likes: likeCount };
-    // console.log(data);
-    // const response = await axios.put(
-    //   `${baseURL}/${post.id}`,
-    //   { data },
-    //   {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       Authorization: `Bearer ${
-    //         import.meta.env.PUBLIC_STRAPI_LIKES_API_KEY
-    //       }`,
-    //     },
-    //   }
-    // );
-    // console.log(response.data);
-  };
-
   return (
     <div>
       <CategorySelect
@@ -155,29 +132,20 @@ const BlogPostsGrid = () => {
                   >
                     {getPostCategory(post)}
                   </Pill>
-                  <div className="date-text ml-4">
+                  <div className="date-text ml-4 mr-2">
                     {new Date(postDate(post)).toLocaleDateString("en-US", {
                       dateStyle: "long",
                     })}
                   </div>
                 </div>
-
-                {/* @TODO: move to like component to init with heart-empy.svg and when clicked heart-filled */}
-                <button onClick={handleLikeClicked(post)}>
-                  <svg
-                    className="text-red-400 w-6 h-auto fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512 512"
-                  >
-                    <path d="M0 190.9V185.1C0 115.2 50.52 55.58 119.4 44.1C164.1 36.51 211.4 51.37 244 84.02L256 96L267.1 84.02C300.6 51.37 347 36.51 392.6 44.1C461.5 55.58 512 115.2 512 185.1V190.9C512 232.4 494.8 272.1 464.4 300.4L283.7 469.1C276.2 476.1 266.3 480 256 480C245.7 480 235.8 476.1 228.3 469.1L47.59 300.4C17.23 272.1 .0003 232.4 .0003 190.9L0 190.9z" />
-                  </svg>
-                </button>
               </div>
               <div className="text-darkBlue text-xl font-semibold font-inter leading-7">
                 <a href={`/blog/${post.attributes.slug}`}>
                   {post.attributes.title}
                 </a>
               </div>
+
+              <LikeButton post={post} />
 
               <div className="overflow-hidden max-h-[96px] lg:mb-2">
                 {parse(post.attributes.content)}

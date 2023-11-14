@@ -4,6 +4,8 @@ import axios from "axios";
 
 import type { Image } from "../interfaces/Images";
 import { postsByPostDate } from "../utils";
+import LikeButton from "./LikeButton";
+import type { Post } from "../interfaces/Posts";
 
 export type FeaturePostProps = {
   title: string;
@@ -63,11 +65,17 @@ const FeaturePost = () => {
         )}
         <div className="w-full my-4 lg:mx-0 lg:my-8 h-px border border-black border-opacity-20"></div>
         {featurePost?.updatedAt && (
-          <div className="text-gray-500 mx-auto lg:mx-0 text-base font-normal font-inter leading-tight">
-            {new Date(featurePost.updatedAt).toLocaleDateString("en-US", {
-              dateStyle: "long",
-            })}{" "}
-            · 2 Likes
+          <div className="text-gray-500 flex flex-col md:flex-row md:items-center mx-auto lg:mx-0 text-base font-normal font-inter leading-tight">
+            <div>
+              {new Date(featurePost.updatedAt).toLocaleDateString("en-US", {
+                dateStyle: "long",
+              })}
+            </div>
+
+            <div className="hidden md:block md:mx-4">&bull;</div>
+
+            {/* @ts-ignore */}
+            <LikeButton post={featurePost} />
           </div>
         )}
       </div>
