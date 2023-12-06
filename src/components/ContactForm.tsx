@@ -4,6 +4,7 @@ import axios from "axios";
 type ContactFormFields = {
   firstName: string;
   lastName: string;
+  phone: string;
   email: string;
   message: string;
 };
@@ -11,6 +12,7 @@ type ContactFormFields = {
 const initFormData = {
   firstName: "",
   lastName: "",
+  phone: "",
   email: "",
   message: "",
 };
@@ -18,6 +20,7 @@ const initFormData = {
 const ContactForm = () => {
   const fNameRef = useRef<HTMLInputElement>();
   const lNameRef = useRef<HTMLInputElement>();
+  const phoneRef = useRef<HTMLInputElement>();
   const emailRef = useRef<HTMLInputElement>();
   const messageRef = useRef<HTMLTextAreaElement>();
 
@@ -28,6 +31,8 @@ const ContactForm = () => {
     fNameRef.current.value = "";
     // @ts-ignore
     lNameRef.current.value = "";
+    // @ts-ignore
+    phoneRef.current.value = "";
     // @ts-ignore
     emailRef.current.value = "";
     // @ts-ignore
@@ -48,6 +53,10 @@ const ContactForm = () => {
 
     if (lNameRef?.current) {
       formData.lastName = lNameRef.current.value;
+    }
+
+    if (phoneRef?.current) {
+      formData.phone = phoneRef.current.value;
     }
 
     if (emailRef?.current) {
@@ -131,6 +140,26 @@ const ContactForm = () => {
 
               <div className="mt-6">
                 <label
+                  htmlFor="phone"
+                  className="block text-md font-medium leading-6 text-gray-900"
+                >
+                  Phone
+                </label>
+                <div className="mt-2">
+                  <input
+                    // @ts-ignore
+                    ref={phoneRef}
+                    type="text"
+                    name="phone"
+                    id="phone"
+                    required
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <label
                   htmlFor="email"
                   className="block text-md font-medium leading-6 text-gray-900"
                 >
@@ -200,8 +229,13 @@ const ContactForm = () => {
                 </div>
 
                 <div className="flex flex-col items-center contact-links">
-                  <div>Corporate Office | <a href="tel:17657421060">765-742-1060</a></div>
-                  <div>Fax | <a href="tel:17657421061">765-742-1061</a></div>
+                  <div>
+                    Corporate Office |{" "}
+                    <a href="tel:17657421060">765-742-1060</a>
+                  </div>
+                  <div>
+                    Fax | <a href="tel:17657421061">765-742-1061</a>
+                  </div>
                 </div>
               </div>
             </div>
