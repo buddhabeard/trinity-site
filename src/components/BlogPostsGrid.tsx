@@ -43,8 +43,17 @@ const baseURL = "https://trinity-cms.onrender.com/api/posts";
 
 const hasImage = (post: Post) => post?.attributes?.image?.data;
 
+const sortEventsAsc = (posts: Posts) => ({
+  meta: posts.meta,
+  data: posts.data.sort((a, b) => {
+    const aDate = new Date(a.attributes.eventDate as string);
+    const bDate = new Date(b.attributes.eventDate as string);
+    // @ts-ignore
+    return aDate - bDate;
+  }),
+});
+
 const BlogPostsGrid = () => {
-  // @ts-ignore
   const [posts, setPosts] = useState<Posts>(initPosts);
   const [filteredPosts, setFilteredPosts] = useState<Posts>(initPosts);
   const [showFeaturePost, setShowFeaturePost] = useState<boolean>(false);
@@ -74,6 +83,8 @@ const BlogPostsGrid = () => {
     const featureOK =
       cat === "General" || cat === "Blog Article" || cat === typeof undefined;
 
+    const isEvent = cat.toLowerCase().includes("event");
+
     if (featureOK) {
       setShowFeaturePost(true);
     } else {
@@ -83,8 +94,14 @@ const BlogPostsGrid = () => {
     if (filtered.data.length === 0) {
       setFilteredPosts(posts);
     } else {
-      // @ts-ignore
-      setFilteredPosts(filtered);
+      if (isEvent) {
+        const eventsSorted = sortEventsAsc(filtered);
+        // @ts-ignore
+        setFilteredPosts(eventsSorted);
+      } else {
+        // @ts-ignore
+        setFilteredPosts(filtered);
+      }
     }
   };
 
