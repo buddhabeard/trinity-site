@@ -74,9 +74,10 @@ const ContactForm = () => {
       }
     );
 
-    await axios.post("https://pfrrthx5az.us.aircode.run/email", {
-      data: formData,
-    });
+    await axios.post(
+      "https://grove-g5jk.onrender.com/trinity/sendmail",
+      formData
+    );
 
     clearFields();
   };
