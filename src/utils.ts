@@ -13,6 +13,7 @@ export const getCategoryParam = () => {
 
 export const getPostCategory = (post: Post): string => {
   if (!post.attributes.categories?.data) return "General";
+  if (post.attributes.categories.data.length === 0) return "General";
 
   return post.attributes.categories.data[0].attributes.name;
 };
