@@ -25,9 +25,9 @@ const posts = await fetchApi<Posts>({
   sortBy: "publishedAt:desc",
 });
 
-const hasCarousel = (page: HomePage) => page.data.attributes?.carousel;
+const hasCarousel = (page: HomePage) => page.data?.attributes?.carousel;
 const hasLinkCards = (page: HomePage) =>
-  page.data.attributes?.linkCards.linkCard.length;
+  page.data?.attributes?.linkCards.linkCard.length;
 
 const {
   carousel,
